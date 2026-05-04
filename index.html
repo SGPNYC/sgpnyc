@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SGP International</title>
+  <meta name="description" content="SGP International — Exceptional software engineering since 1987. Systems for Information Management." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1a3557;
+      --blue-heading: #1d4e7a;
+      --green: #3d8a4e;
+      --green-hover: #2e6e3c;
+      --bg-light: #e8e5df;
+      --bg-white: #f4f3f1;
+      --text-dark: #1a1a1a;
+      --text-mid: #444;
+      --text-light: #666;
+      --border: #ccc;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text-dark);
+      background: #fff;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 70px;
+      background: rgba(20,20,20,0.88);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 38px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 0.7; }
+
+    .nav-links .has-dropdown {
+      position: relative;
+    }
+
+    .dropdown-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 0;
+      transition: opacity 0.2s;
+    }
+
+    .dropdown-btn:hover { opacity: 0.7; }
+
+    .dropdown-btn .arrow {
+      font-size: 12px;
+      transition: transform 0.2s;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 16px);
+      left: 0;
+      background: rgba(20,20,20,0.96);
+      border-radius: 4px;
+      list-style: none;
+      min-width: 180px;
+      padding: 8px 0;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      z-index: 200;
+    }
+
+    .has-dropdown:hover .dropdown-menu,
+    .has-dropdown:focus-within .dropdown-menu { display: block; }
+
+    .has-dropdown:hover .arrow { transform: rotate(180deg); }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 10px 20px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      transition: background 0.15s;
+    }
+
+    .dropdown-menu li a:hover { background: rgba(255,255,255,0.1); opacity: 1; }
+
+    .nav-cta {
+      background: var(--green);
+      color: #fff !important;
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-weight: 500 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--green-hover) !important; opacity: 1 !important; }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.squarespace-cdn.com/content/v1/5bdb0f20f93fd4b10f9f7ed6/1758564008858-OBKQM3RBF4JHOJEC9FRZ/unsplash-image-A2CChTZvzTE.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.55);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+    }
+
+    .hero-content h1 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(42px, 7vw, 88px);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      line-height: 1.05;
+      margin-bottom: 24px;
+    }
+
+    .hero-content p {
+      font-size: clamp(18px, 2.5vw, 26px);
+      font-weight: 300;
+      line-height: 1.4;
+      margin-bottom: 40px;
+      opacity: 0.95;
+    }
+
+    .btn-green {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      text-decoration: none;
+      padding: 14px 36px;
+      border-radius: 30px;
+      font-size: 15px;
+      font-weight: 500;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-green:hover {
+      background: var(--green-hover);
+      transform: translateY(-1px);
+    }
+
+    /* ── LOGO STRIP ── */
+    #clients {
+      background: #1a1a1a;
+      padding: 18px 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .logo-track {
+      display: flex;
+      gap: 60px;
+      align-items: center;
+      animation: scroll-logos 30s linear infinite;
+      width: max-content;
+    }
+
+    .logo-track span {
+      color: #bbb;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+
+    @keyframes scroll-logos {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── SECTIONS COMMON ── */
+    section { padding: 100px 60px; }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h2.section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 4vw, 54px);
+      font-weight: 400;
+      color: var(--blue-heading);
+      margin-bottom: 60px;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--bg-light);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr 1.2fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .about-logo-img {
+      width: 100%;
+      max-width: 260px;
+    }
+
+    .about-text p {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--text-mid);
+      margin-bottom: 20px;
+    }
+
+    .about-ms {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .ms-badge {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+      text-decoration: underline;
+      font-style: italic;
+    }
+
+    .about-ms img {
+      width: 100%;
+      max-width: 280px;
+      border-radius: 8px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      background: var(--bg-light);
+      border-top: 1px solid #d5d2cc;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px 60px;
+    }
+
+    .service-item h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 14px;
+    }
+
+    .service-item p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-mid);
+      margin-bottom: 10px;
+    }
+
+    .service-item ul {
+      padding-left: 20px;
+      color: var(--text-mid);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    /* ── PRODUCTS ── */
+    #products {
+      background: var(--bg-light);
+      border-top: 1px solid #d5d2cc;
+    }
+
+    .products-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .product-icons {
+      display: flex;
+      gap: 16px;
+    }
+
+    .product-icon-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      text-align: center;
+      line-height: 1.2;
+      border: none;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .product-icon-btn:hover { transform: scale(1.08); }
+    .product-icon-btn.active { outline: 3px solid #fff; outline-offset: 2px; box-shadow: 0 0 0 5px rgba(0,0,0,0.15); }
+
+    .icon-dox { background: #2b6bbd; }
+    .icon-cdb { background: var(--green); }
+    .icon-reds { background: #b84040; }
+    .icon-wf { background: #2b4a7a; }
+
+    .products-divider {
+      border: none;
+      border-top: 1px solid #b0aca5;
+      margin-bottom: 64px;
+    }
+
+    .product-panel {
+      display: none;
+    }
+
+    .product-panel.active {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .product-left {}
+
+    .product-circle {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+
+    .product-circle span {
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 0.02em;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .product-title {
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 28px;
+    }
+
+    .product-title strong {
+      font-weight: 700;
+    }
+
+    .product-feature {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      border-top: 1px solid #c0bcb5;
+      cursor: pointer;
+      font-size: 16px;
+      color: var(--text-dark);
+    }
+
+    .product-feature:last-of-type { border-bottom: 1px solid #c0bcb5; }
+
+    .product-feature .chevron {
+      font-size: 18px;
+      color: var(--text-light);
+      transition: transform 0.2s;
+    }
+
+    .btn-green-sm {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 500;
+      margin-top: 32px;
+      transition: background 0.2s;
+    }
+
+    .btn-green-sm:hover { background: var(--green-hover); }
+
+    .product-right {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .product-screenshot {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    }
+
+    .product-screenshot-sm {
+      width: 80%;
+      border-radius: 8px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+      align-self: flex-end;
+    }
+
+    /* ── MISSION ── */
+    #mission {
+      background: var(--bg-light);
+      border-top: 1px solid #d5d2cc;
+      text-align: center;
+      position: relative;
+      padding-bottom: 120px;
+    }
+
+    #mission h2 {
+      text-align: left;
+      margin-bottom: 40px;
+    }
+
+    #mission p {
+      font-size: clamp(18px, 2vw, 22px);
+      color: var(--navy);
+      line-height: 1.7;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .mission-wave {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 80px;
+      background: #f4f3f1;
+      clip-path: ellipse(55% 100% at 30% 100%);
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--bg-white);
+      padding: 100px 60px;
+    }
+
+    .contact-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 4vw, 56px);
+      font-weight: 400;
+      color: var(--blue-heading);
+      margin-bottom: 48px;
+    }
+
+    .contact-person {
+      margin-bottom: 36px;
+    }
+
+    .contact-person h3 {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    .contact-person a {
+      color: var(--text-dark);
+      text-decoration: none;
+      display: block;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .contact-person a:hover { text-decoration: underline; }
+
+    .contact-address {
+      font-size: 15px;
+      color: var(--text-mid);
+      line-height: 1.6;
+      margin-top: 36px;
+    }
+
+    /* form */
+    .contact-form label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-mid);
+      margin-bottom: 6px;
+      margin-top: 20px;
+    }
+
+    .contact-form label:first-child { margin-top: 0; }
+
+    .name-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .contact-form input[type="text"],
+    .contact-form input[type="email"] {
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      padding: 10px 12px;
+      font-size: 15px;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text-dark);
+      background: #fff;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .contact-form input:focus { border-color: var(--blue-heading); }
+
+    .required-note {
+      font-size: 12px;
+      color: var(--text-light);
+      font-weight: 400;
+    }
+
+    .form-label-row {
+      display: flex;
+      gap: 6px;
+      align-items: baseline;
+      margin-bottom: 6px;
+      margin-top: 20px;
+    }
+
+    .btn-send {
+      margin-top: 24px;
+      background: var(--green);
+      color: #fff;
+      border: none;
+      padding: 13px 32px;
+      border-radius: 30px;
+      font-size: 15px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-send:hover { background: var(--green-hover); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1a1a1a;
+      color: #888;
+      text-align: center;
+      padding: 24px 40px;
+      font-size: 13px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      section { padding: 70px 30px; }
+      .about-grid { grid-template-columns: 1fr; gap: 30px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .product-panel.active { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 20px; }
+      .nav-links { gap: 18px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .name-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="/">
+    <img src="https://images.squarespace-cdn.com/content/v1/5bdb0f20f93fd4b10f9f7ed6/1541083294104-7JSZMP8O6DRVG2CKQRWX/SGPfinal.png" alt="SGP International" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li class="has-dropdown"><button class="dropdown-btn">SGP International <span class="arrow">&#8964;</span></button><ul class="dropdown-menu"><li><a href="/abt/">About SGP</a></li><li><a href="/services/">Services</a></li><li><a href="/products/">Products</a></li><li><a href="/success/">Success Stories</a></li><li><a href="/partners/">Customers</a></li><li><a href="/new-page/">Personal Paper</a></li></ul></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/games/">Games</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <h1>SGP INTERNATIONAL</h1>
+    <p>Software Solutions<br>Built With You. For You.</p>
+    <a href="#contact" class="btn-green">Contact Us</a>
+  </div>
+</section>
+
+<!-- ── CLIENT LOGOS ── -->
+<div id="clients">
+  <div class="logo-track">
+    <span>Hypo Real Estate</span>
+    <span>University of Chicago</span>
+    <span>PhysioWaste</span>
+    <span>Airline Container Service</span>
+    <span>HYTECO</span>
+    <span>Deutsche/Hypo</span>
+    <span>LB Rose</span>
+    <span>ACLDx Foundation</span>
+    <span>Travis</span>
+    <span>Bayern LB</span>
+    <span>UVB Group</span>
+    <span>PB Capital</span>
+    <span>VLRT</span>
+    <span>Emigrant Bank</span>
+    <span>DEPFA Bank</span>
+    <span>HSH Nordbank</span>
+    <!-- duplicate for seamless loop -->
+    <span>Hypo Real Estate</span>
+    <span>University of Chicago</span>
+    <span>PhysioWaste</span>
+    <span>Airline Container Service</span>
+    <span>HYTECO</span>
+    <span>Deutsche/Hypo</span>
+    <span>LB Rose</span>
+    <span>ACLDx Foundation</span>
+    <span>Travis</span>
+    <span>Bayern LB</span>
+    <span>UVB Group</span>
+    <span>PB Capital</span>
+    <span>VLRT</span>
+    <span>Emigrant Bank</span>
+    <span>DEPFA Bank</span>
+    <span>HSH Nordbank</span>
+  </div>
+</div>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="section-inner">
+    <h2 class="section-title">About Us</h2>
+    <div class="about-grid">
+      <div>
+        <img class="about-logo-img" src="https://images.squarespace-cdn.com/content/v1/5bdb0f20f93fd4b10f9f7ed6/1541083294104-7JSZMP8O6DRVG2CKQRWX/SGPfinal.png" alt="SGP International seal" />
+      </div>
+      <div class="about-text">
+        <p>We are a team of experienced IT specialists that work closely with businesses of all sizes to address their specific technical needs.</p>
+        <p>Our business acumen allows us to adapt to changing technologies and market trends to deliver innovative, leading edge technical solutions. Clients depend on SGP for reliable and secure system architecture.</p>
+      </div>
+      <div class="about-ms">
+        <div class="ms-badge">SGP is a certified Microsoft Partner.</div>
+        <img src="https://images.squarespace-cdn.com/content/v1/5bdb0f20f93fd4b10f9f7ed6/1605566400000-office-team.jpg" alt="SGP team" onerror="this.style.display='none'" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section id="services">
+  <div class="section-inner">
+    <h2 class="section-title">Services</h2>
+    <div class="services-grid">
+      <div class="service-item">
+        <h3>Consulting</h3>
+        <p>We work with our clients to understand their unique challenges, goals, and technical requirements.</p>
+      </div>
+      <div class="service-item">
+        <h3>Information Management</h3>
+        <p>SGP excels in developing data solutions to streamline your business operations and ensure data integrity.</p>
+      </div>
+      <div class="service-item">
+        <h3>Leverage Modern Technology</h3>
+        <p>Continuously evaluating technological advancements to ensure our clients have access to the best tools.</p>
+      </div>
+      <div class="service-item">
+        <h3>Custom Solutions</h3>
+        <p>Full scale applications that adapt to accommodate increasing data volumes.</p>
+        <ul>
+          <li>Rapidly developed prototypes and mockups.</li>
+          <li>Comprehensive training and support services</li>
+        </ul>
+      </div>
+      <div class="service-item">
+        <h3>Data Analytics</h3>
+        <p>State of the art reporting services via Microsoft's PowerBI. SGP's in-house PowerBI experts are equipped to develop robust reporting alongside power users.</p>
+        <ul>
+          <li>Ability to reproduce historical reports at any time</li>
+        </ul>
+      </div>
+      <div class="service-item">
+        <h3>Audit Preparedness</h3>
+        <p>State of the art security and compliance protocols built into every tool. Fully SOCII compliant along with other industry regulatory standards.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRODUCTS ── -->
+<section id="products">
+  <div class="section-inner">
+    <div class="products-header">
+      <h2 class="section-title" style="margin-bottom:0">Products</h2>
+      <div class="product-icons">
+        <button class="product-icon-btn icon-dox active" onclick="showProduct('dox',this)">DOX</button>
+        <button class="product-icon-btn icon-cdb" onclick="showProduct('cdb',this)">CENTRAL<br>DB</button>
+        <button class="product-icon-btn icon-reds" onclick="showProduct('reds',this)">REDS</button>
+        <button class="product-icon-btn icon-wf" onclick="showProduct('wf',this)">Workflow<br>365</button>
+      </div>
+    </div>
+    <hr class="products-divider" />
+
+    <!-- DOX -->
+    <div class="product-panel active" id="panel-dox">
+      <div class="product-left">
+        <div class="product-circle" style="background:#2b6bbd">
+          <span>DOX</span>
+        </div>
+        <div class="product-title"><strong>DOX:</strong> Document Compliance System</div>
+        <div class="product-feature"><span>Automated Tracking</span><span class="chevron">∨</span></div>
+        <div class="product-feature"><span>Waivers</span><span class="chevron">∨</span></div>
+        <div class="product-feature"><span>Intuitive Reporting</span><span class="chevron">∨</span></div>
+        <div class="product-feature"><span>Auditing</span><span class="chevron">∨</span></div>
+        <a href="/products/#dox" class="btn-green-sm">Learn more</a>
+      </div>
+      <div class="product-right">
+        <img class="product-screenshot" src="https://images.squarespace-cdn.com/content/v1/5bdb0f20f93fd4b10f9f7ed6/dox-screenshot-1.png" alt="DOX screenshot" onerror="this.src='https://placehold.co/600x380/e8e5df/1d4e7a?text=DOX+Dashboard'" />
+        <img class="product-screenshot-sm" src="https://images.squarespace-cdn.com/content/v1/5bdb0f20f93fd4b10f9f7ed6/dox-screenshot-2.png" alt="DOX detail" onerror="this.src='https://placehold.co/480x200/e8e5df/1d4e7a?text=Period+Endings'" />
+      </div>
+    </div>
+
+    <!-- CentralDB -->
+    <div class="product-panel" id="panel-cdb">
+      <div class="product-left">
+        <div class="product-circle" style="background:#3d8a4e">
+          <span style="font-size:20px">CENTRAL<br>DB</span>
+        </div>
+        <div class="product-title"><strong>CentralDB:</strong> Data Warehouse Manager</div>
+        <div class="product-feature"><span>Centralized Report Management</span><span class="chevron">∨</span></div>
+        <div class="product-feature"><span>Role-Based Access Control</span><span class="chevron">∨</span></div>
+        <div class="product-feature"><span>Automated Report Scheduling</span><span class="chevron">∨</span></div>
+        <div class="product-feature"><span>User-Friendly Interface</span><span class="chevron">∨</span></div>
+        <a href="/products/#centraldb" class="btn-green-sm">Learn more</a>
+      </div>
+      <div class="product-right">
+        <img class="product-screenshot" src="https://placehold.co/600x380/e8e5df/1d4e7a?text=Power+BI+Integration" alt="CentralDB Power BI" />
+        <img class="product-screenshot-sm" src="https://placehold.co/480x220/e8e5df/1d4e7a?text=CentralDB+Interface" alt="CentralDB interface" />
+      </div>
+    </div>
+
+    <!-- REDS -->
+    <div class="product-panel" id="panel-reds">
+      <div class="product-left">
+        <div class="product-circle" style="background:#b84040">
+          <span>REDS</span>
+        </div>
+        <div class="product-title"><strong>REDS:</strong> Real Estate Portfolio Management</div>
+        <div class="product-feature"><span>Portfolio Overview</span><span class="chevron">+</span></div>
+        <div class="product-feature"><span>Point-In-Time Reporting</span><span class="chevron">+</span></div>
+        <div class="product-feature"><span>Customizable Reporting</span><span class="chevron">+</span></div>
+        <div class="product-feature"><span>Collateral Monitoring</span><span class="chevron">+</span></div>
+        <a href="/products/#reds" class="btn-green-sm">Learn more</a>
+      </div>
+      <div class="product-right">
+        <img class="product-screenshot" src="https://placehold.co/600x380/e8e5df/1d4e7a?text=REDS+Portfolio+View" alt="REDS screenshot" />
+      </div>
+    </div>
+
+    <!-- Workflow365 -->
+    <div class="product-panel" id="panel-wf">
+      <div class="product-left">
+        <div class="product-circle" style="background:#2b4a7a">
+          <span style="font-size:20px">Workflow<br>365</span>
+        </div>
+        <div class="product-title"><strong>Workflow365:</strong> Process Management</div>
+        <div class="product-feature"><span>Customizable Processes</span><span class="chevron">+</span></div>
+        <div class="product-feature"><span>4-Eye Approvals</span><span class="chevron">+</span></div>
+        <div class="product-feature"><span>Real-Time Tracking</span><span class="chevron">+</span></div>
+        <div class="product-feature"><span>Intuitive Reporting</span><span class="chevron">+</span></div>
+        <a href="/products/#workflow" class="btn-green-sm">Learn more</a>
+      </div>
+      <div class="product-right">
+        <img class="product-screenshot" src="https://placehold.co/600x380/e8e5df/1d4e7a?text=Workflow365+Interface" alt="Workflow365 screenshot" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MISSION ── -->
+<section id="mission">
+  <div class="section-inner">
+    <h2 class="section-title">Our Mission</h2>
+    <p>Is to assure our customers needs are always addressed. Prioritizing understanding the root of the problem and ensuring our customers are progressing forward.</p>
+  </div>
+  <div class="mission-wave"></div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="contact-grid">
+    <div>
+      <h2 class="contact-title">Contact us.</h2>
+      <div class="contact-person">
+        <h3>Luke Berglund</h3>
+        <a href="mailto:lberglund@sgpnyc.com">lberglund@sgpnyc.com</a>
+        <a href="tel:6466793847">(646)-679-3847</a>
+      </div>
+      <div class="contact-person">
+        <h3>Elizabeth Pelka</h3>
+        <a href="mailto:epelka@sgpnyc.com">epelka@sgpnyc.com</a>
+        <a href="tel:6466793848">(646)-679-3848</a>
+      </div>
+      <div class="contact-address">
+        405 Lexington Ave, Floor 9<br>New York, NY 10174
+      </div>
+    </div>
+    <div>
+      <div class="contact-form">
+        <p style="font-size:14px;font-weight:500;color:var(--text-mid);margin-bottom:16px;">Name</p>
+        <div class="name-row">
+          <div>
+            <div class="form-label-row">
+              <label for="fname">First Name</label>
+              <span class="required-note">(required)</span>
+            </div>
+            <input type="text" id="fname" name="fname" required />
+          </div>
+          <div>
+            <div class="form-label-row">
+              <label for="lname">Last Name</label>
+              <span class="required-note">(required)</span>
+            </div>
+            <input type="text" id="lname" name="lname" required />
+          </div>
+        </div>
+        <div class="form-label-row" style="margin-top:20px">
+          <label for="email">Email</label>
+          <span class="required-note">(required)</span>
+        </div>
+        <input type="email" id="email" name="email" required style="width:100%" />
+        <button class="btn-send" type="button">Send</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>©SGP International</p>
+</footer>
+
+<script>
+  function showProduct(id, btn) {
+    document.querySelectorAll('.product-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.product-icon-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('panel-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+
+</body>
+</html>

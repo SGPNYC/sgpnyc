@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — SGP International</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --blue-heading: #1d4e7a; --green: #3d8a4e; --green-hover: #2e6e3c; }
+    body { font-family: 'DM Sans', sans-serif; background: #fff; color: #1a1a1a; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 70px; background: rgba(20,20,20,0.88); backdrop-filter: blur(8px); }
+    .nav-logo img { height: 38px; filter: brightness(0) invert(1); }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a { color: #fff; text-decoration: none; font-size: 14px; transition: opacity 0.2s; }
+    .nav-links a:hover { opacity: 0.7; }
+    .nav-cta { background: var(--green); color: #fff !important; padding: 10px 22px; border-radius: 30px; font-weight: 500 !important; }
+    .nav-cta:hover { background: var(--green-hover) !important; opacity: 1 !important; }
+    .has-dropdown { position: relative; }
+    .dropdown-btn { background: none; border: none; color: #fff; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; }
+    .arrow { font-size: 12px; transition: transform 0.2s; display: inline-block; }
+    .dropdown-menu { display: none; position: absolute; top: calc(100% + 16px); left: 0; background: rgba(20,20,20,0.96); border-radius: 4px; list-style: none; min-width: 180px; padding: 8px 0; box-shadow: 0 8px 32px rgba(0,0,0,0.3); z-index: 200; }
+    .has-dropdown:hover .dropdown-menu, .has-dropdown:focus-within .dropdown-menu { display: block; }
+    .has-dropdown:hover .arrow { transform: rotate(180deg); }
+    .dropdown-menu li a { display: block; padding: 10px 20px; color: #fff; text-decoration: none; font-size: 13px; }
+    .dropdown-menu li a:hover { background: rgba(255,255,255,0.1); }
+
+    .blog-hero { margin-top: 70px; height: 220px; display: flex; align-items: center; justify-content: center; background: #8aaabb; position: relative; overflow: hidden; }
+    .blog-hero-title { font-family: 'DM Sans', sans-serif; font-size: 48px; font-weight: 300; letter-spacing: 0.25em; color: #fff; position: relative; z-index: 2; }
+    .blog-hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 55px; background: #fff; clip-path: ellipse(55% 100% at 30% 100%); }
+
+    .blog-container { max-width: 1100px; margin: 0 auto; padding: 60px 60px 100px; }
+
+    .post { display: grid; grid-template-columns: 1fr 220px; gap: 48px; align-items: start; margin-bottom: 52px; padding-bottom: 52px; border-bottom: 1px solid #e8e8e8; }
+    .post:last-child { border-bottom: none; }
+
+    .post-date { font-size: 12px; color: #999; margin-bottom: 10px; letter-spacing: 0.03em; }
+
+    .post-title { font-family: 'Playfair Display', serif; font-size: clamp(17px, 2vw, 24px); font-weight: 400; color: var(--blue-heading); margin-bottom: 14px; line-height: 1.3; }
+
+    .post-body p { font-size: 13px; line-height: 1.75; color: #666; margin-bottom: 6px; }
+
+    .post-link { display: inline-block; margin-top: 10px; font-size: 12px; color: var(--blue-heading); text-decoration: underline; }
+
+    .post-image { width: 100%; border-radius: 4px; aspect-ratio: 4/3; object-fit: cover; background: #d8d5d0; display: block; }
+
+    footer { background: #1a1a1a; color: #888; text-align: center; padding: 24px 40px; font-size: 13px; }
+
+    @media (max-width: 700px) {
+      .post { grid-template-columns: 1fr; }
+      .blog-container { padding: 40px 24px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/"><img src="https://images.squarespace-cdn.com/content/v1/5bdb0f20f93fd4b10f9f7ed6/1541083294104-7JSZMP8O6DRVG2CKQRWX/SGPfinal.png?format=1500w" alt="SGP International" /></a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li class="has-dropdown">
+      <button class="dropdown-btn">SGP International <span class="arrow">&#8964;</span></button>
+      <ul class="dropdown-menu">
+        <li><a href="/abt/">About SGP</a></li>
+        <li><a href="/services/">Services</a></li>
+        <li><a href="/products/">Products</a></li>
+        <li><a href="/success/">Success Stories</a></li>
+        <li><a href="/partners/">Customers</a></li>
+        <li><a href="/new-page/">Personal Paper</a></li>
+      </ul>
+    </li>
+    <li><a href="/blog/" style="opacity:0.6">Blog</a></li>
+    <li><a href="/games/">Games</a></li>
+    <li><a href="/#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="blog-hero">
+  <h1 class="blog-hero-title">BLOG</h1>
+</div>
+
+<div class="blog-container">
+
+  <article class="post">
+    <div>
+      <div class="post-date">12/26/25</div>
+      <h2 class="post-title">Forget Cowbells. Cows Wear High-Tech Collars Now.</h2>
+      <div class="post-body">
+        <p>"The cow at the edge of Tony Louters's dairy farm in Merced, Calif., held 11 gallons of milk and a secret: in the next 48 hours, she would become sick."</p>
+        <p>"On many farms, the health signs would have gone undetected, costing hundreds of dollars in lost milk. But thanks to a high-tech collar — fitted with movement sensors and Wi-Fi — he learned the cow's diagnosis at 5:30 a.m. when an alert about its biometric data."</p>
+      </div>
+      <a class="post-link" href="#">Click here for the full article</a>
+    </div>
+    <img class="post-image" src="" alt="Cow with high-tech collar" />
+  </article>
+
+  <article class="post">
+    <div>
+      <div class="post-date">12/4/25</div>
+      <h2 class="post-title">We Can Now Track Individual Monarch Butterflies. It's a Revelation.</h2>
+      <div class="post-body">
+        <p>"Scientists used tiny new sensors to follow the insects on journeys that take thousands of miles to their winter colonies in Mexico."</p>
+        <p>"For the first time, scientists are tracking the migration of monarch butterflies across much of North America, actively watching the movements of individual insects on journeys from as far away as Ontario all the way to their overwintering colonies in central Mexico."</p>
+      </div>
+      <a class="post-link" href="#">Click here for the full article</a>
+    </div>
+    <img class="post-image" src="" alt="Monarch butterfly tracking" />
+  </article>
+
+  <article class="post">
+    <div>
+      <div class="post-date">12/4/25</div>
+      <h2 class="post-title">China's transparent coating to turn ordinary windows into solar power generators</h2>
+      <div class="post-body">
+        <p>"Researchers in China have created a transparent, colorless, and unidirectional solar concentrator that can be directly coated onto standard window glass and used to harvest sunlight without changing the window's appearance."</p>
+        <p>"According to the scientists, this diffractive-type solar concentrator selectively guides sunlight toward the edge of the window where photovoltaic cells are installed."</p>
+      </div>
+      <a class="post-link" href="#">Click here for the full article</a>
+    </div>
+    <img class="post-image" src="" alt="Solar window coating" />
+  </article>
+
+  <article class="post">
+    <div>
+      <div class="post-date">8/29/23</div>
+      <h2 class="post-title">French Government Uses AI to Spot Undeclared Swimming Pools — And Tax Them, by James Vincent</h2>
+      <div class="post-body">
+        <p>"The French government has collected nearly €10 million in additional taxes after using machine learning to spot undeclared swimming pools in aerial photos."</p>
+        <p>"The project began last October, with firm Capgemini working with Google to analyze publicly available aerial photos taken by France's National Institute of Geographic and Forest Information."</p>
+      </div>
+      <a class="post-link" href="#">Click here for the full article</a>
+    </div>
+    <img class="post-image" src="" alt="Aerial view of swimming pools" />
+  </article>
+
+  <article class="post">
+    <div>
+      <div class="post-date">8/19/23</div>
+      <h2 class="post-title">How People Adapt to Cybersickness From Virtual Reality, by Rachel Cramer – Iowa State University</h2>
+      <div class="post-body">
+        <p>"While virtual reality has been around for decades, a combination of higher-resolution graphics and cheaper, sleeker headsets has propelled the immersive technology into arenas beyond gaming and military training."</p>
+        <p>"Jonathan Kelly, a professor of psychology and human-computer interaction at Iowa State University, says the biggest barrier to VR becoming mainstream is cybersickness."</p>
+      </div>
+      <a class="post-link" href="#">Click here for the full article</a>
+    </div>
+    <img class="post-image" src="" alt="VR headset" />
+  </article>
+
+  <article class="post">
+    <div>
+      <div class="post-date">8/9/23</div>
+      <h2 class="post-title">Google Adds AI Language Skills to Alphabet's Helper Robots to Better Understand Humans, by James Vincent</h2>
+      <div class="post-body">
+        <p>"Google's parent company Alphabet is bringing together two of its most ambitious research projects — robotics and language understanding — in an attempt to make a 'helper robot' that can understand natural language commands."</p>
+        <p>"Most robots only respond to short and simple instructions. But use the SayCan language model and you're able to better probe the intent behind more oblique commands."</p>
+      </div>
+      <a class="post-link" href="#">Click here for the full article</a>
+    </div>
+    <img class="post-image" src="" alt="Alphabet helper robots" />
+  </article>
+
+  <article class="post">
+    <div>
+      <div class="post-date">8/9/23</div>
+      <h2 class="post-title">VR Surgical Training Platform Raises $20M, Further Solidifying VR's Place in Medicine, by Ben Lang</h2>
+      <div class="post-body">
+        <p>"VR surgical training platform FundamentalVR today announced it has raised a $20 million Series B investment to further expand its VR surgical training platform."</p>
+        <p>"The machine learning data insights product and global geographic expansion throughout the US are key focuses of the new investment."</p>
+      </div>
+      <a class="post-link" href="#">Click here for the full article</a>
+    </div>
+    <img class="post-image" src="" alt="VR surgical training" />
+  </article>
+
+  <article class="post">
+    <div>
+      <div class="post-date">4/20/21</div>
+      <h2 class="post-title">Self-Taught AI Shows Similarities to How the Brain Works, by Anil Ananthaswamy</h2>
+      <div class="post-body">
+        <p>"For a decade now, many of the most impressive AI systems have been taught using a huge inventory of labeled data. Such supervised learning requires data laboriously labeled by humans."</p>
+        <p>"We are now seeing a generation of algorithms that are like undergrads: they don't come to class the whole semester and then the night before they're cramming, said Rina, a computer scientist at the University of California Berkeley."</p>
+      </div>
+      <a class="post-link" href="#">Click here for the full article</a>
+    </div>
+    <img class="post-image" src="" alt="Self-taught AI brain illustration" />
+  </article>
+
+  <article class="post">
+    <div>
+      <div class="post-date">4/20/21</div>
+      <h2 class="post-title">Google's Search AI Now Looks for General Consensus to Highlight More Trustworthy Results, by Mariella Moon</h2>
+      <div class="post-body">
+        <p>"You know that highlighted piece of text at the very top of a Google search results page when you look up a piece of information? That's called a featured snippet, and it's meant to provide you with a quick answer to your query."</p>
+        <p>"Now Google is making sure that the information it highlights is reliable and accurate by using its latest AI model, the Multitask Unified Model, so that featured snippets can now fact-check when deciding on a snippet to feature."</p>
+      </div>
+      <a class="post-link" href="#">Click here for the full article</a>
+    </div>
+    <img class="post-image" src="" alt="Google search AI" />
+  </article>
+
+  <article class="post">
+    <div>
+      <div class="post-date">4/9/21</div>
+      <h2 class="post-title">In Simulation of How Water Freezes, Artificial Intelligence Breaks the Ice, by Princeton University</h2>
+      <div class="post-body">
+        <p>"A team based at Princeton University has accurately simulated the initial steps of ice formation by applying artificial intelligence to solving equations that govern the quantum behavior of individual atoms and molecules."</p>
+        <p>"In a sense, this is like a dream come true, said Roberto Car, Princeton's Albert W. '83 Dorman Professor in Chemistry, who co-pioneered the approach of simulating molecular behaviors based on the underlying quantum laws more than 35 years ago."</p>
+      </div>
+      <a class="post-link" href="#">Click here for the full article</a>
+    </div>
+    <img class="post-image" src="" alt="AI water freezing simulation" />
+  </article>
+
+</div>
+
+<footer>
+  <p>©SGP International</p>
+</footer>
+
+</body>
+</html>

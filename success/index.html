@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Success Stories — SGP International</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --blue-heading: #1d4e7a; --green: #3d8a4e; --green-hover: #2e6e3c; --bg: #f4f3f1; }
+    body { font-family: 'DM Sans', sans-serif; background: #fff; color: #1a1a1a; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 70px; background: rgba(20,20,20,0.88); backdrop-filter: blur(8px); }
+    .nav-logo img { height: 38px; filter: brightness(0) invert(1); }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a { color: #fff; text-decoration: none; font-size: 14px; transition: opacity 0.2s; }
+    .nav-links a:hover { opacity: 0.7; }
+    .nav-cta { background: var(--green); color: #fff !important; padding: 10px 22px; border-radius: 30px; font-weight: 500 !important; }
+    .nav-cta:hover { background: var(--green-hover) !important; opacity: 1 !important; }
+    .has-dropdown { position: relative; }
+    .dropdown-btn { background: none; border: none; color: #fff; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; }
+    .arrow { font-size: 12px; transition: transform 0.2s; display: inline-block; }
+    .dropdown-menu { display: none; position: absolute; top: calc(100% + 16px); left: 0; background: rgba(20,20,20,0.96); border-radius: 4px; list-style: none; min-width: 180px; padding: 8px 0; box-shadow: 0 8px 32px rgba(0,0,0,0.3); z-index: 200; }
+    .has-dropdown:hover .dropdown-menu, .has-dropdown:focus-within .dropdown-menu { display: block; }
+    .has-dropdown:hover .arrow { transform: rotate(180deg); }
+    .dropdown-menu li a { display: block; padding: 10px 20px; color: #fff; text-decoration: none; font-size: 13px; }
+    .dropdown-menu li a:hover { background: rgba(255,255,255,0.1); }
+
+    /* HERO */
+    .page-hero {
+      margin-top: 70px;
+      height: 200px;
+      background-image: url('https://images.squarespace-cdn.com/content/v1/5bdb0f20f93fd4b10f9f7ed6/success-hero.jpg');
+      background-size: cover;
+      background-position: center;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.45); }
+    .page-hero h1 {
+      position: relative; z-index: 2;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 42px; font-weight: 300;
+      letter-spacing: 0.2em; color: #fff;
+    }
+
+    /* CONTENT */
+    .content { max-width: 860px; margin: 0 auto; padding: 70px 40px 100px; }
+
+    .story { margin-bottom: 60px; padding-bottom: 60px; border-bottom: 1px solid #e0ddd8; }
+    .story:last-child { border-bottom: none; }
+
+    .story h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(22px, 3vw, 34px);
+      font-weight: 400;
+      color: var(--blue-heading);
+      margin-bottom: 28px;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .story-col h3 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 12px;
+      letter-spacing: 0.02em;
+    }
+
+    .story-col p {
+      font-size: 14px;
+      line-height: 1.75;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .story-col strong { font-weight: 600; color: #1a1a1a; }
+
+    footer { background: #1a1a1a; color: #888; text-align: center; padding: 24px 40px; font-size: 13px; }
+
+    @media (max-width: 600px) { .story-grid { grid-template-columns: 1fr; } .content { padding: 40px 24px 60px; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/"><img src="https://images.squarespace-cdn.com/content/v1/5bdb0f20f93fd4b10f9f7ed6/1541083294104-7JSZMP8O6DRVG2CKQRWX/SGPfinal.png?format=1500w" alt="SGP International" /></a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li class="has-dropdown">
+      <button class="dropdown-btn">SGP International <span class="arrow">&#8964;</span></button>
+      <ul class="dropdown-menu">
+        <li><a href="/abt/">About SGP</a></li>
+        <li><a href="/services/">Services</a></li>
+        <li><a href="/products/">Products</a></li>
+        <li><a href="/success/">Success Stories</a></li>
+        <li><a href="/partners/">Customers</a></li>
+        <li><a href="/new-page/">Personal Paper</a></li>
+      </ul>
+    </li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/games/">Games</a></li>
+    <li><a href="/#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <h1>SUCCESS STORIES</h1>
+</div>
+
+<div class="content">
+
+  <div class="story">
+    <h2>ICBC</h2>
+    <div class="story-grid">
+      <div class="story-col">
+        <h3>The Challenge</h3>
+        <p>ICBC needed a system they could rely on for document and covenant compliance. All banking businesses are audited and are expected to keep a firm record of their data and transactions.</p>
+        <p>Many financial companies solely rely on Excel, when they also need a system that will not only provide substantial security, but will be adequate for their company's teams to navigate daily.</p>
+        <p>Document and covenant compliance is crucial for ICBC because it tracks and compiles their data and requirements for each client. They also needed a system that would specialize their objectives based on the rights and restrictions of each user.</p>
+      </div>
+      <div class="story-col">
+        <h3>The Solution</h3>
+        <p>For ICBC, SGP's <strong>DOX is customized specifically to the International bank's needs. DOX is tailored specifically to the partnering organization's requirements.</strong></p>
+        <p>Working with ICBC, DOX creates reports, arranges data, highlights trends, and publishes results.</p>
+        <p>DOX tracks all deadlines and pass or fail covenant tests online with a dashboard that supplies each user with a snapshot of past-due and upcoming requirements.</p>
+        <p>Due to specific security parameters, different information is available for each user depending on their clearance within ICBC.</p>
+        <p>SGP's document compliance system delivers dynamic reporting across a portfolio, evaluating compliance statuses and identifying their exceptions.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="story">
+    <h2>Aareal Bank</h2>
+    <div class="story-grid">
+      <div class="story-col">
+        <h3>The Challenge</h3>
+        <p>Aareal Bank would spend so much time weekly in creating and generating reports for their loans and transactions. There was also so much time spent each day collecting and analyzing data, and they also needed a secure system to share their information as well as audit their requirements.</p>
+      </div>
+      <div class="story-col">
+        <h3>The Solution</h3>
+        <p>SGP's system D&amp;BI allows Aareal to implement information acquired from their data more quickly into their daily operations.</p>
+        <p>It saves Aareal the time spent creating reports, by providing a record system that generates the analytics through adjustable reporting tools.</p>
+        <p>D&amp;BI's interface allows Aareal to rely on an in-house system, keeping their requirements and company input secure.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="story">
+    <h2>Lincoln Center Theatre</h2>
+    <div class="story-grid">
+      <div class="story-col">
+        <h3>The Challenge</h3>
+        <p>The Vivian Beaumont Theater &amp; The Mitzi E. Newhouse Theater.</p>
+        <p>The challenge Lincoln Center Theater was facing began with tracking the house seat arrangements and their sales for each of the shows.</p>
+        <p>The theater company spent an excessive amount on their house seating's scheduling and organization. They also lacked the ability to constantly collect data from their ticket sales, especially to hone in on specific customer purchases and production timelines.</p>
+      </div>
+      <div class="story-col">
+        <h3>The Solution</h3>
+        <p>For Lincoln Center Theater, the SGP system organizes and analyzes their house seat schedules and sales.</p>
+        <p>A customer's ability to purchase a house seat ticket is directly activated through SGP's software. The system tracks how often customers purchase tickets, the time of occurrence, and the sales amount.</p>
+        <p>SGP software is regularly used for their monthly productions, as well as their special event The Tony's.</p>
+        <p>The software application tracks the TONY Voter list, so that there is evidence of the customers voting for the plays they have attended. This part of the system began during the theater's hit musical Contact in the late 90's.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="story">
+    <h2>Clark Transfer</h2>
+    <div class="story-grid">
+      <div class="story-col">
+        <h3>The Challenge</h3>
+        <p>"Put the Show on the Road" — Clark Transfer's company had expanded in the last 70 years, and needed a system that would support their vast workflow.</p>
+        <p>There was a tremendous need for in-house support and accessible technology in their daily operations. The company had hundreds of trailers, routes, drivers, productions, clients, and a timeline to organize and manage daily. They needed a network that would provide automated data, schedule coordination, and stability to their company.</p>
+      </div>
+      <div class="story-col">
+        <h3>The Solution</h3>
+        <p>SGP designed a custom software system to accomplish 3 objectives:</p>
+        <p><strong>1st</strong> — The system tracks the locations of the trailers using a customized GPS system. They generate updates every few minutes on the trailers' whereabouts, and calculate the expected time of each delivery and pickup.</p>
+        <p>It also provides a visual MOVE board for the Clark Transfer team. The MOVE board shows which trailers are active, and inactive, and identifies them with a trailer number, name of the production, and their expected timeline of transport.</p>
+        <p><strong>2nd</strong> — The system tracks the sales and financial aspects of the productions transportation. This allows Clark Transfer to keep a record of all their shows, and the progress of every trip for each client.</p>
+        <p><strong>3rd</strong> — The system regulates detailed records of the company's driver's invoices. There are 2 parts to this project: on the back end the company can control their payment vouchers in house; on the front end the drivers can sign into a portal and fill out information regarding their schedules.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer><p>©SGP International</p></footer>
+</body>
+</html>
