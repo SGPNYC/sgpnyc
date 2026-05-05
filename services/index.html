@@ -3,34 +3,104 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Services &mdash; SGP International</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <title>Services — SGP International</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    :root{--green:#3d8a4e;--green-hover:#2e6e3c;--blue-heading:#1d4e7a;--bg-light:#e8e5df}
-    body{font-family:'DM Sans',sans-serif;background:var(--bg-light);min-height:100vh}
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:70px;background:rgba(20,20,20,0.88);backdrop-filter:blur(8px)}
-    .nav-logo img{height:38px;filter:brightness(0) invert(1)}
-    .nav-links{display:flex;align-items:center;gap:36px;list-style:none}
-    .nav-links a,.dropdown-btn{color:#fff;text-decoration:none;font-size:14px;transition:opacity 0.2s}
-    .nav-links a:hover,.dropdown-btn:hover{opacity:0.7}
-    .nav-cta{background:var(--green);color:#fff!important;padding:10px 22px;border-radius:30px;font-weight:500!important}
-    .nav-cta:hover{background:var(--green-hover)!important;opacity:1!important}
-    .has-dropdown{position:relative}
-    .dropdown-btn{background:none;border:none;font-family:'DM Sans',sans-serif;cursor:pointer;display:flex;align-items:center;gap:5px;padding:0}
-    .arrow{font-size:12px;transition:transform 0.2s;display:inline-block}
-    .dropdown-menu{display:none;position:absolute;top:calc(100% + 16px);left:0;background:rgba(20,20,20,0.96);border-radius:4px;list-style:none;min-width:180px;padding:8px 0;box-shadow:0 8px 32px rgba(0,0,0,0.3);z-index:200}
-    .has-dropdown:hover .dropdown-menu,.has-dropdown:focus-within .dropdown-menu{display:block}
-    .has-dropdown:hover .arrow{transform:rotate(180deg)}
-    .dropdown-menu li a{display:block;padding:10px 20px;color:#fff;text-decoration:none;font-size:13px}
-    .dropdown-menu li a:hover{background:rgba(255,255,255,0.1)}
-    .page-content{padding:140px 60px 100px;max-width:1200px;margin:0 auto}
-    h1{font-family:'Playfair Display',serif;font-size:clamp(36px,4vw,54px);color:var(--blue-heading);margin-bottom:32px;font-weight:400}
-    p{font-size:16px;line-height:1.75;color:#444}
-    footer{background:#1a1a1a;color:#888;text-align:center;padding:24px 40px;font-size:13px}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --blue-heading: #1d4e7a; --green: #3d8a4e; --green-hover: #2e6e3c; --bg: #f4f3f1; }
+    body { font-family: 'DM Sans', sans-serif; background: #fff; color: #1a1a1a; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 70px; background: rgba(20,20,20,0.88); backdrop-filter: blur(8px); }
+    .nav-logo img { height: 38px; }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a { color: #fff; text-decoration: none; font-size: 14px; transition: opacity 0.2s; }
+    .nav-links a:hover { opacity: 0.7; }
+    .nav-cta { background: var(--green); color: #fff !important; padding: 10px 22px; border-radius: 30px; font-weight: 500 !important; }
+    .nav-cta:hover { background: var(--green-hover) !important; opacity: 1 !important; }
+    .has-dropdown { position: relative; }
+    .dropdown-btn { background: none; border: none; color: #fff; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; }
+    .arrow { font-size: 12px; transition: transform 0.2s; display: inline-block; }
+    .dropdown-menu { display: none; position: absolute; top: calc(100% + 16px); left: 0; background: rgba(20,20,20,0.96); border-radius: 4px; list-style: none; min-width: 180px; padding: 8px 0; box-shadow: 0 8px 32px rgba(0,0,0,0.3); z-index: 200; }
+    .has-dropdown:hover .dropdown-menu, .has-dropdown:focus-within .dropdown-menu { display: block; }
+    .has-dropdown:hover .arrow { transform: rotate(180deg); }
+    .dropdown-menu li a { display: block; padding: 10px 20px; color: #fff; text-decoration: none; font-size: 13px; }
+    .dropdown-menu li a:hover { background: rgba(255,255,255,0.1); }
+
+    .page-hero {
+      margin-top: 70px; height: 220px;
+      background-image: url('/sgpnyc/images/site/16steinberger-superJumbo.jpg');
+      background-size: cover; background-position: center;
+      display: flex; align-items: center; justify-content: center; position: relative;
+    }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.5); }
+    .page-hero h1 { position: relative; z-index: 2; font-family: 'DM Sans', sans-serif; font-size: 42px; font-weight: 300; letter-spacing: 0.2em; color: #fff; }
+
+    .content { max-width: 860px; margin: 0 auto; padding: 70px 40px 100px; }
+
+    /* Header with logo */
+    .section-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .section-header h2 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(22px, 3vw, 32px); font-weight: 300;
+      letter-spacing: 0.15em; color: #1a1a1a; text-transform: uppercase;
+    }
+    .section-header img { height: 72px; }
+
+    .sectors {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+      color: #888; text-transform: uppercase; margin-bottom: 24px;
+      border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; padding: 10px 0;
+    }
+
+    .intro-text {
+      font-size: 15px; line-height: 1.8; color: #444; margin-bottom: 48px;
+    }
+
+    /* Three pillars */
+    .pillars {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 32px; margin-bottom: 60px;
+    }
+    .pillar h3 { font-size: 15px; font-weight: 600; color: var(--green); margin-bottom: 14px; }
+    .pillar p { font-size: 13px; line-height: 1.8; color: #555; margin-bottom: 12px; }
+
+    /* Expertise + Case Study */
+    .two-col { display: grid; grid-template-columns: 1fr 1.4fr; gap: 48px; margin-bottom: 60px; border-top: 1px solid #ddd; padding-top: 48px; }
+
+    .expertise h3 { font-size: 18px; font-weight: 400; color: var(--blue-heading); margin-bottom: 20px; font-family: 'Playfair Display', serif; }
+    .expertise ul { list-style: none; padding: 0; }
+    .expertise ul li { font-size: 13px; color: #555; padding: 5px 0; border-bottom: 1px solid #eee; }
+    .expertise ul li::before { content: '◦ '; color: var(--green); }
+
+    .case-study h3 { font-size: 18px; font-weight: 400; color: var(--blue-heading); margin-bottom: 20px; font-family: 'Playfair Display', serif; }
+    .case-header { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+    .case-header img { width: 56px; height: 56px; object-fit: contain; border-radius: 50%; }
+    .case-header strong { font-size: 14px; font-weight: 700; color: #1a1a1a; }
+    .case-header p { font-size: 12px; color: #666; }
+    .case-study .body { font-size: 13px; line-height: 1.8; color: #555; }
+
+    /* PDF downloads */
+    .downloads { border-top: 1px solid #ddd; padding-top: 40px; }
+    .downloads h3 { font-size: 14px; font-weight: 600; color: #888; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px; }
+    .pdf-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .pdf-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 20px; border: 1px solid #ccc; border-radius: 4px;
+      font-size: 13px; color: var(--blue-heading); text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .pdf-link:hover { background: #f4f3f1; border-color: var(--blue-heading); }
+    .pdf-link svg { flex-shrink: 0; }
+
+    footer { background: #1a1a1a; color: #888; text-align: center; padding: 24px 40px; font-size: 13px; }
+    @media (max-width: 700px) { .pillars, .two-col { grid-template-columns: 1fr; } .content { padding: 40px 24px 60px; } }
   </style>
 </head>
 <body>
+
 <nav>
   <a class="nav-logo" href="/sgpnyc/"><img src="/sgpnyc/images/site/sgpGlobe.webp" alt="SGP International" /></a>
   <ul class="nav-links">
@@ -51,10 +121,88 @@
     <li><a href="/sgpnyc/#contact" class="nav-cta">Contact</a></li>
   </ul>
 </nav>
-<div class="page-content">
-  <h1>Our Services</h1>
-  <p>Content coming soon.</p>
+
+<div class="page-hero">
+  <h1>CONSULTING SERVICES</h1>
 </div>
-<footer><p>&copy;SGP International</p></footer>
+
+<div class="content">
+
+  <div class="section-header">
+    <h2>Consulting Services</h2>
+    <img src="/sgpnyc/images/site/sgpGlobe.webp" alt="SGP — Green Since 1987" />
+  </div>
+
+  <div class="sectors">Finance | Healthcare | Insurance | Non-Profit | Real Estate | Retail</div>
+
+  <p class="intro-text">SGP works in collaboration with our clients to stimulate and strengthen operating processes. Our results-driven approach improves productivity, unlocks innovation and drives corporate performance through information technology. We work alongside globally recognized core software products for seamless integration.</p>
+
+  <div class="pillars">
+    <div class="pillar">
+      <h3>Driven Approach</h3>
+      <p>SGP is vertically aligned in several key sectors — extensively in finance and real estate — and has leveraged that domain knowledge for over 25 years. In all areas, SGP can transform your business practices and create seamless and efficient solutions. We value ease of use, audit controls and reporting tools.</p>
+      <p>We work with corporate-level and IT staff to design and deploy databases with global user interfaces. We standardize and automate daily and month-end work activities. Our products increase productivity, reduce operational risk and further reveal new sources of revenue for stakeholders.</p>
+    </div>
+    <div class="pillar">
+      <h3>Industry Solutions</h3>
+      <p>Experience shows that firms are faced with the challenge of using big data engines that prove inflexible and cumbersome. SGP targets these inefficiencies by establishing the structure, processes and tools for improvement. We align technical objectives with your internal policies, adapt to emerging technologies and capitalize on existing application portfolios.</p>
+      <p>We engineer strategic solutions that are key enablers of success in the digital workplace. By creating metrics, we ensure timely completion of your tactical goals that will propel your organization forward.</p>
+    </div>
+    <div class="pillar">
+      <h3>Proven Results</h3>
+      <p>SGP provides constructive guidance and expertise to satisfy your initiatives at any stage. In partnership with your team, we draft business requirements and develop a cohesive project plan that considers your technology, staff makeup and deployment protocols.</p>
+      <p>Equipped with a proven track record for positive end-to-end customer experience, we offer a suite of services from consulting and application delivery to long-term support and onsite training. Our experts impart an informed and creative perspective to aid companies in realizing the full potential of their resources, assets and investments.</p>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="expertise">
+      <h3>Expertise</h3>
+      <ul>
+        <li>Business requirements</li>
+        <li>Compliance solutions</li>
+        <li>Database design</li>
+        <li>Project management</li>
+        <li>Software evaluation</li>
+        <li>System consolidation</li>
+        <li>Workflow analysis</li>
+      </ul>
+    </div>
+    <div class="case-study">
+      <h3>Client Success Story</h3>
+      <div class="case-header">
+        <img src="/sgpnyc/images/site/REDSfinal.png" alt="REDS" />
+        <div>
+          <strong>The Client:</strong>
+          <p>A German bank with a multi-billion dollar pool of international commercial real estate loans and equity participations.</p>
+        </div>
+      </div>
+      <div class="body">
+        <p><strong>REDS Collaboration:</strong> REDS oversees the running of real estate loan portfolios. Data is maintained via user input and automated feeds from the mainframe. The version-based operating memorandums, escrow administrator, tickler and document compliance module and on-demand reporting allow for oversight and control.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="downloads">
+    <h3>Downloads</h3>
+    <div class="pdf-links">
+      <a class="pdf-link" href="/sgpnyc/docs/fact-sheets/SGP_Consulting.pdf" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+        SGP Consulting Overview
+      </a>
+      <a class="pdf-link" href="/sgpnyc/docs/fact-sheets/SGP_ConsultingServices.pdf" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+        Consulting Services
+      </a>
+      <a class="pdf-link" href="/sgpnyc/docs/fact-sheets/SGP_Sampler.pdf" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+        SGP Sampler
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<footer><p>©SGP International</p></footer>
 </body>
 </html>
