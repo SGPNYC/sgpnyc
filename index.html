@@ -57,7 +57,7 @@
     .nav-logo img {
       height: 38px;
       width: auto;
-      filter: none;
+      filter: grayscale(20%);
     }
 
     .nav-links {
@@ -209,7 +209,7 @@
 
     /* ── LOGO STRIP ── */
     #clients {
-      background: #1a1a1a;
+      background: #f0eeea;
       padding: 18px 0;
       overflow: hidden;
       position: relative;
@@ -227,7 +227,7 @@
       height: 36px;
       width: auto;
       object-fit: contain;
-      filter: none;
+      filter: grayscale(20%);
       opacity: 0.8;
       flex-shrink: 0;
     }
@@ -383,14 +383,17 @@
     }
 
     .product-panel {
-      display: none;
-    }
-
-    .product-panel.active {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 60px;
       align-items: start;
+      margin-bottom: 60px;
+      padding-bottom: 60px;
+      border-bottom: 1px solid #c0bcb5;
+    }
+
+    .product-panel:last-of-type {
+      border-bottom: none;
     }
 
     .product-left {}
@@ -765,7 +768,7 @@
       </div>
       <div class="about-ms">
         <div class="ms-badge">SGP is a certified Microsoft Partner.</div>
-        <img src="images/site/debugging.png" alt="SGP team" onerror="this.style.display='none'" />
+        <img src="images/site/bryantpark.jpg" alt="SGP team" onerror="this.style.display='none'" />
       </div>
     </div>
   </div>
@@ -826,7 +829,7 @@
     <hr class="products-divider" />
 
     <!-- DOX -->
-    <div class="product-panel active" id="panel-dox">
+    <div class="product-panel" id="panel-dox">
       <div class="product-left">
         <div class="product-circle" style="background:#2b6bbd">
           <span>DOX</span>
