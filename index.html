@@ -820,10 +820,11 @@
     <div class="products-header">
       <h2 class="section-title" style="margin-bottom:0">Products</h2>
       <div class="product-icons">
-        <button class="product-icon-btn icon-dox active" onclick="showProduct('dox',this)">DOX</button>
-        <button class="product-icon-btn icon-cdb" onclick="showProduct('cdb',this)">CENTRAL<br>DB</button>
-        <button class="product-icon-btn icon-reds" onclick="showProduct('reds',this)">REDS</button>
-        <button class="product-icon-btn icon-wf" onclick="showProduct('wf',this)">Workflow<br>365</button>
+        <button class="product-icon-btn icon-dox active" onclick="showProduct('dox',this)" style="background:transparent;padding:0"><img src="images/site/DOXfinal.png" style="width:60px;height:60px;border-radius:50%;object-fit:cover" /></button>
+        <button class="product-icon-btn icon-cdb" onclick="showProduct('cdb',this)" style="background:transparent;padding:0"><img src="images/site/CentralDB_Logo_transparent.png" style="width:60px;height:60px;border-radius:50%;object-fit:cover;background:#3d8a4e" /></button>
+        <button class="product-icon-btn icon-reds" onclick="showProduct('reds',this)" style="background:transparent;padding:0"><img src="images/site/REDSfinal.png" style="width:60px;height:60px;border-radius:50%;object-fit:cover" /></button>
+        <button class="product-icon-btn icon-wf" onclick="showProduct('wf',this)" style="background:transparent;padding:0"><img src="images/site/workflow_logo.png" style="width:60px;height:60px;border-radius:50%;object-fit:cover" /></button>
+        <button class="product-icon-btn" style="background:transparent;padding:0"><img src="images/site/quest.png" style="width:60px;height:60px;border-radius:50%;object-fit:cover" /></button>
       </div>
     </div>
     <hr class="products-divider" />
@@ -831,9 +832,7 @@
     <!-- DOX -->
     <div class="product-panel" id="panel-dox">
       <div class="product-left">
-        <div class="product-circle" style="background:#2b6bbd">
-          <span>DOX</span>
-        </div>
+        <img src="images/site/DOXfinal.png" alt="DOX" style="width:160px;height:160px;object-fit:contain;margin-bottom:28px;border-radius:50%" />
         <div class="product-title"><strong>DOX:</strong> Document Compliance System</div>
         <div class="product-feature"><span>Automated Tracking</span><span class="chevron">∨</span></div>
         <div class="product-feature"><span>Waivers</span><span class="chevron">∨</span></div>
@@ -850,9 +849,7 @@
     <!-- CentralDB -->
     <div class="product-panel" id="panel-cdb">
       <div class="product-left">
-        <div class="product-circle" style="background:#3d8a4e">
-          <span style="font-size:20px">CENTRAL<br>DB</span>
-        </div>
+        <img src="images/site/CentralDB_Logo_transparent.png" alt="CentralDB" style="width:160px;height:160px;object-fit:contain;margin-bottom:28px" />
         <div class="product-title"><strong>CentralDB:</strong> Data Warehouse Manager</div>
         <div class="product-feature"><span>Centralized Report Management</span><span class="chevron">∨</span></div>
         <div class="product-feature"><span>Role-Based Access Control</span><span class="chevron">∨</span></div>
@@ -869,9 +866,7 @@
     <!-- REDS -->
     <div class="product-panel" id="panel-reds">
       <div class="product-left">
-        <div class="product-circle" style="background:#b84040">
-          <span>REDS</span>
-        </div>
+        <img src="images/site/REDSfinal.png" alt="REDS" style="width:160px;height:160px;object-fit:contain;margin-bottom:28px;border-radius:50%" />
         <div class="product-title"><strong>REDS:</strong> Real Estate Portfolio Management</div>
         <div class="product-feature"><span>Portfolio Overview</span><span class="chevron">+</span></div>
         <div class="product-feature"><span>Point-In-Time Reporting</span><span class="chevron">+</span></div>
@@ -887,9 +882,7 @@
     <!-- Workflow365 -->
     <div class="product-panel" id="panel-wf">
       <div class="product-left">
-        <div class="product-circle" style="background:#2b4a7a">
-          <span style="font-size:20px">Workflow<br>365</span>
-        </div>
+        <img src="images/site/workflow_logo.png" alt="Workflow365" style="width:160px;height:160px;object-fit:contain;margin-bottom:28px;border-radius:50%" />
         <div class="product-title"><strong>Workflow365:</strong> Process Management</div>
         <div class="product-feature"><span>Customizable Processes</span><span class="chevron">+</span></div>
         <div class="product-feature"><span>4-Eye Approvals</span><span class="chevron">+</span></div>
@@ -899,6 +892,21 @@
       </div>
       <div class="product-right">
         <img class="product-screenshot" src="https://placehold.co/600x380/e8e5df/1d4e7a?text=Workflow365+Interface" alt="Workflow365 screenshot" />
+      </div>
+    </div>
+
+    <!-- QUEST -->
+    <div class="product-panel" id="panel-quest">
+      <div class="product-left">
+        <img src="images/site/quest.png" alt="QUEST" style="width:160px;height:160px;object-fit:contain;margin-bottom:28px;border-radius:50%" />
+        <div class="product-title"><strong>QUEST:</strong> Data Query System</div>
+        <div class="product-feature"><span>Advanced Querying</span><span class="chevron">+</span></div>
+        <div class="product-feature"><span>Custom Reports</span><span class="chevron">+</span></div>
+        <div class="product-feature"><span>Data Export</span><span class="chevron">+</span></div>
+        <a href="/products/#quest" class="btn-green-sm">Learn more</a>
+      </div>
+      <div class="product-right">
+        <img class="product-screenshot" src="images/site/QUEST_Home.png" alt="QUEST screenshot" />
       </div>
     </div>
   </div>
