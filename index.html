@@ -441,6 +441,22 @@
 
     .product-feature:last-of-type { border-bottom: 1px solid #c0bcb5; }
 
+
+    .feature-body {
+      display: none;
+      padding: 12px 0 16px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #555;
+      border-bottom: 1px solid #c0bcb5;
+    }
+
+    .product-feature.open .chevron {
+      transform: rotate(180deg);
+      display: inline-block;
+    }
+
+    .product-feature { cursor: pointer; }
     .product-feature .chevron {
       font-size: 18px;
       color: var(--text-light);
@@ -820,7 +836,7 @@
     <div class="products-header">
       <h2 class="section-title" style="margin-bottom:0">Products</h2>
       <div class="product-icons">
-        <button class="product-icon-btn icon-dox active" onclick="showProduct('dox',this)" style="background:transparent;padding:0"><img src="images/site/DOXfinal.png" style="width:60px;height:60px;border-radius:50%;object-fit:cover" /></button>
+        <button class="product-icon-btn icon-dox active" onclick="showProduct('dox',this)" style="background:transparent;padding:0"><img src="images/site/DOXfinal.png" style="width:60px;height:60px;object-fit:contain;" /></button>
         <button class="product-icon-btn icon-cdb" onclick="showProduct('cdb',this)" style="background:transparent;padding:0"><img src="images/site/CentralDB_Logo_final.png" style="width:60px;height:60px;border-radius:50%;object-fit:cover;background:#3d8a4e" /></button>
         <button class="product-icon-btn icon-reds" onclick="showProduct('reds',this)" style="background:transparent;padding:0"><img src="images/site/REDSfinal.png" style="width:60px;height:60px;border-radius:50%;object-fit:cover" /></button>
         <button class="product-icon-btn icon-wf" onclick="showProduct('wf',this)" style="background:transparent;padding:0"><img src="images/site/workflow_logo.png" style="width:60px;height:60px;border-radius:50%;object-fit:cover" /></button>
@@ -831,12 +847,16 @@
     <!-- DOX -->
     <div class="product-panel" id="panel-dox">
       <div class="product-left">
-        <img src="images/site/DOXfinal.png" alt="DOX" style="width:160px;height:160px;object-fit:contain;margin-bottom:28px;border-radius:50%" />
+        <img src="images/site/DOXfinal.png" alt="DOX" style="width:160px;height:160px;object-fit:contain;margin-bottom:28px;" />
         <div class="product-title"><strong>DOX:</strong> Document Compliance System</div>
-        <div class="product-feature"><span>Automated Tracking</span><span class="chevron">∨</span></div>
-        <div class="product-feature"><span>Waivers</span><span class="chevron">∨</span></div>
-        <div class="product-feature"><span>Intuitive Reporting</span><span class="chevron">∨</span></div>
-        <div class="product-feature"><span>Auditing</span><span class="chevron">∨</span></div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>Automated Tracking</span><span class="chevron">∨</span></div>
+        <div class="feature-body">Real-time alerts and notifications to inform stakeholders of potential covenant breaches or upcoming compliance requirements.</div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>Waivers</span><span class="chevron">∨</span></div>
+        <div class="feature-body">Ability to waive entire requirement or specific period ending deliverable while managers can easily review and approve requests.</div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>Intuitive Reporting</span><span class="chevron">∨</span></div>
+        <div class="feature-body">Utilization of Microsoft Power BI's powerful visualization tools to create dynamic and interactive dashboards and reports.</div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>Auditing</span><span class="chevron">∨</span></div>
+        <div class="feature-body"><ul style="padding-left:18px;line-height:1.8"><li>Comprehensive field-by-field audit capabilities.</li><li>Complete audit log reporting available by user or date.</li></ul></div>
         <a href="/products/#dox" class="btn-green-sm">Learn more</a>
       </div>
       <div class="product-right">
@@ -850,10 +870,14 @@
       <div class="product-left">
         <img src="images/site/CentralDB_Logo_final.png" alt="CentralDB" style="width:160px;height:160px;object-fit:contain;margin-bottom:28px" />
         <div class="product-title"><strong>CentralDB:</strong> Data Warehouse Manager</div>
-        <div class="product-feature"><span>Centralized Report Management</span><span class="chevron">∨</span></div>
-        <div class="product-feature"><span>Role-Based Access Control</span><span class="chevron">∨</span></div>
-        <div class="product-feature"><span>Automated Report Scheduling</span><span class="chevron">∨</span></div>
-        <div class="product-feature"><span>User-Friendly Interface</span><span class="chevron">∨</span></div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>Centralized Report Management</span><span class="chevron">∨</span></div>
+        <div class="feature-body">Single source of truth for all reports across the organization, with version control and audit trails.</div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>Role-Based Access Control</span><span class="chevron">∨</span></div>
+        <div class="feature-body">Granular permissions ensure each user sees only the data and reports relevant to their role.</div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>Automated Report Scheduling</span><span class="chevron">∨</span></div>
+        <div class="feature-body">Schedule reports to run and distribute automatically, eliminating manual effort and ensuring timely delivery.</div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>User-Friendly Interface</span><span class="chevron">∨</span></div>
+        <div class="feature-body">Intuitive design allows users to access, generate, and manage reports without technical expertise.</div>
         <a href="/products/#centraldb" class="btn-green-sm">Learn more</a>
       </div>
       <div class="product-right">
@@ -867,10 +891,14 @@
       <div class="product-left">
         <img src="images/site/REDSfinal.png" alt="REDS" style="width:160px;height:160px;object-fit:contain;margin-bottom:28px;border-radius:50%" />
         <div class="product-title"><strong>REDS:</strong> Real Estate Portfolio Management</div>
-        <div class="product-feature"><span>Portfolio Overview</span><span class="chevron">+</span></div>
-        <div class="product-feature"><span>Point-In-Time Reporting</span><span class="chevron">+</span></div>
-        <div class="product-feature"><span>Customizable Reporting</span><span class="chevron">+</span></div>
-        <div class="product-feature"><span>Collateral Monitoring</span><span class="chevron">+</span></div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>Portfolio Overview</span><span class="chevron">+</span></div>
+        <div class="feature-body">Comprehensive view of entire real estate portfolio with key metrics and status indicators at a glance.</div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>Point-In-Time Reporting</span><span class="chevron">+</span></div>
+        <div class="feature-body">Generate historical snapshots of portfolio data at any past date for auditing and analysis.</div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>Customizable Reporting</span><span class="chevron">+</span></div>
+        <div class="feature-body">Tailor reports to specific asset classes, geographies, or business requirements with flexible templates.</div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>Collateral Monitoring</span><span class="chevron">+</span></div>
+        <div class="feature-body">Track collateral values, LTV ratios, and covenant compliance across the entire portfolio in real time.</div>
         <a href="/products/#reds" class="btn-green-sm">Learn more</a>
       </div>
       <div class="product-right">
@@ -883,10 +911,14 @@
       <div class="product-left">
         <img src="images/site/workflow_logo.png" alt="Workflow365" style="width:160px;height:160px;object-fit:contain;margin-bottom:28px;border-radius:50%" />
         <div class="product-title"><strong>Workflow365:</strong> Process Management</div>
-        <div class="product-feature"><span>Customizable Processes</span><span class="chevron">+</span></div>
-        <div class="product-feature"><span>4-Eye Approvals</span><span class="chevron">+</span></div>
-        <div class="product-feature"><span>Real-Time Tracking</span><span class="chevron">+</span></div>
-        <div class="product-feature"><span>Intuitive Reporting</span><span class="chevron">+</span></div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>Customizable Processes</span><span class="chevron">+</span></div>
+        <div class="feature-body">Build and configure workflows tailored to your organization's unique approval and review processes.</div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>4-Eye Approvals</span><span class="chevron">+</span></div>
+        <div class="feature-body">Enforce dual-control approval policies ensuring every critical decision is reviewed by two authorized parties.</div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>Real-Time Tracking</span><span class="chevron">+</span></div>
+        <div class="feature-body">Monitor the status of every workflow and task in real time with full visibility across teams.</div>
+        <div class="product-feature" onclick="toggleFeature(this)"><span>Intuitive Reporting</span><span class="chevron">+</span></div>
+        <div class="feature-body">Generate comprehensive process reports and audit trails with a few clicks.</div>
         <a href="/products/#workflow" class="btn-green-sm">Learn more</a>
       </div>
       <div class="product-right">
@@ -967,6 +999,14 @@
 </footer>
 
 <script>
+
+  function toggleFeature(el) {
+    const body = el.nextElementSibling;
+    const isOpen = el.classList.contains('open');
+    el.classList.toggle('open', !isOpen);
+    body.style.display = isOpen ? 'none' : 'block';
+  }
+
   function showProduct(id, btn) {
     document.querySelectorAll('.product-panel').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.product-icon-btn').forEach(b => b.classList.remove('active'));
