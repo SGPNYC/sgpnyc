@@ -370,12 +370,13 @@
     }
 
     .product-icon-btn:hover { transform: scale(1.08); }
-    .product-icon-btn.active { outline: 3px solid #fff; outline-offset: 2px; box-shadow: 0 0 0 5px rgba(0,0,0,0.15); }
+    .product-icon-btn img { display: none; }
+    .product-icon-btn.active { box-shadow: 0 0 0 3px rgba(0,0,0,0.3); }
 
-    .icon-dox { background: #2b6bbd; }
-    .icon-cdb { background: var(--green); }
-    .icon-reds { background: #b84040; }
-    .icon-wf { background: #2b4a7a; }
+    .icon-dox { background: url('/images/site/DOX256_transparent.png') center/cover no-repeat, #2b6bbd; }
+    .icon-cdb { background: url('/images/site/CentralDB_logo.png') center/140% no-repeat, var(--green); }
+    .icon-reds { background: url('/images/site/REDSfinal.png') center/115% no-repeat, #b84040; }
+    .icon-wf { background: url('/images/site/workflow.png') center/115% no-repeat, #2b4a7a; }
 
     .products-divider {
       border: none;
@@ -398,6 +399,7 @@
     }
 
     .product-left {}
+    .product-left > img { mix-blend-mode: multiply; }
 
     .product-circle {
       width: 160px;
@@ -829,10 +831,10 @@
     <div class="products-header">
       <h2 class="section-title" style="margin-bottom:0">Products</h2>
       <div class="product-icons">
-        <button class="product-icon-btn icon-dox active" onclick="showProduct('dox',this)" style="background:transparent;padding:0"><img src="/images/site/DOX_clean.png" style="width:60px;height:60px;object-fit:contain;" /></button>
-        <button class="product-icon-btn icon-cdb" onclick="showProduct('cdb',this)" style="background:transparent;padding:0"><img src="/images/site/CentralDB_Logo_final.png" style="width:60px;height:60px;border-radius:50%;object-fit:cover;background:#3d8a4e" /></button>
-        <button class="product-icon-btn icon-reds" onclick="showProduct('reds',this)" style="background:transparent;padding:0"><img src="/images/site/REDSfinal.png" style="width:60px;height:60px;border-radius:50%;object-fit:cover" /></button>
-        <button class="product-icon-btn icon-wf" onclick="showProduct('wf',this)" style="background:transparent;padding:0"><img src="/images/site/workflow_logo.png" style="width:60px;height:60px;border-radius:50%;object-fit:cover" /></button>
+        <button class="product-icon-btn icon-dox active" onclick="showProduct('dox',this)"><img src="/images/site/DOX256_transparent.png" /></button>
+        <button class="product-icon-btn icon-cdb" onclick="showProduct('cdb',this)"><img src="/images/site/CentralDB_logo.png" /></button>
+        <button class="product-icon-btn icon-reds" onclick="showProduct('reds',this)"><img src="/images/site/REDSfinal.png" /></button>
+        <button class="product-icon-btn icon-wf" onclick="showProduct('wf',this)"><img src="/images/site/workflow.png" /></button>
       </div>
     </div>
     <hr class="products-divider" />
@@ -840,7 +842,7 @@
     <!-- DOX -->
     <div class="product-panel" id="panel-dox">
       <div class="product-left">
-        <img src="/images/site/DOX_clean.png" alt="DOX" style="width:160px;height:160px;object-fit:contain;margin-bottom:28px;" />
+        <img src="/images/site/DOX256_transparent.png" alt="DOX" style="width:160px;height:160px;object-fit:contain;margin-bottom:28px;mix-blend-mode:multiply;" />
         <div class="product-title"><strong>DOX:</strong> Document Compliance System</div>
         <div class="product-feature" onclick="toggleFeature(this)"><span>Automated Tracking</span><span class="chevron">∨</span></div>
         <div class="feature-body">Real-time alerts and notifications to inform stakeholders of potential covenant breaches or upcoming compliance requirements.</div>
@@ -861,7 +863,7 @@
     <!-- CentralDB -->
     <div class="product-panel" id="panel-cdb">
       <div class="product-left">
-        <img src="/images/site/CentralDB_Logo_final.png" alt="CentralDB" style="width:160px;height:160px;object-fit:contain;margin-bottom:28px" />
+        <img src="/images/site/CentralDB_logo.png" alt="CentralDB" style="width:160px;height:160px;object-fit:contain;margin-bottom:28px;mix-blend-mode:multiply;" />
         <div class="product-title"><strong>CentralDB:</strong> Data Warehouse Manager</div>
         <div class="product-feature" onclick="toggleFeature(this)"><span>Centralized Report Management</span><span class="chevron">∨</span></div>
         <div class="feature-body">Single source of truth for all reports across the organization, with version control and audit trails.</div>
@@ -881,7 +883,7 @@
     <!-- REDS -->
     <div class="product-panel" id="panel-reds">
       <div class="product-left">
-        <img src="/images/site/REDSfinal.png" alt="REDS" style="width:160px;height:160px;object-fit:contain;margin-bottom:28px;border-radius:50%" />
+        <img src="/images/site/REDSfinal.png" alt="REDS" style="width:160px;height:160px;object-fit:contain;margin-bottom:28px;mix-blend-mode:multiply;" />
         <div class="product-title"><strong>REDS:</strong> Real Estate Portfolio Management</div>
         <div class="product-feature" onclick="toggleFeature(this)"><span>Portfolio Overview</span><span class="chevron">∨</span></div>
         <div class="feature-body">Comprehensive view of entire real estate portfolio with key metrics and status indicators at a glance.</div>
@@ -901,7 +903,7 @@
     <!-- Workflow365 -->
     <div class="product-panel" id="panel-wf">
       <div class="product-left">
-        <img src="/images/site/workflow_logo.png" alt="Workflow365" style="width:160px;height:160px;object-fit:contain;margin-bottom:28px;border-radius:50%" />
+        <img src="/images/site/workflow.png" alt="Workflow365" style="width:160px;height:160px;object-fit:contain;margin-bottom:28px;mix-blend-mode:multiply;" />
         <div class="product-title"><strong>Workflow365:</strong> Process Management</div>
         <div class="product-feature" onclick="toggleFeature(this)"><span>Customizable Processes</span><span class="chevron">∨</span></div>
         <div class="feature-body">Build and configure workflows tailored to your organization's unique approval and review processes.</div>

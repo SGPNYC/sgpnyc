@@ -14,7 +14,7 @@ app.UseHttpsRedirection();
 // Serve sub-page index.html files for /page and /page/ requests
 app.Use(async (ctx, next) =>
 {
-    var pages = new[] { "abt", "services", "products", "success", "partners", "blog", "games" };
+    var pages = new[] { "abt", "services", "products", "success", "partners", "new-page", "blog", "games" };
     var segment = ctx.Request.Path.Value?.Trim('/');
     if (pages.Contains(segment))
     {
