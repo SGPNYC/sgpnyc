@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Paper — SGP International</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --blue-heading: #1d4e7a; --green: #3d8a4e; --green-hover: #2e6e3c; --bg: #e8e5df; --bg-white: #f4f3f1; --text: #444; --text-dark: #1a1a1a; --border: #d5d2cc; }
+    body { font-family: 'DM Sans', sans-serif; background: #fff; color: var(--text-dark); }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 70px; background: rgba(20,20,20,0.88); backdrop-filter: blur(8px); }
+    .nav-logo img { height: 52px; }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a { color: #fff; text-decoration: none; font-size: 14px; transition: opacity 0.2s; }
+    .nav-links a:hover { opacity: 0.7; }
+    .nav-cta { background: var(--green) !important; color: #fff !important; padding: 10px 22px; border-radius: 30px; font-weight: 500 !important; }
+    .has-dropdown { position: relative; }
+    .dropdown-btn { background: none; border: none; color: #fff; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; }
+    .arrow { font-size: 12px; transition: transform 0.2s; display: inline-block; }
+    .dropdown-menu { display: none; position: absolute; top: 100%; padding-top: 8px; left: 0; background: rgba(20,20,20,0.96); border-radius: 4px; list-style: none; min-width: 180px; padding: 8px 0; box-shadow: 0 8px 32px rgba(0,0,0,0.3); z-index: 200; }
+    .has-dropdown:hover .dropdown-menu, .has-dropdown:focus-within .dropdown-menu, .has-dropdown.open .dropdown-menu { display: block; }
+    .has-dropdown:hover .arrow { transform: rotate(180deg); }
+    .dropdown-menu li a { display: block; padding: 10px 20px; color: #fff; text-decoration: none; font-size: 13px; }
+    .dropdown-menu li a:hover { background: rgba(255,255,255,0.1); }
+
+    .page-top { margin-top: 70px; }
+
+    .section { padding: 80px 60px; }
+    .section.alt { background: var(--bg); }
+    .container { max-width: 900px; margin: 0 auto; }
+
+    .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; color: var(--green); text-transform: uppercase; margin-bottom: 8px; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 400; color: var(--blue-heading); margin-bottom: 32px; }
+
+    .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .intro-img img { width: 100%; border-radius: 6px; border: 1px solid var(--border); box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+    .intro-text p { font-size: 15px; line-height: 1.8; color: var(--text); margin-bottom: 14px; }
+    .intro-text p:last-child { margin-bottom: 0; }
+
+    .press-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .press-card { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: box-shadow 0.2s; }
+    .press-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+    .press-card img { max-width: 100%; height: 280px; object-fit: contain; pointer-events: none; }
+
+    /* Lightbox */
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; }
+    .lightbox.active { display: flex; }
+    .lightbox-inner { position: relative; width: 98vw; height: 96vh; display: flex; align-items: center; justify-content: center; }
+    .lightbox-inner img { width: 100%; height: 100%; object-fit: contain; border-radius: 4px; display: block; }
+    .lightbox-close { position: absolute; top: -16px; right: -16px; width: 36px; height: 36px; border-radius: 50%; background: #fff; border: none; cursor: pointer; font-size: 20px; line-height: 1; display: flex; align-items: center; justify-content: center; color: #1a1a1a; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+    .lightbox-close:hover { background: #eee; }
+    .lightbox-nav { position: fixed; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.15); border: none; cursor: pointer; font-size: 24px; color: #fff; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 1001; }
+    .lightbox-nav:hover { background: rgba(255,255,255,0.3); }
+    .lightbox-prev { left: 16px; }
+    .lightbox-next { right: 16px; }
+
+    footer { background: #1a1a1a; color: #888; text-align: center; padding: 24px 40px; font-size: 13px; }
+
+    @media (max-width: 700px) { .section { padding: 60px 24px; } .intro-grid { grid-template-columns: 1fr; gap: 32px; } .press-grid { grid-template-columns: repeat(2, 1fr); } nav { padding: 0 20px; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/"><img src="/images/site/sgpGlobe.webp" alt="SGP International" /></a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li class="has-dropdown">
+      <button class="dropdown-btn">SGP International <span class="arrow">&#8964;</span></button>
+      <ul class="dropdown-menu">
+        <li><a href="/abt/">About SGP</a></li>
+        <li><a href="/services/">Services</a></li>
+        <li><a href="/products/">Products</a></li>
+        <li><a href="/success/">Success Stories</a></li>
+        <li><a href="/partners/">Customers</a></li>
+        <li><a href="/new-page/">Personal Paper</a></li>
+      </ul>
+    </li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-top"></div>
+
+<section class="section">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-img">
+        <img src="/images/site/personalPaper.png" alt="Personal Paper application" />
+      </div>
+      <div class="intro-text">
+        <div class="section-label">Legacy Product</div>
+        <h1 class="section-title">Personal Paper</h1>
+        <p>Personal Paper was introduced in <strong>1993</strong>.</p>
+        <p>It was the only PC application that allowed you to fully customize your PC desktop!</p>
+        <p>Personal Paper was featured in major press outlets including the New York Times, Washington Post, Chicago Tribune, and PC Novice magazine — recognized as a groundbreaking consumer software product.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <div class="section-label">Press Coverage</div>
+    <h2 class="section-title">As Featured In</h2>
+    <div class="press-grid">
+      <div class="press-card" onclick="openLightbox('/images/site/NYTimes.jpg?v=2','New York Times')"><img src="/images/site/NYTimes.jpg?v=2" alt="New York Times" /></div>
+      <div class="press-card" onclick="openLightbox('/images/site/WashingtonPost.jpg?v=2','Washington Post')"><img src="/images/site/WashingtonPost.jpg?v=2" alt="Washington Post" /></div>
+      <div class="press-card" onclick="openLightbox('/images/site/ChicagoTrib.jpg?v=2','Chicago Tribune')"><img src="/images/site/ChicagoTrib.jpg?v=2" alt="Chicago Tribune" /></div>
+      <div class="press-card" onclick="openLightbox('/images/site/PCNovice.jpg?v=2','PC Novice')"><img src="/images/site/PCNovice.jpg?v=2" alt="PC Novice" /></div>
+    </div>
+  </div>
+</section>
+
+<footer><p>©SGP International</p></footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-nav lightbox-prev" onclick="shiftImage(-1)">&#8249;</button>
+  <div class="lightbox-inner">
+    <button class="lightbox-close" onclick="closeLightbox()">&#x2715;</button>
+    <img id="lightbox-img" src="" alt="" />
+  </div>
+  <button class="lightbox-nav lightbox-next" onclick="shiftImage(1)">&#8250;</button>
+</div>
+
+<script>
+  const pressImages = [
+    { src: '/images/site/NYTimes.jpg?v=2', alt: 'New York Times' },
+    { src: '/images/site/WashingtonPost.jpg?v=2', alt: 'Washington Post' },
+    { src: '/images/site/ChicagoTrib.jpg?v=2', alt: 'Chicago Tribune' },
+    { src: '/images/site/PCNovice.jpg?v=2', alt: 'PC Novice' }
+  ];
+  let currentIndex = 0;
+
+  function openLightbox(src, alt) {
+    currentIndex = pressImages.findIndex(i => i.src === src);
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox-img').alt = alt;
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function shiftImage(dir) {
+    currentIndex = (currentIndex + dir + pressImages.length) % pressImages.length;
+    const img = document.getElementById('lightbox-img');
+    img.src = pressImages[currentIndex].src;
+    img.alt = pressImages[currentIndex].alt;
+  }
+  function closeLightbox(e) {
+    if (e && e.target !== document.getElementById('lightbox') && !e.target.classList.contains('lightbox-close')) return;
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = ''; }
+    if (e.key === 'ArrowLeft') shiftImage(-1);
+    if (e.key === 'ArrowRight') shiftImage(1);
+  });
+
+  document.querySelectorAll('.dropdown-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const li = this.closest('.has-dropdown');
+      const isOpen = li.classList.contains('open');
+      document.querySelectorAll('.has-dropdown.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) li.classList.add('open');
+    });
+  });
+  document.addEventListener('click', () => document.querySelectorAll('.has-dropdown.open').forEach(el => el.classList.remove('open')));
+</script>
+</body>
+</html>

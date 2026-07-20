@@ -1,317 +1,229 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Products — SGP International</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --blue-heading: #1d4e7a; --green: #3d8a4e; --green-hover: #2e6e3c; --red: #b84040; --bg: #f4f3f1; }
-    body { font-family: 'DM Sans', sans-serif; background: #fff; color: #1a1a1a; }
+    :root { --navy: #1a3557; --blue-heading: #1d4e7a; --green: #3d8a4e; --green-hover: #2e6e3c; --bg: #e8e5df; --bg-white: #f4f3f1; --text: #444; --text-dark: #1a1a1a; --border: #d5d2cc; }
+    body { font-family: 'DM Sans', sans-serif; background: #fff; color: var(--text-dark); }
 
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 70px; background: rgba(20,20,20,0.88); backdrop-filter: blur(8px); }
-    .nav-logo img { height: 38px; }
+    .nav-logo img { height: 52px; }
     .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
     .nav-links a { color: #fff; text-decoration: none; font-size: 14px; transition: opacity 0.2s; }
     .nav-links a:hover { opacity: 0.7; }
-    .nav-cta { background: var(--green); color: #fff !important; padding: 10px 22px; border-radius: 30px; font-weight: 500 !important; }
+    .nav-cta { background: var(--green) !important; color: #fff !important; padding: 10px 22px; border-radius: 30px; font-weight: 500 !important; }
     .nav-cta:hover { background: var(--green-hover) !important; opacity: 1 !important; }
     .has-dropdown { position: relative; }
     .dropdown-btn { background: none; border: none; color: #fff; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; }
     .arrow { font-size: 12px; transition: transform 0.2s; display: inline-block; }
-    .dropdown-menu { display: none; position: absolute; top: calc(100% + 16px); left: 0; background: rgba(20,20,20,0.96); border-radius: 4px; list-style: none; min-width: 180px; padding: 8px 0; box-shadow: 0 8px 32px rgba(0,0,0,0.3); z-index: 200; }
-    .has-dropdown:hover .dropdown-menu, .has-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-menu { display: none; position: absolute; top: 100%; padding-top: 8px; left: 0; background: rgba(20,20,20,0.96); border-radius: 4px; list-style: none; min-width: 180px; padding: 8px 0; box-shadow: 0 8px 32px rgba(0,0,0,0.3); z-index: 200; }
+    .has-dropdown:hover .dropdown-menu, .has-dropdown:focus-within .dropdown-menu, .has-dropdown.open .dropdown-menu { display: block; }
     .has-dropdown:hover .arrow { transform: rotate(180deg); }
     .dropdown-menu li a { display: block; padding: 10px 20px; color: #fff; text-decoration: none; font-size: 13px; }
     .dropdown-menu li a:hover { background: rgba(255,255,255,0.1); }
 
-    .page-hero {
-      margin-top: 70px; height: 180px;
-      background-image: url('/sgpnyc/images/site/fractal.jpg');
-      background-size: cover; background-position: center;
-      display: flex; align-items: center; justify-content: center; position: relative;
-    }
+    .page-hero { margin-top: 70px; height: 280px; background-image: url('/images/site/hero-products.jpg'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; position: relative; }
     .page-hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.5); }
-    .page-hero h1 { position: relative; z-index: 2; font-family: 'DM Sans', sans-serif; font-size: 42px; font-weight: 300; letter-spacing: 0.2em; color: #fff; }
+    .page-hero h1 { position: relative; z-index: 2; font-family: 'DM Sans', sans-serif; font-size: clamp(32px, 5vw, 52px); font-weight: 300; letter-spacing: 0.2em; color: #fff; }
 
-    .content { max-width: 900px; margin: 0 auto; padding: 60px 40px 100px; }
+    .product-section { padding: 80px 60px; }
+    .product-section:nth-child(even) { background: var(--bg); }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .product-row { display: grid; grid-template-columns: 1fr 1.4fr; gap: 60px; align-items: center; }
+    .product-row.flip { direction: rtl; }
+    .product-row.flip > * { direction: ltr; }
 
-    /* Product block */
-    .product-block {
-      margin-bottom: 80px;
-      padding-bottom: 80px;
-      border-bottom: 2px solid #e0ddd8;
-    }
-    .product-block:last-child { border-bottom: none; }
+    .product-logo { width: 80px; height: 80px; object-fit: contain; margin-bottom: 20px; }
+    .product-logo.circle { border-radius: 50%; }
+    .product-name { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 400; color: var(--blue-heading); margin-bottom: 4px; }
+    .product-desc { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); margin-bottom: 24px; }
+    .product-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+    .product-features li { padding-left: 20px; position: relative; font-size: 15px; color: var(--text); line-height: 1.5; }
+    .product-features li::before { content: '→'; position: absolute; left: 0; color: var(--green); font-size: 13px; }
+    .product-factsheet img { width: 100%; border-radius: 6px; box-shadow: 0 8px 40px rgba(0,0,0,0.14); }
 
-    /* Product header */
-    .product-header {
-      display: flex; align-items: center; gap: 16px;
-      margin-bottom: 6px;
-    }
-    .product-header img { width: 52px; height: 52px; object-fit: contain; border-radius: 50%; }
-    .product-header-text { }
-    .product-header-text .sgp-label { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; color: #999; text-transform: uppercase; }
-    .product-header-text h2 { font-size: 22px; font-weight: 300; letter-spacing: 0.08em; color: #1a1a1a; text-transform: uppercase; }
-
-    .product-tagline {
-      font-size: 18px; font-weight: 700;
-      margin-bottom: 20px; padding-bottom: 12px;
-      border-bottom: 2px solid;
-    }
-    .dox-color { color: #2b6bbd; border-color: #2b6bbd; }
-    .cdb-color { color: var(--green); border-color: var(--green); }
-    .reds-color { color: var(--red); border-color: var(--red); }
-    .wf-color { color: var(--blue-heading); border-color: var(--blue-heading); }
-
-    /* Three icons row */
-    .icon-row {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 20px; margin-bottom: 28px;
-      background: #f8f7f5; border-radius: 6px; padding: 20px;
-    }
-    .icon-item { text-align: center; font-size: 12px; line-height: 1.6; color: #444; }
-    .icon-item strong { display: block; margin-bottom: 4px; }
-
-    /* Three columns */
-    .three-col {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 0; border: 1px solid #e0ddd8;
-      border-radius: 4px; margin-bottom: 24px;
-    }
-    .col-block { padding: 20px; border-right: 1px solid #e0ddd8; }
-    .col-block:last-child { border-right: none; }
-    .col-block h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 12px; }
-    .col-block p { font-size: 12px; line-height: 1.75; color: #555; margin-bottom: 10px; }
-    .col-block ul { padding-left: 0; list-style: none; }
-    .col-block ul li { font-size: 12px; line-height: 1.7; color: #555; padding: 3px 0; }
-    .col-block ul li::before { content: '➤ '; color: #888; font-size: 10px; }
-    .col-block ul li strong { color: #1a1a1a; font-weight: 600; }
-
-    /* PDF download */
-    .pdf-link {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 10px 20px; border: 1px solid #ccc; border-radius: 4px;
-      font-size: 13px; color: var(--blue-heading); text-decoration: none;
-      transition: background 0.2s;
-    }
-    .pdf-link:hover { background: #f4f3f1; }
+    .legacy-section { padding: 80px 60px; background: var(--bg-white); border-top: 1px solid var(--border); }
+    .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; color: var(--green); text-transform: uppercase; margin-bottom: 8px; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3vw, 40px); font-weight: 400; color: var(--blue-heading); margin-bottom: 48px; }
+    .legacy-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    .legacy-card { background: #fff; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+    .legacy-card img { width: 100%; max-height: 240px; object-fit: contain; background: var(--bg); padding: 24px; }
+    .legacy-body { padding: 24px; }
+    .legacy-body h3 { font-size: 20px; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; }
+    .legacy-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); margin-bottom: 12px; }
+    .legacy-body p { font-size: 14px; line-height: 1.75; color: var(--text); }
+    .legacy-features { list-style: none; margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
+    .legacy-features li { padding-left: 16px; position: relative; font-size: 13px; color: var(--text); }
+    .legacy-features li::before { content: '–'; position: absolute; left: 0; color: var(--green); }
 
     footer { background: #1a1a1a; color: #888; text-align: center; padding: 24px 40px; font-size: 13px; }
-    @media (max-width: 700px) { .three-col, .icon-row { grid-template-columns: 1fr; } .content { padding: 40px 24px 60px; } }
+
+    @media (max-width: 900px) { .product-section, .legacy-section { padding: 60px 30px; } .product-row, .product-row.flip { grid-template-columns: 1fr; direction: ltr; } .legacy-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 600px) { nav { padding: 0 20px; } }
   </style>
 </head>
 <body>
 
 <nav>
-  <a class="nav-logo" href="/sgpnyc/"><img src="/sgpnyc/images/site/sgpGlobe.webp" alt="SGP International" /></a>
+  <a class="nav-logo" href="/"><img src="/images/site/sgpGlobe.webp" alt="SGP International" /></a>
   <ul class="nav-links">
-    <li><a href="/sgpnyc/">Home</a></li>
+    <li><a href="/">Home</a></li>
     <li class="has-dropdown">
       <button class="dropdown-btn">SGP International <span class="arrow">&#8964;</span></button>
       <ul class="dropdown-menu">
-        <li><a href="/sgpnyc/abt/">About SGP</a></li>
-        <li><a href="/sgpnyc/services/">Services</a></li>
-        <li><a href="/sgpnyc/products/">Products</a></li>
-        <li><a href="/sgpnyc/success/">Success Stories</a></li>
-        <li><a href="/sgpnyc/partners/">Customers</a></li>
-        <li><a href="/sgpnyc/new-page/">Personal Paper</a></li>
-      </ul>
+        <li><a href="/abt/">About SGP</a></li>
+        <li><a href="/services/">Services</a></li>
+        <li><a href="/products/">Products</a></li>
+        <li><a href="/success/">Success Stories</a></li>
+        <li><a href="/partners/">Customers</a></li>
+        <li><a href="/new-page/">Personal Paper</a></li>
+              </ul>
     </li>
-    <li><a href="/sgpnyc/blog/">Blog</a></li>
-    <li><a href="/sgpnyc/games/">Games</a></li>
-    <li><a href="/sgpnyc/#contact" class="nav-cta">Contact</a></li>
+    <li><a href="/blog/">Blog</a></li>
+        <li><a href="/#contact" class="nav-cta">Contact</a></li>
   </ul>
 </nav>
 
 <div class="page-hero"><h1>PRODUCTS</h1></div>
 
-<div class="content">
-
-  <!-- DOX -->
-  <div class="product-block" id="dox">
-    <div class="product-header">
-      <img src="/sgpnyc/images/site/DOX_clean.png" alt="DOX" />
-      <div class="product-header-text">
-        <div class="sgp-label">SGP International</div>
-        <h2>Document Compliance System</h2>
-      </div>
-    </div>
-    <div class="product-tagline dox-color">Solve Your Tickler Compliance Needs for Good</div>
-    <div class="icon-row">
-      <div class="icon-item"><strong>📋 Track</strong>Easily track deliverables and qualitative metrics for customers and all related parties</div>
-      <div class="icon-item"><strong>📊 Report</strong>Deliver dynamic reporting across portfolios to evaluate compliance status and identify exceptions</div>
-      <div class="icon-item"><strong>🛡 Protect</strong>Eliminate operational risk associated with a manual or inefficient document compliance process</div>
-    </div>
-    <div class="three-col">
-      <div class="col-block">
-        <h4>The DOX Solution</h4>
-        <p>Take your organization's document oversight to the next level by utilizing a comprehensive software solution.</p>
-        <p>Furnish your staff with the tools they need to streamline workflows and perform at an optimal level.</p>
-        <p><em>DataQuest Compatibility:</em> Launch SGP's custom OLAP tool to perform multidimensional analysis and chart results.</p>
-      </div>
-      <div class="col-block">
-        <h4>Key Benefits</h4>
-        <p>Provide <strong>confidence to auditors and rating agencies</strong> that critical functions are automated.</p>
-        <p>The structure of DOX is <strong>highly versatile</strong> and <strong>universally relevant</strong> for corporate and real estate businesses, commercial and regional banks and other financial institutions.</p>
-        <p>A <strong>deal dashboard</strong> supplies each user with a snapshot of past-due and upcoming requirements. Track all deadlines and pass/fail covenant tests online.</p>
-        <p><strong>Manage waivers and outbox</strong> efficiently. Users can distribute notices and verify documentation to make responsible decisions.</p>
-      </div>
-      <div class="col-block">
-        <h4>Main Functions</h4>
-        <ul>
-          <li><strong>Import</strong> — Daily import from mainframe populates customer and facility data.</li>
-          <li><strong>Create</strong> — Generate daily dates and key covenant texts from integrated templates or as an ad-hoc, form-based archive.</li>
-          <li><strong>Track Ticklers</strong> — Produce internal notices and distribute timely statements to customers.</li>
-          <li><strong>Update</strong> — Track receipt of documents and maintain soft copies for reference.</li>
-          <li><strong>Report</strong> — Utilize the DOX reporting suite to publish results and highlight trends.</li>
-          <li><strong>Control</strong> — Delegate authority to administer critical functionality including two-touch input and release capabilities.</li>
+<!-- DOX -->
+<section class="product-section" id="dox">
+  <div class="container">
+    <div class="product-row">
+      <div class="product-info">
+        <img src="/images/site/DOX256_transparent.png" alt="DOX" class="product-logo" />
+        <h2 class="product-name">DOX</h2>
+        <p class="product-desc">Document Compliance System</p>
+        <ul class="product-features">
+          <li>Automated Tracking — Real-time alerts for covenant breaches and compliance requirements</li>
+          <li>Waivers — Manage and approve waiver requests with full oversight</li>
+          <li>Intuitive Reporting — Dynamic dashboards via Microsoft Power BI</li>
+          <li>Auditing — Comprehensive field-by-field audit log by user or date</li>
         </ul>
       </div>
+      <div class="product-factsheet">
+        <img src="/images/site/dox.png" alt="DOX fact sheet" />
+      </div>
     </div>
-    <a class="pdf-link" href="/sgpnyc/docs/fact-sheets/SGP_DOX.pdf" target="_blank">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
-      Download DOX Fact Sheet
-    </a>
   </div>
+</section>
 
-  <!-- CentralDB -->
-  <div class="product-block" id="centraldb">
-    <div class="product-header">
-      <img src="/sgpnyc/images/site/CentralDB_Logo_final.png" alt="CentralDB" />
-      <div class="product-header-text">
-        <div class="sgp-label">SGP International</div>
-        <h2>Report Management System</h2>
-      </div>
-    </div>
-    <div class="product-tagline cdb-color">Effective Reporting Drives Better Decisions</div>
-    <div class="icon-row">
-      <div class="icon-item"><strong>📁 Centralized</strong>Centralized hub for managing PowerBI reports across various workspaces</div>
-      <div class="icon-item"><strong>👥 User-Friendly</strong>Interface designed to simplify the reporting process</div>
-      <div class="icon-item"><strong>🔒 Secure</strong>Role-Based Access ensures only the necessary people have access</div>
-    </div>
-    <div class="three-col">
-      <div class="col-block">
-        <h4>The Solution</h4>
-        <p>Effective reporting is paramount for informed decision making.</p>
-        <p>Our Microsoft PowerBI report management tool is a comprehensive solution designed to streamline and enhance your organization's reporting landscape.</p>
-        <p>CentralDB integrates with your Microsoft 365 environment to provide an umbrella of management over your reporting process. Easily create, publish, and manage access to all dashboards and reports across various workspaces and departments.</p>
-      </div>
-      <div class="col-block">
-        <h4>Key Benefits</h4>
-        <p>Give your staff the tools to <strong>efficiently manage</strong> their reporting without the headache of managing the technical aspects.</p>
-        <p>Make cross department/workspace reporting possible with a <strong>unified control source</strong> for ALL workspaces.</p>
-        <p>Manage data behind reports and dashboards to drive draft reviews and adjustments in one view.</p>
-        <p>Full auditing of report access and user interactions.</p>
-      </div>
-      <div class="col-block">
-        <h4>Main Functions</h4>
-        <ul>
-          <li><strong>Publish Reports</strong> — Publish reports to any workspace directly within the application.</li>
-          <li><strong>Report Management</strong> — Access all reports via organized groupings with customizable notes.</li>
-          <li><strong>Role-Based Access Control</strong> — Assign permissions to individual reports with access to all company departments.</li>
-          <li><strong>Automated Scheduling</strong> — Save time and ensure timely distribution of reports.</li>
+<!-- CentralDB -->
+<section class="product-section" id="centraldb">
+  <div class="container">
+    <div class="product-row flip">
+      <div class="product-info">
+        <img src="/images/site/CentralDB_logo.png" alt="CentralDB" class="product-logo circle" />
+        <h2 class="product-name">CentralDB</h2>
+        <p class="product-desc">Data Warehouse Manager</p>
+        <ul class="product-features">
+          <li>Centralized Report Management — Single source of truth across all workspaces</li>
+          <li>Role-Based Access Control — Granular permissions per user and department</li>
+          <li>Automated Report Scheduling — Save time with automatic distribution</li>
+          <li>User-Friendly Interface — No technical expertise required</li>
         </ul>
       </div>
+      <div class="product-factsheet">
+        <img src="/images/site/CentralDB_FactSheet.png" alt="CentralDB fact sheet" />
+      </div>
     </div>
-    <a class="pdf-link" href="/sgpnyc/docs/fact-sheets/CentralDB_FactSheet.png" target="_blank">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
-      Download CentralDB Fact Sheet
-    </a>
   </div>
+</section>
 
-  <!-- REDS -->
-  <div class="product-block" id="reds">
-    <div class="product-header">
-      <img src="/sgpnyc/images/site/REDSfinal.png" alt="REDS" />
-      <div class="product-header-text">
-        <div class="sgp-label">SGP International</div>
-        <h2>Real Estate Deals System</h2>
-      </div>
-    </div>
-    <div class="product-tagline reds-color">Collateral Management for Real Estate Loans</div>
-    <div class="icon-row">
-      <div class="icon-item"><strong>🏢 Manage</strong>Manage and control the surveillance process in an adaptable framework</div>
-      <div class="icon-item"><strong>📂 Provide</strong>Provide a central repository for deal terms and property metrics</div>
-      <div class="icon-item"><strong>📈 Aggregate</strong>Aggregate key monitoring statistics and automate reporting</div>
-    </div>
-    <div class="three-col">
-      <div class="col-block">
-        <h4>The Solution</h4>
-        <p>REDS oversees the internal management of commercial real estate loan portfolios through client-driven system feeds. Deals are tracked from pipeline through expiration, using version-based operating memorandums and workflow ticklers.</p>
-        <p>Additional functionality for portfolio administration, servicing, and reporting provide comprehensive oversight and control throughout the entire deal cycle.</p>
-        <p>Completed framework adaptable in multiple environments.</p>
-      </div>
-      <div class="col-block">
-        <h4>Key Benefits</h4>
-        <p>REDS has an intuitive layout for easy input of deal data.</p>
-        <p>Flexibility within REDS allows the user to customize reporting and perform ad hoc analysis.</p>
-        <p>Once data is entered, it is stored and cannot be altered or deleted in error. A full audit log provides additional support.</p>
-      </div>
-      <div class="col-block">
-        <h4>Main Functions</h4>
-        <ul>
-          <li><strong>Operating Memorandums</strong> — Completed at closing, restructure, amendment and extension, and chronicle the full deal history.</li>
-          <li><strong>Syndication Functionality</strong> — Participant bank data, skim margin and fees and Shared National Credit reporting.</li>
-          <li><strong>Collateral Monitoring</strong> — Hedge tracking, collateral and leasing Letters of Credit, lockbox details and escrow accounts.</li>
-          <li><strong>Ongoing Metrics</strong> — NOI, revenues, occupancy can be used for rollups to measure portfolio performance.</li>
+<!-- REDS -->
+<section class="product-section" id="reds">
+  <div class="container">
+    <div class="product-row">
+      <div class="product-info">
+        <img src="/images/site/REDSfinal.png" alt="REDS" class="product-logo circle" />
+        <h2 class="product-name">REDS</h2>
+        <p class="product-desc">Real Estate Portfolio Management</p>
+        <ul class="product-features">
+          <li>Portfolio Overview — Key metrics and status at a glance</li>
+          <li>Point-In-Time Reporting — Historical snapshots at any past date</li>
+          <li>Customizable Reporting — Flexible templates by asset class or geography</li>
+          <li>Collateral Monitoring — Track LTV ratios and covenant compliance in real time</li>
         </ul>
       </div>
+      <div class="product-factsheet">
+        <img src="/images/site/REDS_FactSheet.png" alt="REDS fact sheet" />
+      </div>
     </div>
-    <a class="pdf-link" href="/sgpnyc/docs/fact-sheets/REDS_FactSheet.png" target="_blank">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
-      Download REDS Fact Sheet
-    </a>
   </div>
+</section>
 
-  <!-- Workflow365 -->
-  <div class="product-block" id="workflow">
-    <div class="product-header">
-      <img src="/sgpnyc/images/site/workflow_logo.png" alt="Workflow365" />
-      <div class="product-header-text">
-        <div class="sgp-label">SGP International</div>
-        <h2>Process Management System</h2>
-      </div>
-    </div>
-    <div class="product-tagline wf-color">Streamline Your Business Workflows</div>
-    <div class="icon-row">
-      <div class="icon-item"><strong>⚡ Simplify</strong>Simplify complex business processes with organized and transparent tasks</div>
-      <div class="icon-item"><strong>📡 Track</strong>Track real-time progress updates and clearly outline next steps</div>
-      <div class="icon-item"><strong>⏱ Deliver</strong>Deliver on-time results through transparent progress tracking</div>
-    </div>
-    <div class="three-col">
-      <div class="col-block">
-        <h4>The Solution</h4>
-        <p>Workflow365 is a powerful workflow management solution designed to help teams take control of complex business processes.</p>
-        <p>From task tracking to sign-offs, it keeps every stage organized, accountable, and transparent — all in one intuitive platform.</p>
-        <p>Visual dashboards and detailed reports provide a full picture of every process. Instantly identify delays, monitor completion rates, and make data-driven decisions.</p>
-      </div>
-      <div class="col-block">
-        <h4>Key Benefits</h4>
-        <p>Break down your workflows into stages and steps that mirror your business process.</p>
-        <p>Keep all discussions, notes, and updates attached to each step for quick reference and audit trails.</p>
-        <p>Move seamlessly from one milestone to the next with confidence.</p>
-        <p>No more missed handoffs or bottlenecks with live updates and automated notifications.</p>
-      </div>
-      <div class="col-block">
-        <h4>Main Functions</h4>
-        <ul>
-          <li><strong>Structured Tasks</strong> — Assign responsibilities, track progress, and maintain full visibility.</li>
-          <li><strong>Notes & Collaboration</strong> — Ensure everyone stays aligned with clear, centralized communication.</li>
-          <li><strong>Stage Sign-Offs</strong> — Confirm accountability and compliance at each stage.</li>
-          <li><strong>Automated Notifications</strong> — Automated emails when stages are completed or actions are required.</li>
+<!-- Workflow365 -->
+<section class="product-section" id="workflow">
+  <div class="container">
+    <div class="product-row flip">
+      <div class="product-info">
+        <img src="/images/site/workflow.png" alt="Workflow365" class="product-logo circle" />
+        <h2 class="product-name">Workflow365</h2>
+        <p class="product-desc">Process Management</p>
+        <ul class="product-features">
+          <li>Customizable Processes — Workflows tailored to your approval process</li>
+          <li>4-Eye Approvals — Dual-control policy on every critical decision</li>
+          <li>Real-Time Tracking — Full visibility across teams and stages</li>
+          <li>Intuitive Reporting — Comprehensive audit trails with a few clicks</li>
         </ul>
       </div>
+      <div class="product-factsheet">
+        <img src="/images/site/Workflow365_FactSheet.png" alt="Workflow365 fact sheet" />
+      </div>
     </div>
-    <a class="pdf-link" href="/sgpnyc/docs/fact-sheets/Workflow365_FactSheet.png" target="_blank">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
-      Download Workflow365 Fact Sheet
-    </a>
   </div>
+</section>
 
-</div>
+<!-- Legacy Products -->
+<section class="legacy-section">
+  <div class="container">
+    <div class="section-label">Legacy</div>
+    <h2 class="section-title">Earlier Products</h2>
+    <div class="legacy-grid">
+      <div class="legacy-card">
+        <img src="/images/site/e2do.png" alt="E2DO" />
+        <div class="legacy-body">
+          <h3>E2DO</h3>
+          <p class="legacy-label">Task &amp; Workflow Tracker</p>
+          <p>Complex Projects Made Easy. From planning through successful delivery, e2do takes you there.</p>
+          <ul class="legacy-features">
+            <li>Create a project plan</li>
+            <li>Define tasks</li>
+            <li>Monitor progress</li>
+            <li>Track QA issues</li>
+            <li>Generate delivery schedule</li>
+          </ul>
+        </div>
+      </div>
+      <div class="legacy-card">
+        <img src="/images/site/ache.png" alt="ACHE" />
+        <div class="legacy-body">
+          <h3>ACHE</h3>
+          <p class="legacy-label">Healthcare Management</p>
+          <p>Designed for iPhone — ACHE is used for tracking migraine headaches. ACHE provides an intuitive interface for the user to easily track their migraine headaches, supplying useful analytics on their experiences and triggers.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <footer><p>©SGP International</p></footer>
+
+<script>
+  document.querySelectorAll('.dropdown-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const li = this.closest('.has-dropdown');
+      const isOpen = li.classList.contains('open');
+      document.querySelectorAll('.has-dropdown.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) li.classList.add('open');
+    });
+  });
+  document.addEventListener('click', () => document.querySelectorAll('.has-dropdown.open').forEach(el => el.classList.remove('open')));
+</script>
 </body>
 </html>

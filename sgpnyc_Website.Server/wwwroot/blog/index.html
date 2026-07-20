@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -13,7 +13,7 @@
     body { font-family: 'DM Sans', sans-serif; background: #fff; color: #1a1a1a; }
 
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 70px; background: rgba(20,20,20,0.88); backdrop-filter: blur(8px); }
-    .nav-logo img { height: 38px; filter: brightness(0) invert(1); }
+    .nav-logo img { height: 52px; }
     .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
     .nav-links a { color: #fff; text-decoration: none; font-size: 14px; transition: opacity 0.2s; }
     .nav-links a:hover { opacity: 0.7; }
@@ -22,8 +22,8 @@
     .has-dropdown { position: relative; }
     .dropdown-btn { background: none; border: none; color: #fff; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; }
     .arrow { font-size: 12px; transition: transform 0.2s; display: inline-block; }
-    .dropdown-menu { display: none; position: absolute; top: calc(100% + 16px); left: 0; background: rgba(20,20,20,0.96); border-radius: 4px; list-style: none; min-width: 180px; padding: 8px 0; box-shadow: 0 8px 32px rgba(0,0,0,0.3); z-index: 200; }
-    .has-dropdown:hover .dropdown-menu, .has-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-menu { display: none; position: absolute; top: 100%; padding-top: 8px; left: 0; background: rgba(20,20,20,0.96); border-radius: 4px; list-style: none; min-width: 180px; padding: 8px 0; box-shadow: 0 8px 32px rgba(0,0,0,0.3); z-index: 200; }
+    .has-dropdown:hover .dropdown-menu, .has-dropdown:focus-within .dropdown-menu, .has-dropdown.open .dropdown-menu { display: block; }
     .has-dropdown:hover .arrow { transform: rotate(180deg); }
     .dropdown-menu li a { display: block; padding: 10px 20px; color: #fff; text-decoration: none; font-size: 13px; }
     .dropdown-menu li a:hover { background: rgba(255,255,255,0.1); }
@@ -34,47 +34,45 @@
 
     .blog-container { max-width: 1100px; margin: 0 auto; padding: 60px 60px 100px; }
 
-    .post { display: grid; grid-template-columns: 1fr 220px; gap: 48px; align-items: start; margin-bottom: 52px; padding-bottom: 52px; border-bottom: 1px solid #e8e8e8; }
+    .post { display: grid; grid-template-columns: 1fr 220px; gap: 40px; align-items: start; margin-bottom: 52px; padding-bottom: 52px; border-bottom: 1px solid #e8e8e8; }
     .post:last-child { border-bottom: none; }
 
     .post-date { font-size: 12px; color: #999; margin-bottom: 10px; letter-spacing: 0.03em; }
-
     .post-title { font-family: 'Playfair Display', serif; font-size: clamp(17px, 2vw, 24px); font-weight: 400; color: var(--blue-heading); margin-bottom: 14px; line-height: 1.3; }
-
     .post-body p { font-size: 13px; line-height: 1.75; color: #666; margin-bottom: 6px; }
-
     .post-link { display: inline-block; margin-top: 10px; font-size: 12px; color: var(--blue-heading); text-decoration: underline; }
 
-    .post-image { width: 100%; border-radius: 4px; aspect-ratio: 4/3; object-fit: cover; background: #d8d5d0; display: block; }
+    .post-image-col img { width: 100%; border-radius: 4px; aspect-ratio: 4/3; object-fit: cover; display: block; }
 
     footer { background: #1a1a1a; color: #888; text-align: center; padding: 24px 40px; font-size: 13px; }
 
     @media (max-width: 700px) {
       .post { grid-template-columns: 1fr; }
+      .post-image-col { order: -1; }
       .blog-container { padding: 40px 24px 60px; }
+      nav { padding: 0 20px; }
     }
   </style>
 </head>
 <body>
 
 <nav>
-  <a class="nav-logo" href="/sgpnyc/"><img src="/sgpnyc/images/site/sgpGlobe.webp" alt="SGP International" /></a>
+  <a class="nav-logo" href="/"><img src="/images/site/sgpGlobe.webp" alt="SGP International" /></a>
   <ul class="nav-links">
-    <li><a href="/sgpnyc/">Home</a></li>
+    <li><a href="/">Home</a></li>
     <li class="has-dropdown">
       <button class="dropdown-btn">SGP International <span class="arrow">&#8964;</span></button>
       <ul class="dropdown-menu">
-        <li><a href="/sgpnyc/abt/">About SGP</a></li>
-        <li><a href="/sgpnyc/services/">Services</a></li>
-        <li><a href="/sgpnyc/products/">Products</a></li>
-        <li><a href="/sgpnyc/success/">Success Stories</a></li>
-        <li><a href="/sgpnyc/partners/">Customers</a></li>
-        <li><a href="/sgpnyc/new-page/">Personal Paper</a></li>
-      </ul>
+        <li><a href="/abt/">About SGP</a></li>
+        <li><a href="/services/">Services</a></li>
+        <li><a href="/products/">Products</a></li>
+        <li><a href="/success/">Success Stories</a></li>
+        <li><a href="/partners/">Customers</a></li>
+        <li><a href="/new-page/">Personal Paper</a></li>
+              </ul>
     </li>
-    <li><a href="/sgpnyc/blog/" style="opacity:0.6">Blog</a></li>
-    <li><a href="/sgpnyc/games/">Games</a></li>
-    <li><a href="/sgpnyc/#contact" class="nav-cta">Contact</a></li>
+    <li><a href="/blog/">Blog</a></li>
+        <li><a href="/#contact" class="nav-cta">Contact</a></li>
   </ul>
 </nav>
 
@@ -85,374 +83,180 @@
 <div class="blog-container">
 
   <article class="post">
-    <div>
-      <div class="post-date">1/5/26</div>
-      <h2 class="post-title">What's Next for AI in 2026, by MIT Technology Review</h2>
-      <div class="post-body">
-        <p>"The last year shaped up as a big one for Chinese open-source models. In January, DeepSeek released R1, its open-source reasoning model, and shocked the world with what a relatively small firm in China could do with limited resources."</p>
-        <p>"By the end of the year, DeepSeek moment had become a phrase frequently tossed around by AI entrepreneurs, observers, and builders — an aspirational benchmark for top-tier AI performance without going through OpenAI, Anthropic, or Google."</p>
-      </div>
-      <a class="post-link" href="https://www.technologyreview.com/2026/01/05/1130662/whats-next-for-ai-in-2026/" target="_blank" rel="noopener">Click here for the full article</a>
-    </div>
-    <img class="post-image" src="" alt="What's Next for AI in 2026, by MIT Technology Review" style="background:#d8d5d0" />
-  </article>
-
-  <article class="post">
-    <div>
-      <div class="post-date">1/12/26</div>
-      <h2 class="post-title">Hyperscale AI Data Centers: MIT Technology Review's 2026 Breakthrough Technology</h2>
-      <div class="post-body">
-        <p>Hyperscale data centers are now powering AI models with a revolutionary new architecture — at a staggering energy cost. The facilities represent one of the defining infrastructure stories of 2026.</p>
-        <p>AI data center power capacity rose to 29.6 GW — roughly what it takes to power the entire state of New York at peak demand, according to Stanford's 2026 AI Index.</p>
-      </div>
-      <a class="post-link" href="https://www.technologyreview.com/2026/01/12/1129982/hyperscale-ai-data-centers-energy-usage-2026-breakthrough-technology/" target="_blank" rel="noopener">Click here for the full article</a>
-    </div>
-    <img class="post-image" src="" alt="Hyperscale AI Data Centers: MIT Technology Review's 2026 Breakthrough Technology" style="background:#d8d5d0" />
-  </article>
-
-  <article class="post">
-    <div>
-      <div class="post-date">1/15/26</div>
-      <h2 class="post-title">Quandela Identifies Four Quantum Computing Trends for 2026, by The Quantum Insider</h2>
-      <div class="post-body">
-        <p>Quandela has identified four trends set to shape quantum computing in 2026: hybrid quantum-classical computing, early industrial use cases, quantum error correction advances, and cybersecurity applications.</p>
-        <p>"Finance, pharmaceuticals, and logistics are leading quantum computing adoption through pilot programs. Applications include portfolio optimization, molecular simulation for drug discovery, and supply chain operations management."</p>
-      </div>
-      <a class="post-link" href="https://thequantuminsider.com/2026/01/15/quandela-quantum-computing-trends-2026/" target="_blank" rel="noopener">Click here for the full article</a>
-    </div>
-    <img class="post-image" src="" alt="Quandela Identifies Four Quantum Computing Trends for 2026, by The Quantum Insider" style="background:#d8d5d0" />
-  </article>
-
-  <article class="post">
-    <div>
-      <div class="post-date">1/20/26</div>
-      <h2 class="post-title">6 AI Breakthroughs That Will Define 2026, by InfoWorld</h2>
-      <div class="post-body">
-        <p>The most significant advances in artificial intelligence in 2026 won't come from building larger models but from making AI systems smarter, more collaborative, and more reliable.</p>
-        <p>Breakthroughs in agent interoperability, self-verification, and memory will transform AI from isolated tools into integrated systems that can handle complex, multi-step workflows — moving them from a promising concept to a viable enterprise solution.</p>
-      </div>
-      <a class="post-link" href="https://www.infoworld.com/article/4108092/6-ai-breakthroughs-that-will-define-2026.html" target="_blank" rel="noopener">Click here for the full article</a>
-    </div>
-    <img class="post-image" src="" alt="6 AI Breakthroughs That Will Define 2026, by InfoWorld" style="background:#d8d5d0" />
-  </article>
-
-  <article class="post">
-    <div>
-      <div class="post-date">1/24/26</div>
-      <h2 class="post-title">Seven Quantum Computing Trends That Will Shape Every Industry in 2026, by Bernard Marr</h2>
-      <div class="post-body">
-        <p>At the intersection of two world-changing technologies, quantum computing is showing it can speed up machine learning algorithms and reduce the time needed to crunch through vast datasets.</p>
-        <p>"Large language models could be trained in hours rather than weeks, making it quicker and more energy-efficient to build the next generation of AI tools," according to the report.</p>
-      </div>
-      <a class="post-link" href="https://bernardmarr.com/7-quantum-computing-trends-that-will-shape-every-industry-in-2026/" target="_blank" rel="noopener">Click here for the full article</a>
-    </div>
-    <img class="post-image" src="" alt="Seven Quantum Computing Trends That Will Shape Every Industry in 2026, by Bernard Marr" style="background:#d8d5d0" />
-  </article>
-
-  <article class="post">
-    <div>
-      <div class="post-date">2/9/26</div>
-      <h2 class="post-title">Quantum Computing & AI: How They Work Together in 2026</h2>
-      <div class="post-body">
-        <p>In October 2025, Google demonstrated a 13,000× speedup over the Frontier supercomputer using just 65 qubits for physics simulations. IBM is now racing toward full quantum advantage.</p>
-        <p>McKinsey's 2025 report confirms that quantum computing addresses AI's core constraints: algorithmic efficiency, memory walls, and compute bottlenecks — a convergence set to reshape enterprise computing.</p>
-      </div>
-      <a class="post-link" href="https://www.bqpsim.com/blogs/quantum-computing-artificial-intelligence" target="_blank" rel="noopener">Click here for the full article</a>
-    </div>
-    <img class="post-image" src="" alt="Quantum Computing & AI: How They Work Together in 2026" style="background:#d8d5d0" />
-  </article>
-
-  <article class="post">
-    <div>
-      <div class="post-date">2/11/26</div>
-      <h2 class="post-title">Hyperscale AI Data Centers Named MIT Technology Review 2026 Breakthrough Technology</h2>
-      <div class="post-body">
-        <p>The revolutionary architecture powering today's largest AI models has been named one of MIT Technology Review's 10 Breakthrough Technologies for 2026 — but at a staggering energy cost.</p>
-        <p>Generative AI reached 53% population adoption within three years, faster than the personal computer or the internet, according to Stanford's 2026 AI Index report.</p>
-      </div>
-      <a class="post-link" href="https://www.technologyreview.com/2026/02/11/1129982/hyperscale-ai-data-centers-energy-usage-2026-breakthrough-technology/" target="_blank" rel="noopener">Click here for the full article</a>
-    </div>
-    <img class="post-image" src="" alt="Hyperscale AI Data Centers Named MIT Technology Review 2026 Breakthrough Technology" style="background:#d8d5d0" />
-  </article>
-
-  <article class="post">
-    <div>
-      <div class="post-date">2/17/26</div>
-      <h2 class="post-title">Anthropic Launches Claude Sonnet 4.6 with 1-Million Token Context Window</h2>
-      <div class="post-body">
-        <p>Anthropic launched Claude Sonnet 4.6 on February 17, introducing a 1-million-token context window in beta and significantly improved coding capabilities for enterprise workflows.</p>
-        <p>Opus 4.6 was simultaneously deployed as an add-in inside Microsoft PowerPoint and Excel, deepening Anthropic's integration into everyday enterprise productivity tools.</p>
-      </div>
-      <a class="post-link" href="https://www.crescendo.ai/news/latest-ai-news-and-updates" target="_blank" rel="noopener">Click here for the full article</a>
-    </div>
-    <img class="post-image" src="" alt="Anthropic Launches Claude Sonnet 4.6 with 1-Million Token Context Window" style="background:#d8d5d0" />
-  </article>
-
-  <article class="post">
-    <div>
-      <div class="post-date">3/1/26</div>
-      <h2 class="post-title">AI-Driven Traffic to US Retail Sites Grew 393% Year-Over-Year in Q1 2026, by Adobe Digital Insights</h2>
-      <div class="post-body">
-        <p>Adobe Digital Insights reported that AI-driven traffic to US retail sites grew 393% year-over-year in the first quarter of 2026, with AI traffic converting into purchases at a rate 42% higher than other channels.</p>
-        <p>The data signals a profound shift in how consumers discover and purchase products online, with AI assistants increasingly acting as the first point of contact in the shopping journey.</p>
-      </div>
-      <a class="post-link" href="https://www.crescendo.ai/news/latest-ai-news-and-updates" target="_blank" rel="noopener">Click here for the full article</a>
-    </div>
-    <img class="post-image" src="" alt="AI-Driven Traffic to US Retail Sites Grew 393% Year-Over-Year in Q1 2026, by Adobe Digital Insights" style="background:#d8d5d0" />
-  </article>
-
-  <article class="post">
-    <div>
-      <div class="post-date">3/7/26</div>
-      <h2 class="post-title">Anthropic's Model Context Protocol Crosses 97 Million Installs</h2>
-      <div class="post-body">
-        <p>Anthropic's Model Context Protocol (MCP) crossed 97 million installs in March 2026 — a milestone signaling its transition from an experimental standard to foundational infrastructure for building AI agents.</p>
-        <p>Every major AI provider now ships MCP-compatible tooling. The Linux Foundation announced it would take MCP under open governance, cementing its status as industry-wide shared infrastructure.</p>
-      </div>
-      <a class="post-link" href="https://www.crescendo.ai/news/latest-ai-news-and-updates" target="_blank" rel="noopener">Click here for the full article</a>
-    </div>
-    <img class="post-image" src="" alt="Anthropic's Model Context Protocol Crosses 97 Million Installs" style="background:#d8d5d0" />
-  </article>
-
-  <article class="post">
-    <div>
-      <div class="post-date">3/13/26</div>
-      <h2 class="post-title">Morgan Stanley Warns an AI Breakthrough Is Coming — and Most of the World Isn't Ready, by Fortune</h2>
-      <div class="post-body">
-        <p>A massive AI breakthrough is coming in the first half of 2026 — and Morgan Stanley says most of the world isn't ready for it, according to a sweeping new report from the investment bank.</p>
-        <p>Researchers highlighted that applying 10x the compute to LLM training will effectively double a model's intelligence, and that the scaling laws backing that claim are holding firm.</p>
-      </div>
-      <a class="post-link" href="https://fortune.com/2026/03/13/elon-musk-morgan-stanley-ai-leap-2026/" target="_blank" rel="noopener">Click here for the full article</a>
-    </div>
-    <img class="post-image" src="" alt="Morgan Stanley Warns an AI Breakthrough Is Coming — and Most of the World Isn't Ready, by Fortune" style="background:#d8d5d0" />
-  </article>
-
-  <article class="post">
-    <div>
-      <div class="post-date">3/20/26</div>
-      <h2 class="post-title">AI Is Helping Speed a Quantum Breakthrough in Encryption — 'The World Is Not Prepared', by TIME</h2>
-      <div class="post-body">
-        <p>"New research from Google and Oratomic suggests quantum computers capable of breaking internet encryption may arrive sooner than expected — with AI helping speed the way," TIME reports.</p>
-        <p>Cloudflare announced it was "accelerating" its deadline to prepare for quantum computers to 2029. "It's a real shock," said Bas Westerbaan, a cybersecurity researcher at Cloudflare.</p>
-      </div>
-      <a class="post-link" href="https://time.com/article/2026/04/07/ai-quantum-computing-advance/" target="_blank" rel="noopener">Click here for the full article</a>
-    </div>
-    <img class="post-image" src="" alt="AI Is Helping Speed a Quantum Breakthrough in Encryption — 'The World Is Not Prepared', by TIME" style="background:#d8d5d0" />
-  </article>
-
-  <article class="post">
-    <div>
-      <div class="post-date">3/27/26</div>
-      <h2 class="post-title">Eli Lilly Inaugurates LillyPod, Pharma's Most Powerful AI Supercomputer</h2>
-      <div class="post-body">
-        <p>Eli Lilly inaugurated LillyPod, built on an NVIDIA DGX SuperPOD with 1,016 Blackwell Ultra GPUs delivering over 9,000 petaflops of performance — the pharmaceutical industry's most powerful AI supercomputer.</p>
-        <p>Where traditional wet labs test roughly 2,000 molecular hypotheses per year, LillyPod can simulate billions in parallel. Lilly aims to cut the typical 10-year drug development timeline in half.</p>
-      </div>
-      <a class="post-link" href="https://www.crescendo.ai/news/latest-ai-news-and-updates" target="_blank" rel="noopener">Click here for the full article</a>
-    </div>
-    <img class="post-image" src="" alt="Eli Lilly Inaugurates LillyPod, Pharma's Most Powerful AI Supercomputer" style="background:#d8d5d0" />
-  </article>
-
-  <article class="post">
-    <div>
-      <div class="post-date">4/7/26</div>
-      <h2 class="post-title">March 2026 AI Roundup: Breakthroughs, Fights, Forecasts and Fears, by Peterson Technology Partners</h2>
-      <div class="post-body">
-        <p>Q1 2026 had more large corporate AI deals than any quarter on record, with 22 transactions totaling more than $10 billion, per the Wall Street Journal — signaling that AI has moved from experimentation to execution.</p>
-        <p>Google released Gemini 3.1 Flash-Lite for high-volume tasks, while OpenAI launched GPT-5.4 with one million context token capacity, continuing a rapid cadence of major model releases.</p>
-      </div>
-      <a class="post-link" href="https://www.ptechpartners.com/2026/04/07/march-2026-ai-news-roundup-breakthroughs-and-the-fights-forecasts-and-fears/" target="_blank" rel="noopener">Click here for the full article</a>
-    </div>
-    <img class="post-image" src="" alt="March 2026 AI Roundup: Breakthroughs, Fights, Forecasts and Fears, by Peterson Technology Partners" style="background:#d8d5d0" />
-  </article>
-
-  <article class="post">
-    <div>
-      <div class="post-date">4/14/26</div>
-      <h2 class="post-title">NVIDIA Launches Ising — the World's First Open AI Models to Accelerate Quantum Computing</h2>
-      <div class="post-body">
-        <p>NVIDIA announced Ising, the world's first family of open-source quantum AI models, designed to help researchers and enterprises build quantum processors capable of running useful applications.</p>
-        <p>The Ising models deliver up to 2.5x faster and 3x more accurate quantum error correction decoding, while enabling automated calibration workflows that reduce setup time from days to hours.</p>
-      </div>
-      <a class="post-link" href="https://nvidianews.nvidia.com/news/nvidia-launches-ising-the-worlds-first-open-ai-models-to-accelerate-the-path-to-useful-quantum-computers" target="_blank" rel="noopener">Click here for the full article</a>
-    </div>
-    <img class="post-image" src="" alt="NVIDIA Launches Ising — the World's First Open AI Models to Accelerate Quantum Computing" style="background:#d8d5d0" />
-  </article>
-
-  <article class="post">
-    <div>
-      <div class="post-date">4/21/26</div>
-      <h2 class="post-title">10 AI Things That Matter Right Now in 2026, by MIT Technology Review</h2>
-      <div class="post-body">
-        <p>Videos of human movements are now being collected en masse to train humanoid robots — from sprawling training centers where workers repetitively complete tasks to tele-operated bots puppeted by strangers overseas.</p>
-        <p>AI is lowering the barriers for scammers and hackers, making attacks faster, cheaper, and easier than ever before — one of the defining security challenges of 2026.</p>
-      </div>
-      <a class="post-link" href="https://www.technologyreview.com/2026/04/21/1135643/10-ai-artificial-intelligence-trends-technologies-research-2026/" target="_blank" rel="noopener">Click here for the full article</a>
-    </div>
-    <img class="post-image" src="" alt="10 AI Things That Matter Right Now in 2026, by MIT Technology Review" style="background:#d8d5d0" />
-  </article>
-
-  <article class="post">
-    <div>
-      <div class="post-date">4/28/26</div>
-      <h2 class="post-title">12 Takeaways from the Stanford AI Index 2026 Report</h2>
-      <div class="post-body">
-        <p>Generative AI reached 53% population adoption within three years — faster than the personal computer or the internet — though the pace varies by country and correlates strongly with GDP per capita.</p>
-        <p>The US and China have traded places at the top of AI performance rankings multiple times since early 2025. As of March 2026, Anthropic's top model leads by just 2.7%, reflecting how close the competition has become.</p>
-      </div>
-      <a class="post-link" href="https://hai.stanford.edu/news/inside-the-ai-index-12-takeaways-from-the-2026-report" target="_blank" rel="noopener">Click here for the full article</a>
-    </div>
-    <img class="post-image" src="" alt="12 Takeaways from the Stanford AI Index 2026 Report" style="background:#d8d5d0" />
-  </article>
-
-  <article class="post">
-    <div>
-      <div class="post-date">5/5/26</div>
-      <h2 class="post-title">Quantum Computing Predictions for 2026: The Year of Transition from Lab to Industry</h2>
-      <div class="post-body">
-        <p>In 2026, the timeline for quantum-enabled attacks will shrink dramatically, pressuring organizations to expedite their adoption of post-quantum cryptography, according to The Quantum Insider's expert panel.</p>
-        <p>"We expect a sharp increase in quantum security spending in 2026 as deadlines for post-quantum cryptography migration become real and the understanding of intensifying harvest-now, decrypt-later espionage campaigns proliferates."</p>
-      </div>
-      <a class="post-link" href="https://thequantuminsider.com/2025/12/30/tqis-expert-predictions-on-quantum-technology-in-2026/" target="_blank" rel="noopener">Click here for the full article</a>
-    </div>
-    <img class="post-image" src="" alt="Quantum Computing Predictions for 2026: The Year of Transition from Lab to Industry" style="background:#d8d5d0" />
-  </article>
-
-  <article class="post">
-    <div>
-      <div class="post-date">12/26/25</div>
+    <div class="post-content">
+      <p class="post-date">12/26/25</p>
       <h2 class="post-title">Forget Cowbells. Cows Wear High-Tech Collars Now.</h2>
       <div class="post-body">
-        <p>"The cow at the edge of Tony Louters's dairy farm in Merced, Calif., held 11 gallons of milk and a secret: in the next 48 hours, she would become sick."</p>
-        <p>"On many farms, the health signs would have gone undetected, costing hundreds of dollars in lost milk. But thanks to a high-tech collar — fitted with movement sensors and Wi-Fi — he learned the cow's diagnosis at 5:30 a.m. when an alert about its biometric data."</p>
+        <p>"The cow at the edge of Tony Louters's dairy farm in Merced, Calif., held 11 gallons of milk and a secret: In the next 48 hours, she would become sick."</p>
+        <p>"On many farms, the health signs would have gone undetected, costing hundreds of dollars in lost milk. But thanks to a high-tech collar that each of Mr. Louters's 700 cows wears around its neck — fitted with movement sensors and Wi-Fi — he learned the cow's diagnosis at 5:30 a.m. when his computer pinged with an alert about its biometric data."</p>
+        <p>"Mr. Louters, 52, has used the collars since they debuted in 2013, back when the devices were no more advanced than a pedometer. But in recent years, Merck, the health care company that makes the collars, has added new kinds of sensors and software to the wearables and artificial intelligence to help process the data."</p>
+        <p>"The devices are part of an industry known as precision farming, a data-driven approach for optimizing production that is booming with the addition of A.I. and other technologies. Last year, the livestock-monitoring industry alone was valued at more than $5 billion, according to Grand View Research, a market research firm."</p>
       </div>
-      <a class="post-link" href="https://www.nytimes.com/2025/10/05/technology/cows-ai-collars.html" target="_blank" rel="noopener">Click here for the full article</a>
+      <a class="post-link" href="https://www.nytimes.com/2025/10/05/technology/cows-ai-collars.html" target="_blank">Click here for the full article</a>
     </div>
-    <img class="post-image" src="/sgpnyc/images/blog/cow.webp" alt="Cow with high-tech collar" />
+    <div class="post-image-col">
+      <img src="/images/blog/cow.webp" alt="High-tech cow collar" />
+    </div>
   </article>
 
   <article class="post">
-    <div>
-      <div class="post-date">12/4/25</div>
+    <div class="post-content">
+      <p class="post-date">11/24/25</p>
       <h2 class="post-title">We Can Now Track Individual Monarch Butterflies. It's a Revelation.</h2>
       <div class="post-body">
         <p>"Scientists used tiny new sensors to follow the insects on journeys that take thousands of miles to their winter colonies in Mexico."</p>
-        <p>"For the first time, scientists are tracking the migration of monarch butterflies across much of North America, actively watching the movements of individual insects on journeys from as far away as Ontario all the way to their overwintering colonies in central Mexico."</p>
+        <p>"For the first time, scientists are tracking the migration of monarch butterflies across much of North America, actively monitoring individual insects on journeys from as far away as Ontario all the way to their overwintering colonies in central Mexico."</p>
+        <p>"This long-sought achievement could provide crucial insights into the poorly understood life cycles of hundreds of species of butterflies, bees and other flying insects at a time when many are in steep decline."</p>
+        <p>"The breakthrough is the result of a tiny solar-powered radio tag that weighs just 60 milligrams and sells for $200. Researchers have tagged more than 400 monarchs this year and are now following their journeys on a cellphone app created by the New Jersey-based company that makes the tags, Cellular Tracking Technologies."</p>
       </div>
-      <a class="post-link" href="https://www.nytimes.com/2025/11/17/science/monarch-butterfly-migration-tracking-sensor.html" target="_blank" rel="noopener"" target="_blank" rel="noopener">Click here for the full article</a>
+      <a class="post-link" href="https://www.nytimes.com/2025/11/17/science/monarch-butterfly-migration-tracking-sensor.html" target="_blank">Click here for the full article</a>
     </div>
-    <img class="post-image" src="/sgpnyc/images/blog/butterfly.webp" alt="Monarch butterfly tracking" />
+    <div class="post-image-col">
+      <img src="/images/blog/butterfly.webp" alt="Monarch butterfly migration tracking" />
+    </div>
   </article>
 
   <article class="post">
-    <div>
-      <div class="post-date">12/4/25</div>
+    <div class="post-content">
+      <p class="post-date">11/14/25</p>
       <h2 class="post-title">China's transparent coating to turn ordinary windows into solar power generators</h2>
       <div class="post-body">
         <p>"Researchers in China have created a transparent, colorless, and unidirectional solar concentrator that can be directly coated onto standard window glass and used to harvest sunlight without changing the window's appearance."</p>
-        <p>"According to the scientists, this diffractive-type solar concentrator selectively guides sunlight toward the edge of the window where photovoltaic cells are installed."</p>
+        <p>"According to the scientists, this unique diffractive-type solar concentrator (CUSC) selectively guides sunlight toward the edge of the window where photovoltaic (PV) cells are installed."</p>
+        <p>"These optical qualities mean the coating can generate clean energy while keeping the glass clear and natural-looking, and ensure that windows remain visually indistinguishable from ordinary glass."</p>
       </div>
-      <a class="post-link" href="https://www.msn.com/en-us/news/technology/china-s-transparent-coating-to-turn-ordinary-windows-into-solar-power-generators/ar-AA1LS9F2" target="_blank" rel="noopener">Click here for the full article</a>
+      <a class="post-link" href="https://www.msn.com/en-us/news/technology/china-s-transparent-coating-to-turn-ordinary-windows-into-solar-power-generators/ar-AA1LS9F2" target="_blank">Click here for the full article</a>
     </div>
-    <img class="post-image" src="/sgpnyc/images/blog/chinas_trns.webp" alt="Solar window coating" />
+    <div class="post-image-col">
+      <img src="/images/blog/chinas_trns.webp" alt="China transparent solar coating" />
+    </div>
   </article>
 
   <article class="post">
-    <div>
-      <div class="post-date">8/29/23</div>
-      <h2 class="post-title">French Government Uses AI to Spot Undeclared Swimming Pools — And Tax Them, by James Vincent</h2>
+    <div class="post-content">
+      <p class="post-date">8/30/22</p>
+      <h2 class="post-title">French Government Uses AI to Spot Undeclared Swimming Pools — And Tax Them</h2>
       <div class="post-body">
-        <p>"The French government has collected nearly €10 million in additional taxes after using machine learning to spot undeclared swimming pools in aerial photos."</p>
-        <p>"The project began last October, with firm Capgemini working with Google to analyze publicly available aerial photos taken by France's National Institute of Geographic and Forest Information."</p>
+        <p>"The French government has collected nearly €10 million in additional taxes after using machine learning to spot undeclared swimming pools in aerial photos. In France, housing taxes are calculated based on a property's rental value, so homeowners who don't declare swimming pools are potentially avoiding hundreds of euros in additional payments."</p>
+        <p>"The project to spot the undeclared pools began last October, with IT firm Capgemini working with Google to analyze publicly available aerial photos taken by France's National Institute of Geographic and Forest Information."</p>
+        <p>"The project is somewhat limited in scope, and has so far analyzed photos covering only nine of France's 96 metropolitan departments. But even in these areas, officials discovered 20,356 undeclared pools."</p>
       </div>
-      <a class="post-link" href="https://www.theverge.com/2022/8/30/23328442/france-ai-swimming-pool-tax-aerial-photos" target="_blank" rel="noopener">Click here for the full article</a>
+      <a class="post-link" href="https://www.theverge.com/2022/8/30/23328442/france-ai-swimming-pool-tax-aerial-photos" target="_blank">Click here for the full article</a>
     </div>
-    <img class="post-image" src="/sgpnyc/images/blog/french_pool.webp" alt="Aerial view of swimming pools" />
+    <div class="post-image-col">
+      <img src="/images/blog/french_pool.webp" alt="French swimming pool AI detection" />
+    </div>
   </article>
 
   <article class="post">
-    <div>
-      <div class="post-date">8/19/23</div>
-      <h2 class="post-title">How People Adapt to Cybersickness From Virtual Reality, by Rachel Cramer – Iowa State University</h2>
+    <div class="post-content">
+      <p class="post-date">8/17/22</p>
+      <h2 class="post-title">How People Adapt to Cybersickness From Virtual Reality</h2>
       <div class="post-body">
-        <p>"While virtual reality has been around for decades, a combination of higher-resolution graphics and cheaper, sleeker headsets has propelled the immersive technology into arenas beyond gaming and military training."</p>
-        <p>"Jonathan Kelly, a professor of psychology and human-computer interaction at Iowa State University, says the biggest barrier to VR becoming mainstream is cybersickness."</p>
+        <p>"While virtual reality has been around for decades, a combination of higher-resolution graphics, smoother tracking of the user's movements and cheaper, sleeker headsets has propelled the immersive technology into arenas beyond gaming and military training."</p>
+        <p>"In health care, VR has been used to prepare surgeons for complicated operations and help burn patients better manage their pain."</p>
+        <p>"But Jonathan Kelly, a professor of psychology and human computer interaction at Iowa State University, says the biggest barrier to VR becoming mainstream is cybersickness. Previous studies show more than half of first-time headset users experience the phenomenon within 10 minutes of being exposed to VR."</p>
       </div>
-      <a class="post-link" href="https://neurosciencenews.com/cybersickness-vr-21243/" target="_blank" rel="noopener">Click here for the full article</a>
+      <a class="post-link" href="https://neurosciencenews.com/cybersickness-vr-21243/" target="_blank">Click here for the full article</a>
     </div>
-    <img class="post-image" src="/sgpnyc/images/blog/people_adapt.webp" alt="VR headset" />
+    <div class="post-image-col">
+      <img src="/images/blog/people_adapt.webp" alt="Virtual reality cybersickness" />
+    </div>
   </article>
 
   <article class="post">
-    <div>
-      <div class="post-date">8/9/23</div>
-      <h2 class="post-title">Google Adds AI Language Skills to Alphabet's Helper Robots to Better Understand Humans, by James Vincent</h2>
+    <div class="post-content">
+      <p class="post-date">8/16/22</p>
+      <h2 class="post-title">Google Adds AI Language Skills to Alphabet's Helper Robots to Better Understand Humans</h2>
       <div class="post-body">
-        <p>"Google's parent company Alphabet is bringing together two of its most ambitious research projects — robotics and language understanding — in an attempt to make a 'helper robot' that can understand natural language commands."</p>
-        <p>"Most robots only respond to short and simple instructions. But use the SayCan language model and you're able to better probe the intent behind more oblique commands."</p>
+        <p>"Google's parent company Alphabet is bringing together two of its most ambitious research projects — robotics and AI language understanding — in an attempt to make a 'helper robot' that can understand natural language commands."</p>
+        <p>"Since 2019, Alphabet has been developing robots that can carry out simple tasks like fetching drinks and cleaning surfaces. The bots have now been given an upgrade: improved language understanding courtesy of Google's large language model (LLM) PaLM."</p>
+        <p>"Most robots only respond to short and simple instructions, like 'bring me a bottle of water.' But LLMs are able to better parse the intent behind more oblique commands."</p>
       </div>
-      <a class="post-link" href="https://www.theverge.com/2022/8/16/23307730/google-everyday-robots-project-ai-language-skills-palm-saycan" target="_blank" rel="noopener">Click here for the full article</a>
+      <a class="post-link" href="https://www.theverge.com/2022/8/16/23307730/google-everyday-robots-project-ai-language-skills-palm-saycan" target="_blank">Click here for the full article</a>
     </div>
-    <img class="post-image" src="/sgpnyc/images/blog/googler_adds.webp" alt="Alphabet helper robots" />
+    <div class="post-image-col">
+      <img src="/images/blog/googler_adds.webp" alt="Google AI robots" />
+    </div>
   </article>
 
   <article class="post">
-    <div>
-      <div class="post-date">8/9/23</div>
-      <h2 class="post-title">VR Surgical Training Platform Raises $20M, Further Solidifying VR's Place in Medicine, by Ben Lang</h2>
+    <div class="post-content">
+      <p class="post-date">8/15/22</p>
+      <h2 class="post-title">VR Surgical Training Platform Raises $20M, Further Solidifying VR's Place in Medicine</h2>
       <div class="post-body">
-        <p>"VR surgical training platform FundamentalVR today announced it has raised a $20 million Series B investment to further expand its VR surgical training platform."</p>
-        <p>"The machine learning data insights product and global geographic expansion throughout the US are key focuses of the new investment."</p>
+        <p>"VR surgical training platform FundamentalVR today announced it has raised a $20 million Series B investment to further expand its VR surgical training platform. The company is among a growing list of companies taking root in what appears to be a prime use-case for VR."</p>
+        <p>"FundamentalVR says it combines high-fidelity medical simulations with VR and haptics so that trainees can 'experience the sights, sounds, and physical sensations of real-life surgery.' The goal, says the company, is to make it more affordable for medical institutions to bring 'professionally accredited surgical training to their organizations.'"</p>
       </div>
-      <a class="post-link" href="https://www.roadtovr.com/vr-surgical-training-platform-fundamentalvr-series-b-investment/" target="_blank" rel="noopener">Click here for the full article</a>
+      <a class="post-link" href="https://www.roadtovr.com/vr-surgical-training-platform-fundamentalvr-series-b-investment/" target="_blank">Click here for the full article</a>
     </div>
-    <img class="post-image" src="/sgpnyc/images/blog/er_surg.webp" alt="VR surgical training" />
+    <div class="post-image-col">
+      <img src="/images/blog/er_surg.webp" alt="VR surgical training" />
+    </div>
   </article>
 
   <article class="post">
-    <div>
-      <div class="post-date">4/20/21</div>
-      <h2 class="post-title">Self-Taught AI Shows Similarities to How the Brain Works, by Anil Ananthaswamy</h2>
+    <div class="post-content">
+      <p class="post-date">8/12/22</p>
+      <h2 class="post-title">Self-Taught AI Shows Similarities to How the Brain Works</h2>
       <div class="post-body">
-        <p>"For a decade now, many of the most impressive AI systems have been taught using a huge inventory of labeled data. Such supervised learning requires data laboriously labeled by humans."</p>
-        <p>"We are now seeing a generation of algorithms that are like undergrads: they don't come to class the whole semester and then the night before they're cramming, said Rina, a computer scientist at the University of California Berkeley."</p>
+        <p>"For a decade now, many of the most impressive artificial intelligence systems have been taught using a huge inventory of labeled data. An image might be labeled 'tabby cat' or 'tiger cat,' for example, to 'train' an artificial neural network to correctly distinguish a tabby from a tiger."</p>
+        <p>"Such 'supervised' training requires data laboriously labeled by humans, and the neural networks often take shortcuts, learning to associate the labels with minimal and sometimes superficial information."</p>
+        <p>"Now some computational neuroscientists have begun to explore neural networks trained with little or no human-labeled data. These 'self-supervised learning' algorithms have proved enormously successful at modeling human language and, more recently, image recognition."</p>
       </div>
-      <a class="post-link" href="https://quantamagazine.org/self-taught-ai-shows-similarities-to-how-the-brain-works-20220811/" target="_blank" rel="noopener">Click here for the full article</a>
+      <a class="post-link" href="https://quantamagazine.org/self-taught-ai-shows-similarities-to-how-the-brain-works-20220811/" target="_blank">Click here for the full article</a>
     </div>
-    <img class="post-image" src="/sgpnyc/images/blog/elf_taught.webp" alt="Self-taught AI brain" />
+    <div class="post-image-col">
+      <img src="/images/blog/elf_taught.webp" alt="Self-taught AI" />
+    </div>
   </article>
 
   <article class="post">
-    <div>
-      <div class="post-date">4/20/21</div>
-      <h2 class="post-title">Google's Search AI Now Looks for General Consensus to Highlight More Trustworthy Results, by Mariella Moon</h2>
+    <div class="post-content">
+      <p class="post-date">8/11/22</p>
+      <h2 class="post-title">Google's Search AI Now Looks for General Consensus to Highlight More Trustworthy Results</h2>
       <div class="post-body">
-        <p>"You know that highlighted piece of text at the very top of a Google search results page when you look up a piece of information? That's called a featured snippet, and it's meant to provide you with a quick answer to your query."</p>
-        <p>"Now Google is making sure that the information it highlights is reliable and accurate by using its latest AI model, the Multitask Unified Model, so that featured snippets can now fact-check when deciding on a snippet to feature."</p>
+        <p>"You know that highlighted piece of text at the very top of a Google search results page when you look up a piece of information? That's called a 'featured snippet,' and it's meant to provide you with a quick answer to your query. Now, Google is making sure that the information it highlights is reliable and accurate by using its latest AI model, the Multitask Unified Model."</p>
+        <p>"Google's Search AI can now check snippet callouts against other high-quality sources online. It can figure out if there's a general consensus for that callout, even if sources use different words or concepts to describe the same fact or idea."</p>
       </div>
-      <a class="post-link" href="https://www.engadget.com/googles-search-ai-general-consensus-040123898.html" target="_blank" rel="noopener">Click here for the full article</a>
+      <a class="post-link" href="https://www.engadget.com/googles-search-ai-general-consensus-040123898.html" target="_blank">Click here for the full article</a>
     </div>
-    <img class="post-image" src="/sgpnyc/images/blog/google_searcg.webp" alt="Google search AI" />
+    <div class="post-image-col">
+      <img src="/images/blog/google_searcg.webp" alt="Google Search AI consensus" />
+    </div>
   </article>
 
   <article class="post">
-    <div>
-      <div class="post-date">4/9/21</div>
-      <h2 class="post-title">In Simulation of How Water Freezes, Artificial Intelligence Breaks the Ice, by Princeton University</h2>
+    <div class="post-content">
+      <p class="post-date">8/9/22</p>
+      <h2 class="post-title">In Simulation of How Water Freezes, Artificial Intelligence Breaks the Ice</h2>
       <div class="post-body">
-        <p>"A team based at Princeton University has accurately simulated the initial steps of ice formation by applying artificial intelligence to solving equations that govern the quantum behavior of individual atoms and molecules."</p>
-        <p>"In a sense, this is like a dream come true, said Roberto Car, Princeton's Albert W. '83 Dorman Professor in Chemistry, who co-pioneered the approach of simulating molecular behaviors based on the underlying quantum laws more than 35 years ago."</p>
+        <p>"A team based at Princeton University has accurately simulated the initial steps of ice formation by applying artificial intelligence (AI) to solving equations that govern the quantum behavior of individual atoms and molecules."</p>
+        <p>"The resulting simulation describes how water molecules transition into solid ice with quantum accuracy. This level of accuracy, once thought unreachable due to the amount of computing power it would require, became possible when the researchers incorporated deep neural networks into their methods."</p>
+        <p>"The ability to model the initial steps in freezing water, a process called ice nucleation, could improve accuracy of weather and climate modeling as well as other processing like flash-freezing food."</p>
       </div>
-      <a class="post-link" href="https://phys.org/news/2022-08-simulation-artificial-intelligence-ice.html" target="_blank" rel="noopener">Click here for the full article</a>
+      <a class="post-link" href="https://phys.org/news/2022-08-simulation-artificial-intelligence-ice.html" target="_blank">Click here for the full article</a>
     </div>
-    <img class="post-image" src="/sgpnyc/images/blog/imulation.webp" alt="AI water freezing simulation" />
+    <div class="post-image-col">
+      <img src="/images/blog/imulation.webp" alt="AI ice formation simulation" />
+    </div>
   </article>
 
 </div>
 
-<footer>
-  <p>©SGP International</p>
-</footer>
+<footer><p>©SGP International</p></footer>
 
+<script>
+  document.querySelectorAll('.dropdown-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const li = this.closest('.has-dropdown');
+      const isOpen = li.classList.contains('open');
+      document.querySelectorAll('.has-dropdown.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) li.classList.add('open');
+    });
+  });
+  document.addEventListener('click', () => document.querySelectorAll('.has-dropdown.open').forEach(el => el.classList.remove('open')));
+</script>
 </body>
 </html>

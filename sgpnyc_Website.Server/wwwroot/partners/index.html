@@ -1,186 +1,163 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Customers — SGP International</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --blue-heading: #1d4e7a; --green: #3d8a4e; --green-hover: #2e6e3c; }
-    body { font-family: 'DM Sans', sans-serif; background: #fff; color: #1a1a1a; }
+    :root { --blue-heading: #1d4e7a; --green: #3d8a4e; --green-hover: #2e6e3c; --bg: #e8e5df; --bg-white: #f4f3f1; --text: #444; --text-dark: #1a1a1a; --border: #d5d2cc; }
+    body { font-family: 'DM Sans', sans-serif; background: #fff; color: var(--text-dark); }
 
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 70px; background: rgba(20,20,20,0.88); backdrop-filter: blur(8px); }
-    .nav-logo img { height: 38px; filter: brightness(0) invert(1); }
+    .nav-logo img { height: 52px; }
     .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
     .nav-links a { color: #fff; text-decoration: none; font-size: 14px; transition: opacity 0.2s; }
     .nav-links a:hover { opacity: 0.7; }
-    .nav-cta { background: var(--green); color: #fff !important; padding: 10px 22px; border-radius: 30px; font-weight: 500 !important; }
-    .nav-cta:hover { background: var(--green-hover) !important; opacity: 1 !important; }
+    .nav-cta { background: var(--green) !important; color: #fff !important; padding: 10px 22px; border-radius: 30px; font-weight: 500 !important; }
     .has-dropdown { position: relative; }
     .dropdown-btn { background: none; border: none; color: #fff; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; }
     .arrow { font-size: 12px; transition: transform 0.2s; display: inline-block; }
-    .dropdown-menu { display: none; position: absolute; top: calc(100% + 16px); left: 0; background: rgba(20,20,20,0.96); border-radius: 4px; list-style: none; min-width: 180px; padding: 8px 0; box-shadow: 0 8px 32px rgba(0,0,0,0.3); z-index: 200; }
-    .has-dropdown:hover .dropdown-menu, .has-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-menu { display: none; position: absolute; top: 100%; padding-top: 8px; left: 0; background: rgba(20,20,20,0.96); border-radius: 4px; list-style: none; min-width: 180px; padding: 8px 0; box-shadow: 0 8px 32px rgba(0,0,0,0.3); z-index: 200; }
+    .has-dropdown:hover .dropdown-menu, .has-dropdown:focus-within .dropdown-menu, .has-dropdown.open .dropdown-menu { display: block; }
     .has-dropdown:hover .arrow { transform: rotate(180deg); }
     .dropdown-menu li a { display: block; padding: 10px 20px; color: #fff; text-decoration: none; font-size: 13px; }
     .dropdown-menu li a:hover { background: rgba(255,255,255,0.1); }
 
-    .page-hero {
-      margin-top: 70px; height: 200px;
-      background-image: url('../images/site/NYC.jpg');
-      background-size: cover; background-position: center;
-      display: flex; align-items: center; justify-content: center; position: relative;
-    }
-    .page-hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.45); }
-    .page-hero h1 { position: relative; z-index: 2; font-family: 'DM Sans', sans-serif; font-size: 42px; font-weight: 300; letter-spacing: 0.2em; color: #fff; }
+    .page-hero { margin-top: 70px; height: 280px; background-image: url('/images/site/hero-partners.jpg'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; position: relative; }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.5); }
+    .page-hero h1 { position: relative; z-index: 2; font-family: 'DM Sans', sans-serif; font-size: clamp(32px, 5vw, 52px); font-weight: 300; letter-spacing: 0.2em; color: #fff; }
 
-    .content { max-width: 1100px; margin: 0 auto; padding: 70px 60px 100px; display: grid; grid-template-columns: 300px 1fr; gap: 60px; }
+    .section { padding: 80px 60px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .content-grid { display: grid; grid-template-columns: 280px 1fr; gap: 60px; }
 
-    .customer-list h2 { font-size: 13px; font-weight: 700; color: #1a1a1a; margin-bottom: 10px; margin-top: 28px; }
-    .customer-list h2:first-child { margin-top: 0; }
-    .customer-list p { font-size: 13px; line-height: 1.8; color: #555; }
-    .customer-list a { color: #555; text-decoration: none; }
+    .customer-list h2 { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--blue-heading); margin-bottom: 8px; margin-top: 28px; border-top: 1px solid var(--border); padding-top: 16px; }
+    .customer-list h2:first-child { margin-top: 0; border-top: none; padding-top: 0; }
+    .customer-list p { font-size: 13px; line-height: 1.9; color: var(--text); }
 
-    .logo-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 16px;
-      align-items: center;
-    }
-
-    .logo-cell {
-      display: flex; align-items: center; justify-content: center;
-      padding: 12px;
-      border: 1px solid #e8e8e8;
-      border-radius: 4px;
-      min-height: 70px;
-      background: #fff;
-    }
-
-    .logo-cell img { max-width: 100%; max-height: 48px; object-fit: contain; filter: grayscale(20%); }
-
-    .logo-cell span { font-size: 11px; font-weight: 600; color: #888; text-align: center; letter-spacing: 0.04em; text-transform: uppercase; }
+    .logo-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; align-content: start; }
+    .logo-cell { display: flex; align-items: center; justify-content: center; padding: 12px; border: 1px solid var(--border); border-radius: 4px; min-height: 70px; background: #fff; }
+    .logo-cell img { max-width: 100%; max-height: 44px; object-fit: contain; filter: grayscale(20%); }
+    .logo-cell span { font-size: 10px; font-weight: 600; color: #999; text-align: center; letter-spacing: 0.04em; text-transform: uppercase; }
 
     footer { background: #1a1a1a; color: #888; text-align: center; padding: 24px 40px; font-size: 13px; }
 
-    @media (max-width: 800px) { .content { grid-template-columns: 1fr; padding: 40px 24px 60px; } .logo-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 900px) { .section { padding: 60px 30px; } .content-grid { grid-template-columns: 1fr; } .logo-grid { grid-template-columns: repeat(3, 1fr); } nav { padding: 0 20px; } }
   </style>
 </head>
 <body>
 
 <nav>
-  <a class="nav-logo" href="/sgpnyc/"><img src="/sgpnyc/images/site/sgpGlobe.webp" alt="SGP International" /></a>
+  <a class="nav-logo" href="/"><img src="/images/site/sgpGlobe.webp" alt="SGP International" /></a>
   <ul class="nav-links">
-    <li><a href="/sgpnyc/">Home</a></li>
+    <li><a href="/">Home</a></li>
     <li class="has-dropdown">
       <button class="dropdown-btn">SGP International <span class="arrow">&#8964;</span></button>
       <ul class="dropdown-menu">
-        <li><a href="/sgpnyc/abt/">About SGP</a></li>
-        <li><a href="/sgpnyc/services/">Services</a></li>
-        <li><a href="/sgpnyc/products/">Products</a></li>
-        <li><a href="/sgpnyc/success/">Success Stories</a></li>
-        <li><a href="/sgpnyc/partners/">Customers</a></li>
-        <li><a href="/sgpnyc/new-page/">Personal Paper</a></li>
-      </ul>
+        <li><a href="/abt/">About SGP</a></li>
+        <li><a href="/services/">Services</a></li>
+        <li><a href="/products/">Products</a></li>
+        <li><a href="/success/">Success Stories</a></li>
+        <li><a href="/partners/">Customers</a></li>
+        <li><a href="/new-page/">Personal Paper</a></li>
+              </ul>
     </li>
-    <li><a href="/sgpnyc/blog/">Blog</a></li>
-    <li><a href="/sgpnyc/games/">Games</a></li>
-    <li><a href="/sgpnyc/#contact" class="nav-cta">Contact</a></li>
+    <li><a href="/blog/">Blog</a></li>
+        <li><a href="/#contact" class="nav-cta">Contact</a></li>
   </ul>
 </nav>
 
-<div class="page-hero">
-  <h1>CUSTOMERS</h1>
-</div>
+<div class="page-hero"><h1>CUSTOMERS</h1></div>
 
-<div class="content">
-  <div class="customer-list">
-    <h2>Banking &amp; Finances:</h2>
-    <p>NORDLB<br>AAREAL Bank<br>Allianz SE<br>Aurora Bank<br>Barclays<br>Bayern LB<br>CAN Capital<br>CIBC<br>Cash America<br>DEPFA Bank<br>Emigrant Savings Bank<br>FMS Wertmanagement<br>H2<br>HSH Nordbank<br>Hypo Public Finance<br>IBM KEOS<br>ICBC<br>Lloyds Bank<br>Nationstar<br>PB Capital Corporation<br>Promontech<br>Rabobank<br>UniCredit HVB Group</p>
+<section class="section">
+  <div class="container">
+    <div class="content-grid">
+      <div class="customer-list">
+        <h2>Banking &amp; Finance</h2>
+        <p>NORDLB · AAREAL Bank · Allianz SE · Aurora Bank · Barclays · Bayern LB · CAN Capital · CIBC · Cash America · DEPFA Bank · Emigrant Savings Bank · FMS Wertmanagement · HSH Nordbank · Hypo Public Finance · ICBC · Lloyds Bank · Nationstar · PB Capital Corporation · Rabobank · UniCredit HVB Group</p>
 
-    <h2>Real Estate:</h2>
-    <p>PIMCO Prime | Emigrant Realty Finance | Hypo Real Estate Capital Corp | IVI Real Estate</p>
+        <h2>Real Estate</h2>
+        <p>PIMCO Prime · Emigrant Realty Finance · Hypo Real Estate Capital Corp · IVI Real Estate</p>
 
-    <h2>Technology:</h2>
-    <p>Ross Computer System | Rytech | ThyssenKrupp</p>
+        <h2>Technology</h2>
+        <p>Ross Computer Systems · Rytech · ThyssenKrupp</p>
 
-    <h2>Entertainment &amp; Media:</h2>
-    <p>Wise Music Group | Havas Media | Lincoln Center Theater | Playboy | Viart | Wind-up Records</p>
+        <h2>Entertainment &amp; Media</h2>
+        <p>Wise Music Group · Havas Media · Lincoln Center Theater · Playboy · ViART · Wind-up Records</p>
 
-    <h2>Transportation:</h2>
-    <p>Clark Transfer | Airline Container Center</p>
+        <h2>Transportation</h2>
+        <p>Clark Transfer · Airline Container Center</p>
 
-    <h2>Healthcare &amp; Pharmaceuticals:</h2>
-    <p>Pfizer | AIMS</p>
+        <h2>Healthcare &amp; Pharma</h2>
+        <p>Pfizer · AIMS</p>
 
-    <h2>Universities &amp; Colleges:</h2>
-    <p>Maarifa Education | New York University | NYU Medical Center | University of Chicago</p>
+        <h2>Universities &amp; Colleges</h2>
+        <p>Maarifa Education · New York University · NYU Medical Center · University of Chicago</p>
 
-    <h2>Manufacturers:</h2>
-    <p>Maidenform | Scent 2 Market | Warnaco | Wella</p>
+        <h2>Manufacturers</h2>
+        <p>Maidenform · Scent 2 Market · Warnaco · Wella</p>
 
-    <h2>Insurance:</h2>
-    <p>American International Group<br>TIAA – CREF</p>
+        <h2>Insurance</h2>
+        <p>American International Group · TIAA-CREF</p>
 
-    <h2>Nonprofit Organizations:</h2>
-    <p>ACLD – <em>Adults &amp; Children with Learning and Developmental Disabilities</em><br>The Foundation for the Public Schools of the Tarrytown</p>
+        <h2>Nonprofit</h2>
+        <p>ACLD – Adults &amp; Children with Learning and Developmental Disabilities · The Foundation for the Public Schools of the Tarrytown</p>
 
-    <h2>Advertising &amp; Marketing:</h2>
-    <p>Group M | Juice</p>
+        <h2>Advertising &amp; Marketing</h2>
+        <p>Group M · Juice</p>
+      </div>
+
+      <div class="logo-grid">
+        <div class="logo-cell"><img src="/images/logos/windup_Records_Logo_Trans.png" alt="Wind-up Records" /></div>
+        <div class="logo-cell"><img src="/images/logos/Aareal_Bank_logo_Trans.png" alt="Aareal Bank" /></div>
+        <div class="logo-cell"><img src="/images/logos/rabobank_Logo_Trans.png" alt="Rabobank" /></div>
+        <div class="logo-cell"><img src="/images/logos/ViART_Logo_Trans.png" alt="ViART" /></div>
+        <div class="logo-cell"><img src="/images/logos/maarifa_education_Logo_Trans.png" alt="Maarifa Education" /></div>
+        <div class="logo-cell"><img src="/images/logos/TarryTown_SchoolFoundation_Logo.png" alt="Tarrytown Foundation" /></div>
+        <div class="logo-cell"><img src="/images/logos/HSH_Nordbank_Logo_Trans.png" alt="HSH Nordbank" /></div>
+        <div class="logo-cell"><img src="/images/logos/Maidenform_Logo_Trans.png" alt="Maidenform" /></div>
+        <div class="logo-cell"><img src="/images/logos/Allianz_Logo.jpg" alt="Allianz" /></div>
+        <div class="logo-cell"><img src="/images/logos/ClarkTransfer_Logo_Trans.png" alt="Clark Transfer" /></div>
+        <div class="logo-cell"><img src="/images/logos/Hypo_Real_Estate_Logo_Trans.png" alt="Hypo Real Estate" /></div>
+        <div class="logo-cell"><img src="/images/logos/Bayernlb_Trans.png" alt="Bayern LB" /></div>
+        <div class="logo-cell"><img src="/images/logos/nationstar_mortgage_logo_Trans.webp" alt="Nationstar" /></div>
+        <div class="logo-cell"><img src="/images/logos/HVB_Group_Trans.png" alt="HVB Group" /></div>
+        <div class="logo-cell"><img src="/images/logos/Wella_logo_Trans.png" alt="Wella" /></div>
+        <div class="logo-cell"><img src="/images/logos/NYU_Langone_Trans.png" alt="NYU Langone" /></div>
+        <div class="logo-cell"><img src="/images/logos/Depfa_Bank_Logo_Trans.png" alt="DEPFA Bank" /></div>
+        <div class="logo-cell"><img src="/images/logos/Nord_LB_logo_Trans.png" alt="Nord LB" /></div>
+        <div class="logo-cell"><img src="/images/logos/Emigrant_Bank_Logo_trans.png" alt="Emigrant Bank" /></div>
+        <div class="logo-cell"><img src="/images/logos/ACLD_Foundation_Logo_Trans.png" alt="ACLD" /></div>
+        <div class="logo-cell"><img src="/images/logos/Thyssenkrupp_AG_Logo.png" alt="ThyssenKrupp" /></div>
+        <div class="logo-cell"><img src="/images/logos/rytech_Logo.png" alt="Rytech" /></div>
+        <div class="logo-cell"><img src="/images/logos/uchicago_Logo_Trans.png" alt="U of Chicago" /></div>
+        <div class="logo-cell"><img src="/images/logos/WiseMusic_Logo_Trans.png" alt="Wise Music Group" /></div>
+        <div class="logo-cell"><img src="/images/logos/UniCredit_Logo_Trans.png" alt="UniCredit" /></div>
+        <div class="logo-cell"><img src="/images/logos/mr_Cooper_Rocket_Logo_Trans.png" alt="Mr. Cooper Rocket" /></div>
+        <div class="logo-cell"><span>Lincoln Center Theater</span></div>
+        <div class="logo-cell"><span>ICBC</span></div>
+        <div class="logo-cell"><span>Barclays</span></div>
+        <div class="logo-cell"><span>TIAA-CREF</span></div>
+      </div>
+    </div>
   </div>
-
-  <div class="logo-grid">
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/windup_Records_Logo_Trans.png" alt="Wind-up Records" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/Aareal_Bank_logo_Trans.png" alt="Aareal Bank" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/rabobank_Logo_Trans.png" alt="Rabobank" /></div>
-    <div class="logo-cell"><span>Juice</span></div>
-    <div class="logo-cell"><span>Aerospace</span></div>
-    <div class="logo-cell"><span>PB Capital</span></div>
-    <div class="logo-cell"><span>IVI Real Estate</span></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/ViART_Logo_Trans.png" alt="ViART" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/maarifa_education_Logo_Trans.png" alt="Maarifa Education" /></div>
-    <div class="logo-cell"><span>Lincoln Center Theater</span></div>
-    <div class="logo-cell"><span>ICBC</span></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/TarryTown_SchoolFoundation_Logo.png" alt="Tarrytown Foundation" /></div>
-    <div class="logo-cell"><span>Warnaco</span></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/HSH_Nordbank_Logo_Trans.png" alt="HSH Nordbank" /></div>
-    <div class="logo-cell"><span>Ross Computer Systems</span></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/Maidenform_Logo_Trans.png" alt="Maidenform" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/Allianz_Logo_Trans.png" alt="Allianz" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/ClarkTransfer_Logo_Trans.png" alt="Clark Transfer" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/Hypo_Real_Estate_Logo_Trans.png" alt="Hypo Real Estate" /></div>
-    <div class="logo-cell"><span>Group M</span></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/Bayernlb_Trans.png" alt="Bayern LB" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/nationstar_mortgage_logo_Trans.webp" alt="Nationstar" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/HVB_Group_Trans.png" alt="HVB Group" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/Wella_logo_Trans.png" alt="Wella" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/NYU_Langone_Trans.png" alt="NYU Langone" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/NYU_Langone.jpg" alt="NYU" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/Depfa_Bank_Logo_Trans.png" alt="DEPFA Bank" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/Nord_LB_logo_Trans.png" alt="Deutsche/Hypo Nord LB" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/Emigrant_Bank_Logo_trans.png" alt="Emigrant Realty Finance" /></div>
-    <div class="logo-cell"><span>TIAA-CREF</span></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/ACLD_Foundation_Logo_Trans.png" alt="ACLD" /></div>
-    <div class="logo-cell"><span>Havas Media</span></div>
-    <div class="logo-cell"><span>Playboy</span></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/Thyssenkrupp_AG_Logo.png" alt="ThyssenKrupp" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/rytech_Logo.png" alt="Rytech" /></div>
-    <div class="logo-cell"><span>AIMS</span></div>
-    <div class="logo-cell"><span>Airline Container Service</span></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/uchicago_Logo_Trans.png" alt="U of Chicago" /></div>
-    <div class="logo-cell"><span>Pfizer</span></div>
-    <div class="logo-cell"><span>Promontech</span></div>
-    <div class="logo-cell"><span>Barclays</span></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/Aareal_Bank_logo_Trans.png" alt="Aareal" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/mr_Cooper_Rocket_Logo_Trans.png" alt="Mr. Cooper Rocket" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/Nord_LB_logo_Trans.png" alt="NORD/LB" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/WiseMusic_Logo_Trans.png" alt="Wise Music Group" /></div>
-  </div>
-</div>
-</div>
-</div>
+</section>
 
 <footer><p>©SGP International</p></footer>
+
+<script>
+  document.querySelectorAll('.dropdown-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const li = this.closest('.has-dropdown');
+      const isOpen = li.classList.contains('open');
+      document.querySelectorAll('.has-dropdown.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) li.classList.add('open');
+    });
+  });
+  document.addEventListener('click', () => document.querySelectorAll('.has-dropdown.open').forEach(el => el.classList.remove('open')));
+</script>
 </body>
 </html>
