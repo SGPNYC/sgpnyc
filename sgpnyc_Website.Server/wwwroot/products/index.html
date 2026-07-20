@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -11,7 +11,7 @@
     body { font-family: 'DM Sans', sans-serif; background: #fff; color: var(--text-dark); }
 
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 70px; background: rgba(20,20,20,0.88); backdrop-filter: blur(8px); }
-    .nav-logo img { height: 38px; }
+    .nav-logo img { height: 52px; }
     .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
     .nav-links a { color: #fff; text-decoration: none; font-size: 14px; transition: opacity 0.2s; }
     .nav-links a:hover { opacity: 0.7; }
@@ -20,7 +20,7 @@
     .has-dropdown { position: relative; }
     .dropdown-btn { background: none; border: none; color: #fff; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; }
     .arrow { font-size: 12px; transition: transform 0.2s; display: inline-block; }
-    .dropdown-menu { display: none; position: absolute; top: calc(100% + 8px); left: 0; background: rgba(20,20,20,0.96); border-radius: 4px; list-style: none; min-width: 180px; padding: 8px 0; box-shadow: 0 8px 32px rgba(0,0,0,0.3); z-index: 200; }
+    .dropdown-menu { display: none; position: absolute; top: 100%; padding-top: 8px; left: 0; background: rgba(20,20,20,0.96); border-radius: 4px; list-style: none; min-width: 180px; padding: 8px 0; box-shadow: 0 8px 32px rgba(0,0,0,0.3); z-index: 200; }
     .has-dropdown:hover .dropdown-menu, .has-dropdown:focus-within .dropdown-menu, .has-dropdown.open .dropdown-menu { display: block; }
     .has-dropdown:hover .arrow { transform: rotate(180deg); }
     .dropdown-menu li a { display: block; padding: 10px 20px; color: #fff; text-decoration: none; font-size: 13px; }
@@ -80,11 +80,11 @@
         <li><a href="/products/">Products</a></li>
         <li><a href="/success/">Success Stories</a></li>
         <li><a href="/partners/">Customers</a></li>
-      </ul>
+        <li><a href="/new-page/">Personal Paper</a></li>
+              </ul>
     </li>
     <li><a href="/blog/">Blog</a></li>
-    <li><a href="/new-page/">Personal Paper</a></li>
-    <li><a href="/#contact" class="nav-cta">Contact</a></li>
+        <li><a href="/#contact" class="nav-cta">Contact</a></li>
   </ul>
 </nav>
 
