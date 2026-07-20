@@ -21,14 +21,14 @@
     .dropdown-btn { background: none; border: none; color: #fff; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; }
     .arrow { font-size: 12px; transition: transform 0.2s; display: inline-block; }
     .dropdown-menu { display: none; position: absolute; top: calc(100% + 16px); left: 0; background: rgba(20,20,20,0.96); border-radius: 4px; list-style: none; min-width: 180px; padding: 8px 0; box-shadow: 0 8px 32px rgba(0,0,0,0.3); z-index: 200; }
-    .has-dropdown:hover .dropdown-menu, .has-dropdown:focus-within .dropdown-menu { display: block; }
+    .has-dropdown:hover .dropdown-menu, .has-dropdown:focus-within .dropdown-menu, .has-dropdown.open .dropdown-menu { display: block; }
     .has-dropdown:hover .arrow { transform: rotate(180deg); }
     .dropdown-menu li a { display: block; padding: 10px 20px; color: #fff; text-decoration: none; font-size: 13px; }
     .dropdown-menu li a:hover { background: rgba(255,255,255,0.1); }
 
     .page-hero {
       margin-top: 70px; height: 220px;
-      background-image: url('/sgpnyc/images/site/16steinberger-superJumbo.jpg');
+      background-image: url('/images/site/16steinberger-superJumbo.jpg');
       background-size: cover; background-position: center;
       display: flex; align-items: center; justify-content: center; position: relative;
     }
@@ -102,23 +102,21 @@
 <body>
 
 <nav>
-  <a class="nav-logo" href="/sgpnyc/"><img src="/sgpnyc/images/site/sgpGlobe.webp" alt="SGP International" /></a>
+  <a class="nav-logo" href="/"><img src="/images/site/sgpGlobe.webp" alt="SGP International" /></a>
   <ul class="nav-links">
-    <li><a href="/sgpnyc/">Home</a></li>
+    <li><a href="/">Home</a></li>
     <li class="has-dropdown">
       <button class="dropdown-btn">SGP International <span class="arrow">&#8964;</span></button>
       <ul class="dropdown-menu">
-        <li><a href="/sgpnyc/abt/">About SGP</a></li>
-        <li><a href="/sgpnyc/services/">Services</a></li>
-        <li><a href="/sgpnyc/products/">Products</a></li>
-        <li><a href="/sgpnyc/success/">Success Stories</a></li>
-        <li><a href="/sgpnyc/partners/">Customers</a></li>
-        <li><a href="/sgpnyc/new-page/">Personal Paper</a></li>
+        <li><a href="/abt/">About SGP</a></li>
+        <li><a href="/services/">Services</a></li>
+        <li><a href="/products/">Products</a></li>
+        <li><a href="/success/">Success Stories</a></li>
+        <li><a href="/partners/">Customers</a></li>
       </ul>
     </li>
-    <li><a href="/sgpnyc/blog/">Blog</a></li>
-    <li><a href="/sgpnyc/games/">Games</a></li>
-    <li><a href="/sgpnyc/#contact" class="nav-cta">Contact</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/#contact" class="nav-cta">Contact</a></li>
   </ul>
 </nav>
 
@@ -130,7 +128,7 @@
 
   <div class="section-header">
     <h2>Consulting Services</h2>
-    <img src="/sgpnyc/images/site/sgpGlobe.webp" alt="SGP — Green Since 1987" />
+    <img src="/images/site/sgpGlobe.webp" alt="SGP — Green Since 1987" />
   </div>
 
   <div class="sectors">Finance | Healthcare | Insurance | Non-Profit | Real Estate | Retail</div>
@@ -171,7 +169,7 @@
     <div class="case-study">
       <h3>Client Success Story</h3>
       <div class="case-header">
-        <img src="/sgpnyc/images/site/REDSfinal.png" alt="REDS" />
+        <img src="/images/site/REDSfinal.png" alt="REDS" />
         <div>
           <strong>The Client:</strong>
           <p>A German bank with a multi-billion dollar pool of international commercial real estate loans and equity participations.</p>
@@ -186,15 +184,15 @@
   <div class="downloads">
     <h3>Downloads</h3>
     <div class="pdf-links">
-      <a class="pdf-link" href="/sgpnyc/docs/fact-sheets/SGP_Consulting.pdf" target="_blank">
+      <a class="pdf-link" href="/docs/fact-sheets/SGP_Consulting.pdf" target="_blank">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
         SGP Consulting Overview
       </a>
-      <a class="pdf-link" href="/sgpnyc/docs/fact-sheets/SGP_ConsultingServices.pdf" target="_blank">
+      <a class="pdf-link" href="/docs/fact-sheets/SGP_ConsultingServices.pdf" target="_blank">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
         Consulting Services
       </a>
-      <a class="pdf-link" href="/sgpnyc/docs/fact-sheets/SGP_Sampler.pdf" target="_blank">
+      <a class="pdf-link" href="/docs/fact-sheets/SGP_Sampler.pdf" target="_blank">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
         SGP Sampler
       </a>
@@ -204,5 +202,19 @@
 </div>
 
 <footer><p>©SGP International</p></footer>
+<script>
+  document.querySelectorAll('.dropdown-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const li = this.closest('.has-dropdown');
+      const isOpen = li.classList.contains('open');
+      document.querySelectorAll('.has-dropdown.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) li.classList.add('open');
+    });
+  });
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.has-dropdown.open').forEach(el => el.classList.remove('open'));
+  });
+</script>
 </body>
 </html>

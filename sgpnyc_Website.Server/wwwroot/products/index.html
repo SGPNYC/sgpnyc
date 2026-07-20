@@ -21,14 +21,14 @@
     .dropdown-btn { background: none; border: none; color: #fff; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; }
     .arrow { font-size: 12px; transition: transform 0.2s; display: inline-block; }
     .dropdown-menu { display: none; position: absolute; top: calc(100% + 16px); left: 0; background: rgba(20,20,20,0.96); border-radius: 4px; list-style: none; min-width: 180px; padding: 8px 0; box-shadow: 0 8px 32px rgba(0,0,0,0.3); z-index: 200; }
-    .has-dropdown:hover .dropdown-menu, .has-dropdown:focus-within .dropdown-menu { display: block; }
+    .has-dropdown:hover .dropdown-menu, .has-dropdown:focus-within .dropdown-menu, .has-dropdown.open .dropdown-menu { display: block; }
     .has-dropdown:hover .arrow { transform: rotate(180deg); }
     .dropdown-menu li a { display: block; padding: 10px 20px; color: #fff; text-decoration: none; font-size: 13px; }
     .dropdown-menu li a:hover { background: rgba(255,255,255,0.1); }
 
     .page-hero {
       margin-top: 70px; height: 180px;
-      background-image: url('/sgpnyc/images/site/fractal.jpg');
+      background-image: url('/images/site/fractal.jpg');
       background-size: cover; background-position: center;
       display: flex; align-items: center; justify-content: center; position: relative;
     }
@@ -105,23 +105,21 @@
 <body>
 
 <nav>
-  <a class="nav-logo" href="/sgpnyc/"><img src="/sgpnyc/images/site/sgpGlobe.webp" alt="SGP International" /></a>
+  <a class="nav-logo" href="/"><img src="/images/site/sgpGlobe.webp" alt="SGP International" /></a>
   <ul class="nav-links">
-    <li><a href="/sgpnyc/">Home</a></li>
+    <li><a href="/">Home</a></li>
     <li class="has-dropdown">
       <button class="dropdown-btn">SGP International <span class="arrow">&#8964;</span></button>
       <ul class="dropdown-menu">
-        <li><a href="/sgpnyc/abt/">About SGP</a></li>
-        <li><a href="/sgpnyc/services/">Services</a></li>
-        <li><a href="/sgpnyc/products/">Products</a></li>
-        <li><a href="/sgpnyc/success/">Success Stories</a></li>
-        <li><a href="/sgpnyc/partners/">Customers</a></li>
-        <li><a href="/sgpnyc/new-page/">Personal Paper</a></li>
+        <li><a href="/abt/">About SGP</a></li>
+        <li><a href="/services/">Services</a></li>
+        <li><a href="/products/">Products</a></li>
+        <li><a href="/success/">Success Stories</a></li>
+        <li><a href="/partners/">Customers</a></li>
       </ul>
     </li>
-    <li><a href="/sgpnyc/blog/">Blog</a></li>
-    <li><a href="/sgpnyc/games/">Games</a></li>
-    <li><a href="/sgpnyc/#contact" class="nav-cta">Contact</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/#contact" class="nav-cta">Contact</a></li>
   </ul>
 </nav>
 
@@ -132,7 +130,7 @@
   <!-- DOX -->
   <div class="product-block" id="dox">
     <div class="product-header">
-      <img src="/sgpnyc/images/site/DOX_clean.png" alt="DOX" />
+      <img src="/images/site/DOX_clean.png" alt="DOX" />
       <div class="product-header-text">
         <div class="sgp-label">SGP International</div>
         <h2>Document Compliance System</h2>
@@ -170,7 +168,7 @@
         </ul>
       </div>
     </div>
-    <a class="pdf-link" href="/sgpnyc/docs/fact-sheets/SGP_DOX.pdf" target="_blank">
+    <a class="pdf-link" href="/docs/fact-sheets/SGP_DOX.pdf" target="_blank">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
       Download DOX Fact Sheet
     </a>
@@ -179,7 +177,7 @@
   <!-- CentralDB -->
   <div class="product-block" id="centraldb">
     <div class="product-header">
-      <img src="/sgpnyc/images/site/CentralDB_Logo_final.png" alt="CentralDB" />
+      <img src="/images/site/CentralDB_Logo_final.png" alt="CentralDB" />
       <div class="product-header-text">
         <div class="sgp-label">SGP International</div>
         <h2>Report Management System</h2>
@@ -215,7 +213,7 @@
         </ul>
       </div>
     </div>
-    <a class="pdf-link" href="/sgpnyc/docs/fact-sheets/CentralDB_FactSheet.png" target="_blank">
+    <a class="pdf-link" href="/docs/fact-sheets/CentralDB_FactSheet.png" target="_blank">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
       Download CentralDB Fact Sheet
     </a>
@@ -224,7 +222,7 @@
   <!-- REDS -->
   <div class="product-block" id="reds">
     <div class="product-header">
-      <img src="/sgpnyc/images/site/REDSfinal.png" alt="REDS" />
+      <img src="/images/site/REDSfinal.png" alt="REDS" />
       <div class="product-header-text">
         <div class="sgp-label">SGP International</div>
         <h2>Real Estate Deals System</h2>
@@ -259,7 +257,7 @@
         </ul>
       </div>
     </div>
-    <a class="pdf-link" href="/sgpnyc/docs/fact-sheets/REDS_FactSheet.png" target="_blank">
+    <a class="pdf-link" href="/docs/fact-sheets/REDS_FactSheet.png" target="_blank">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
       Download REDS Fact Sheet
     </a>
@@ -268,7 +266,7 @@
   <!-- Workflow365 -->
   <div class="product-block" id="workflow">
     <div class="product-header">
-      <img src="/sgpnyc/images/site/workflow_logo.png" alt="Workflow365" />
+      <img src="/images/site/workflow_logo.png" alt="Workflow365" />
       <div class="product-header-text">
         <div class="sgp-label">SGP International</div>
         <h2>Process Management System</h2>
@@ -304,7 +302,7 @@
         </ul>
       </div>
     </div>
-    <a class="pdf-link" href="/sgpnyc/docs/fact-sheets/Workflow365_FactSheet.png" target="_blank">
+    <a class="pdf-link" href="/docs/fact-sheets/Workflow365_FactSheet.png" target="_blank">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
       Download Workflow365 Fact Sheet
     </a>
@@ -313,5 +311,19 @@
 </div>
 
 <footer><p>©SGP International</p></footer>
+<script>
+  document.querySelectorAll('.dropdown-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const li = this.closest('.has-dropdown');
+      const isOpen = li.classList.contains('open');
+      document.querySelectorAll('.has-dropdown.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) li.classList.add('open');
+    });
+  });
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.has-dropdown.open').forEach(el => el.classList.remove('open'));
+  });
+</script>
 </body>
 </html>

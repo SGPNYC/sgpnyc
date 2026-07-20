@@ -21,7 +21,7 @@
     .dropdown-btn { background: none; border: none; color: #fff; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; }
     .arrow { font-size: 12px; transition: transform 0.2s; display: inline-block; }
     .dropdown-menu { display: none; position: absolute; top: calc(100% + 16px); left: 0; background: rgba(20,20,20,0.96); border-radius: 4px; list-style: none; min-width: 180px; padding: 8px 0; box-shadow: 0 8px 32px rgba(0,0,0,0.3); z-index: 200; }
-    .has-dropdown:hover .dropdown-menu, .has-dropdown:focus-within .dropdown-menu { display: block; }
+    .has-dropdown:hover .dropdown-menu, .has-dropdown:focus-within .dropdown-menu, .has-dropdown.open .dropdown-menu { display: block; }
     .has-dropdown:hover .arrow { transform: rotate(180deg); }
     .dropdown-menu li a { display: block; padding: 10px 20px; color: #fff; text-decoration: none; font-size: 13px; }
     .dropdown-menu li a:hover { background: rgba(255,255,255,0.1); }
@@ -29,7 +29,7 @@
     /* HERO */
     .page-hero {
       margin-top: 70px; height: 220px;
-      background-image: url('/sgpnyc/images/site/statue-of-liberty.jpg');
+      background-image: url('/images/site/statue-of-liberty.jpg');
       background-size: cover; background-position: center top;
       display: flex; align-items: center; justify-content: center; position: relative;
     }
@@ -112,23 +112,21 @@
 <body>
 
 <nav>
-  <a class="nav-logo" href="/sgpnyc/"><img src="/sgpnyc/images/site/sgpGlobe.webp" alt="SGP International" /></a>
+  <a class="nav-logo" href="/"><img src="/images/site/sgpGlobe.webp" alt="SGP International" /></a>
   <ul class="nav-links">
-    <li><a href="/sgpnyc/">Home</a></li>
+    <li><a href="/">Home</a></li>
     <li class="has-dropdown">
       <button class="dropdown-btn">SGP International <span class="arrow">&#8964;</span></button>
       <ul class="dropdown-menu">
-        <li><a href="/sgpnyc/abt/">About SGP</a></li>
-        <li><a href="/sgpnyc/services/">Services</a></li>
-        <li><a href="/sgpnyc/products/">Products</a></li>
-        <li><a href="/sgpnyc/success/">Success Stories</a></li>
-        <li><a href="/sgpnyc/partners/">Customers</a></li>
-        <li><a href="/sgpnyc/new-page/">Personal Paper</a></li>
+        <li><a href="/abt/">About SGP</a></li>
+        <li><a href="/services/">Services</a></li>
+        <li><a href="/products/">Products</a></li>
+        <li><a href="/success/">Success Stories</a></li>
+        <li><a href="/partners/">Customers</a></li>
       </ul>
     </li>
-    <li><a href="/sgpnyc/blog/">Blog</a></li>
-    <li><a href="/sgpnyc/games/">Games</a></li>
-    <li><a href="/sgpnyc/#contact" class="nav-cta">Contact</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/#contact" class="nav-cta">Contact</a></li>
   </ul>
 </nav>
 
@@ -139,7 +137,7 @@
 <div class="content">
 
   <div class="sgp-logo-lockup">
-    <img src="/sgpnyc/images/site/sgpGlobe.webp" alt="SGP International" />
+    <img src="/images/site/sgpGlobe.webp" alt="SGP International" />
     <div class="sgp-tagline">0010–0011</div>
   </div>
 
@@ -168,22 +166,22 @@
 
   <div class="products-grid">
     <div class="product-card">
-      <img src="/sgpnyc/images/site/DOX_clean.png" alt="DOX" />
+      <img src="/images/site/DOX_clean.png" alt="DOX" />
       <h4>Document Compliance System</h4>
       <p>DOX is designed to efficiently generate, track and maintain all document, covenant and tickler requirements. The system mitigates risk and provides confidence to auditors and rating agencies through automation.</p>
     </div>
     <div class="product-card">
-      <img src="/sgpnyc/images/site/REDSfinal.png" alt="REDS" />
+      <img src="/images/site/REDSfinal.png" alt="REDS" />
       <h4>Real Estate Portfolio System</h4>
       <p>REDS oversees the running of real estate loan portfolios. Deals are tracked from approval through expiration. The window-based operating memorandums, escrow administration and on-demand reporting allow for oversight and control.</p>
     </div>
     <div class="product-card">
-      <img src="/sgpnyc/images/site/CentralDB_Logo_final.png" alt="CentralDB" />
+      <img src="/images/site/CentralDB_Logo_final.png" alt="CentralDB" />
       <h4>Data Warehouse Manager</h4>
       <p>Centralized report management with role-based access control, automated scheduling, and Power BI integration for dynamic dashboards and reporting.</p>
     </div>
     <div class="product-card">
-      <img src="/sgpnyc/images/site/workflow_logo.png" alt="Workflow365" />
+      <img src="/images/site/workflow_logo.png" alt="Workflow365" />
       <h4>Process Management</h4>
       <p>Customizable workflows with 4-eye approvals, real-time tracking, and intuitive reporting to streamline and automate your business processes.</p>
     </div>
@@ -192,5 +190,19 @@
 </div>
 
 <footer><p>©SGP International</p></footer>
+<script>
+  document.querySelectorAll('.dropdown-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const li = this.closest('.has-dropdown');
+      const isOpen = li.classList.contains('open');
+      document.querySelectorAll('.has-dropdown.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) li.classList.add('open');
+    });
+  });
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.has-dropdown.open').forEach(el => el.classList.remove('open'));
+  });
+</script>
 </body>
 </html>

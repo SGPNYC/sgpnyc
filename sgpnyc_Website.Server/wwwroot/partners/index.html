@@ -21,7 +21,7 @@
     .dropdown-btn { background: none; border: none; color: #fff; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; }
     .arrow { font-size: 12px; transition: transform 0.2s; display: inline-block; }
     .dropdown-menu { display: none; position: absolute; top: calc(100% + 16px); left: 0; background: rgba(20,20,20,0.96); border-radius: 4px; list-style: none; min-width: 180px; padding: 8px 0; box-shadow: 0 8px 32px rgba(0,0,0,0.3); z-index: 200; }
-    .has-dropdown:hover .dropdown-menu, .has-dropdown:focus-within .dropdown-menu { display: block; }
+    .has-dropdown:hover .dropdown-menu, .has-dropdown:focus-within .dropdown-menu, .has-dropdown.open .dropdown-menu { display: block; }
     .has-dropdown:hover .arrow { transform: rotate(180deg); }
     .dropdown-menu li a { display: block; padding: 10px 20px; color: #fff; text-decoration: none; font-size: 13px; }
     .dropdown-menu li a:hover { background: rgba(255,255,255,0.1); }
@@ -70,23 +70,21 @@
 <body>
 
 <nav>
-  <a class="nav-logo" href="/sgpnyc/"><img src="/sgpnyc/images/site/sgpGlobe.webp" alt="SGP International" /></a>
+  <a class="nav-logo" href="/"><img src="/images/site/sgpGlobe.webp" alt="SGP International" /></a>
   <ul class="nav-links">
-    <li><a href="/sgpnyc/">Home</a></li>
+    <li><a href="/">Home</a></li>
     <li class="has-dropdown">
       <button class="dropdown-btn">SGP International <span class="arrow">&#8964;</span></button>
       <ul class="dropdown-menu">
-        <li><a href="/sgpnyc/abt/">About SGP</a></li>
-        <li><a href="/sgpnyc/services/">Services</a></li>
-        <li><a href="/sgpnyc/products/">Products</a></li>
-        <li><a href="/sgpnyc/success/">Success Stories</a></li>
-        <li><a href="/sgpnyc/partners/">Customers</a></li>
-        <li><a href="/sgpnyc/new-page/">Personal Paper</a></li>
+        <li><a href="/abt/">About SGP</a></li>
+        <li><a href="/services/">Services</a></li>
+        <li><a href="/products/">Products</a></li>
+        <li><a href="/success/">Success Stories</a></li>
+        <li><a href="/partners/">Customers</a></li>
       </ul>
     </li>
-    <li><a href="/sgpnyc/blog/">Blog</a></li>
-    <li><a href="/sgpnyc/games/">Games</a></li>
-    <li><a href="/sgpnyc/#contact" class="nav-cta">Contact</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/#contact" class="nav-cta">Contact</a></li>
   </ul>
 </nav>
 
@@ -131,56 +129,70 @@
   </div>
 
   <div class="logo-grid">
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/windup_Records_Logo_Trans.png" alt="Wind-up Records" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/Aareal_Bank_logo_Trans.png" alt="Aareal Bank" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/rabobank_Logo_Trans.png" alt="Rabobank" /></div>
+    <div class="logo-cell"><img src="/images/logos/windup_Records_Logo_Trans.png" alt="Wind-up Records" /></div>
+    <div class="logo-cell"><img src="/images/logos/Aareal_Bank_logo_Trans.png" alt="Aareal Bank" /></div>
+    <div class="logo-cell"><img src="/images/logos/rabobank_Logo_Trans.png" alt="Rabobank" /></div>
     <div class="logo-cell"><span>Juice</span></div>
     <div class="logo-cell"><span>Aerospace</span></div>
     <div class="logo-cell"><span>PB Capital</span></div>
     <div class="logo-cell"><span>IVI Real Estate</span></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/ViART_Logo_Trans.png" alt="ViART" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/maarifa_education_Logo_Trans.png" alt="Maarifa Education" /></div>
+    <div class="logo-cell"><img src="/images/logos/ViART_Logo_Trans.png" alt="ViART" /></div>
+    <div class="logo-cell"><img src="/images/logos/maarifa_education_Logo_Trans.png" alt="Maarifa Education" /></div>
     <div class="logo-cell"><span>Lincoln Center Theater</span></div>
     <div class="logo-cell"><span>ICBC</span></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/TarryTown_SchoolFoundation_Logo.png" alt="Tarrytown Foundation" /></div>
+    <div class="logo-cell"><img src="/images/logos/TarryTown_SchoolFoundation_Logo.png" alt="Tarrytown Foundation" /></div>
     <div class="logo-cell"><span>Warnaco</span></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/HSH_Nordbank_Logo_Trans.png" alt="HSH Nordbank" /></div>
+    <div class="logo-cell"><img src="/images/logos/HSH_Nordbank_Logo_Trans.png" alt="HSH Nordbank" /></div>
     <div class="logo-cell"><span>Ross Computer Systems</span></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/Maidenform_Logo_Trans.png" alt="Maidenform" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/Allianz_Logo_Trans.png" alt="Allianz" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/ClarkTransfer_Logo_Trans.png" alt="Clark Transfer" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/Hypo_Real_Estate_Logo_Trans.png" alt="Hypo Real Estate" /></div>
+    <div class="logo-cell"><img src="/images/logos/Maidenform_Logo_Trans.png" alt="Maidenform" /></div>
+    <div class="logo-cell"><img src="/images/logos/Allianz_Logo_Trans.png" alt="Allianz" /></div>
+    <div class="logo-cell"><img src="/images/logos/ClarkTransfer_Logo_Trans.png" alt="Clark Transfer" /></div>
+    <div class="logo-cell"><img src="/images/logos/Hypo_Real_Estate_Logo_Trans.png" alt="Hypo Real Estate" /></div>
     <div class="logo-cell"><span>Group M</span></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/Bayernlb_Trans.png" alt="Bayern LB" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/nationstar_mortgage_logo_Trans.webp" alt="Nationstar" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/HVB_Group_Trans.png" alt="HVB Group" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/Wella_logo_Trans.png" alt="Wella" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/NYU_Langone_Trans.png" alt="NYU Langone" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/NYU_Langone.jpg" alt="NYU" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/Depfa_Bank_Logo_Trans.png" alt="DEPFA Bank" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/Nord_LB_logo_Trans.png" alt="Deutsche/Hypo Nord LB" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/Emigrant_Bank_Logo_trans.png" alt="Emigrant Realty Finance" /></div>
+    <div class="logo-cell"><img src="/images/logos/Bayernlb_Trans.png" alt="Bayern LB" /></div>
+    <div class="logo-cell"><img src="/images/logos/nationstar_mortgage_logo_Trans.webp" alt="Nationstar" /></div>
+    <div class="logo-cell"><img src="/images/logos/HVB_Group_Trans.png" alt="HVB Group" /></div>
+    <div class="logo-cell"><img src="/images/logos/Wella_logo_Trans.png" alt="Wella" /></div>
+    <div class="logo-cell"><img src="/images/logos/NYU_Langone_Trans.png" alt="NYU Langone" /></div>
+    <div class="logo-cell"><img src="/images/logos/NYU_Langone.jpg" alt="NYU" /></div>
+    <div class="logo-cell"><img src="/images/logos/Depfa_Bank_Logo_Trans.png" alt="DEPFA Bank" /></div>
+    <div class="logo-cell"><img src="/images/logos/Nord_LB_logo_Trans.png" alt="Deutsche/Hypo Nord LB" /></div>
+    <div class="logo-cell"><img src="/images/logos/Emigrant_Bank_Logo_trans.png" alt="Emigrant Realty Finance" /></div>
     <div class="logo-cell"><span>TIAA-CREF</span></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/ACLD_Foundation_Logo_Trans.png" alt="ACLD" /></div>
+    <div class="logo-cell"><img src="/images/logos/ACLD_Foundation_Logo_Trans.png" alt="ACLD" /></div>
     <div class="logo-cell"><span>Havas Media</span></div>
     <div class="logo-cell"><span>Playboy</span></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/Thyssenkrupp_AG_Logo.png" alt="ThyssenKrupp" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/rytech_Logo.png" alt="Rytech" /></div>
+    <div class="logo-cell"><img src="/images/logos/Thyssenkrupp_AG_Logo.png" alt="ThyssenKrupp" /></div>
+    <div class="logo-cell"><img src="/images/logos/rytech_Logo.png" alt="Rytech" /></div>
     <div class="logo-cell"><span>AIMS</span></div>
     <div class="logo-cell"><span>Airline Container Service</span></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/uchicago_Logo_Trans.png" alt="U of Chicago" /></div>
+    <div class="logo-cell"><img src="/images/logos/uchicago_Logo_Trans.png" alt="U of Chicago" /></div>
     <div class="logo-cell"><span>Pfizer</span></div>
     <div class="logo-cell"><span>Promontech</span></div>
     <div class="logo-cell"><span>Barclays</span></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/Aareal_Bank_logo_Trans.png" alt="Aareal" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/mr_Cooper_Rocket_Logo_Trans.png" alt="Mr. Cooper Rocket" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/Nord_LB_logo_Trans.png" alt="NORD/LB" /></div>
-    <div class="logo-cell"><img src="/sgpnyc/images/logos/WiseMusic_Logo_Trans.png" alt="Wise Music Group" /></div>
+    <div class="logo-cell"><img src="/images/logos/Aareal_Bank_logo_Trans.png" alt="Aareal" /></div>
+    <div class="logo-cell"><img src="/images/logos/mr_Cooper_Rocket_Logo_Trans.png" alt="Mr. Cooper Rocket" /></div>
+    <div class="logo-cell"><img src="/images/logos/Nord_LB_logo_Trans.png" alt="NORD/LB" /></div>
+    <div class="logo-cell"><img src="/images/logos/WiseMusic_Logo_Trans.png" alt="Wise Music Group" /></div>
   </div>
 </div>
 </div>
 </div>
 
 <footer><p>©SGP International</p></footer>
+<script>
+  document.querySelectorAll('.dropdown-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const li = this.closest('.has-dropdown');
+      const isOpen = li.classList.contains('open');
+      document.querySelectorAll('.has-dropdown.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) li.classList.add('open');
+    });
+  });
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.has-dropdown.open').forEach(el => el.classList.remove('open'));
+  });
+</script>
 </body>
 </html>

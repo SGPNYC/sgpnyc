@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "sgpnyc",
+      "runtimeExecutable": "dotnet",
+      "runtimeArgs": ["run", "--project", "sgpnyc_Website.Server/sgpnyc_Website.Server.csproj", "--urls", "http://localhost:5180"],
+      "port": 5180
+    }
+  ]
+}
