@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog &ndash; SGP International</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Manrope:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --blue-heading: #1d4e7a; --green: #3d8a4e; --green-hover: #2e6e3c; }
+    body { font-family: 'DM Sans', sans-serif; background: #fff; color: #1a1a1a; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 70px; background: rgba(0,0,0,0.22); backdrop-filter: blur(4px); }
+    .nav-logo img { height: 64px; }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a { color: #fff; text-decoration: none; font-size: 17px; transition: opacity 0.2s; }
+    .nav-links a:hover { opacity: 0.7; }
+    .nav-cta { background: var(--green); color: #fff !important; padding: 10px 22px; border-radius: 30px; font-weight: 500 !important; }
+    .nav-cta:hover { background: var(--green-hover) !important; opacity: 1 !important; }
+    .has-dropdown { position: relative; }
+    .dropdown-btn { background: none; border: none; color: #fff; font-size: 17px; font-family: 'DM Sans', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; }
+    .arrow { font-size: 12px; transition: transform 0.2s; display: inline-block; }
+    .dropdown-menu { display: none; position: absolute; top: 100%; padding-top: 8px; left: 0; background: rgba(20,20,20,0.96); border-radius: 4px; list-style: none; min-width: 180px; padding: 8px 0; box-shadow: 0 8px 32px rgba(0,0,0,0.3); z-index: 200; }
+    .has-dropdown:hover .dropdown-menu, .has-dropdown:focus-within .dropdown-menu, .has-dropdown.open .dropdown-menu { display: block; }
+    .has-dropdown:hover .arrow { transform: rotate(180deg); }
+    .dropdown-menu li a { display: block; padding: 10px 20px; color: #fff; text-decoration: none; font-size: 17px; }
+    .dropdown-menu li a:hover { background: rgba(255,255,255,0.1); }
+
+    .blog-hero { margin-top: 0; height: 220px; display: flex; align-items: center; justify-content: center; background: #8aaabb; position: relative; overflow: hidden; }
+    .blog-hero-title { font-family: 'Manrope', sans-serif; font-size: clamp(36px, 5vw, 60px); font-weight: 700; letter-spacing: 0.15em; color: #fff; position: relative; z-index: 2; }
+    .blog-hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 55px; background: #fff; clip-path: ellipse(55% 100% at 30% 100%); }
+
+    .blog-container { max-width: 1200px; margin: 0 auto; padding: 60px 30px 100px; }
+
+    .post { display: grid; grid-template-columns: 1fr 340px; gap: 40px; align-items: start; margin-bottom: 52px; padding-bottom: 52px; border-bottom: 1px solid #e8e8e8; }
+    .post:last-child { border-bottom: none; }
+
+    .post-date { font-size: 14px; color: #999; margin-bottom: 10px; letter-spacing: 0.03em; }
+    .post-title { font-family: 'Manrope', sans-serif; font-size: clamp(20px, 2vw, 28px); font-weight: 700; color: var(--blue-heading); margin-bottom: 14px; line-height: 1.3; }
+    .post-body p { font-size: 17px; line-height: 1.75; color: #666; margin-bottom: 10px; }
+    .post-link { display: inline-block; margin-top: 10px; font-size: 17px; color: var(--blue-heading); text-decoration: underline; }
+
+    .post-image-col img { width: 100%; border-radius: 4px; aspect-ratio: 4/3; object-fit: cover; display: block; cursor: pointer; }
+
+    .pagination { display: flex; justify-content: space-between; padding: 40px 0 20px; }
+    .pagination a { font-family: 'DM Sans', sans-serif; font-size: 17px; color: var(--blue-heading); text-decoration: none; }
+    .pagination a:hover { text-decoration: underline; }
+
+    footer { background: #1a1a1a; color: #888; text-align: center; padding: 24px 40px; font-size: 13px; }
+
+    /* Lightbox */
+    .lightbox-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center; }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 4px; }
+    .lightbox-close { position: absolute; top: 20px; right: 28px; font-size: 36px; color: #fff; cursor: pointer; background: rgba(0,0,0,0.5); border: none; line-height: 1; padding: 4px 12px; border-radius: 4px; }
+
+    @media (max-width: 700px) {
+      .post { grid-template-columns: 1fr; }
+      .post-image-col { order: -1; }
+      .blog-container { padding: 40px 24px 60px; }
+      nav { padding: 0 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/"><img src="/images/site/sgpGlobe.webp" alt="SGP International" /></a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li class="has-dropdown">
+      <button class="dropdown-btn">SGP International <span class="arrow">&#8964;</span></button>
+      <ul class="dropdown-menu">
+        <li><a href="/abt/">About SGP</a></li>
+        <li><a href="/services/">Services</a></li>
+        <li><a href="/products/">Products</a></li>
+        <li><a href="/success/">Success Stories</a></li>
+        <li><a href="/partners/">Customers</a></li>
+        <li><a href="/new-page/">Personal Paper</a></li>
+      </ul>
+    </li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="blog-hero">
+  <h1 class="blog-hero-title">BLOG</h1>
+</div>
+
+<div class="blog-container">
+
+  <article class="post">
+    <div class="post-content">
+      <p class="post-date">6/14/22</p>
+      <h2 class="post-title">No, Google&rsquo;s AI Is Not Sentient</h2>
+      <div class="post-body">
+        <p>&ldquo;Tech companies are constantly hyping the capabilities of their ever-improving artificial intelligence.&rdquo;</p>
+        <p>&ldquo;One Google engineer said that after hundreds of interactions with a cutting edge, unreleased AI system called LaMDA, he believed the program had achieved a level of consciousness.&rdquo;</p>
+        <p>&ldquo;Many in the AI community pushed back at the engineer&rsquo;s claims, while some pointed out that his tale highlights how the technology can lead people to assign human attributes to it.&rdquo;</p>
+        <a class="post-link" href="https://www.cnn.com/2022/06/13/tech/google-ai-not-sentient/index.html" target="_blank" rel="noopener">Click here for the full article</a>
+      </div>
+    </div>
+    <div class="post-image-col">
+      <img src="/images/blog/sq_c6adb4f9_Capture.PNG" alt="Google LaMDA AI sentient debate" />
+    </div>
+  </article>
+
+  <article class="post">
+    <div class="post-content">
+      <p class="post-date">6/9/22</p>
+      <h2 class="post-title">How AI Will Change the Future of Search Engine Optimization</h2>
+      <div class="post-body">
+        <p>&ldquo;As artificial intelligence (AI) becomes more sophisticated, search engine optimization will have to adapt. AI can already analyze data at a rate that humans can&rsquo;t, so it&rsquo;s only a matter of time until it starts to dominate SEO strategies.&rdquo;</p>
+        <p>&ldquo;The SEO industry is always in a state of flux. Google is constantly changing its algorithms, and new technologies are emerging all the time. Ever since Google&rsquo;s announcement in 2015 that they would be using RankBrain, an artificial intelligence (AI) system, to help process search results, the SEO community has been discussing the impact that AI will have on the industry.&rdquo;</p>
+        <p>&ldquo;RankBrain is not the only AI system that Google is using. In 2017, they announced that they were also using machine learning to fight spam.&rdquo;</p>
+        <p>&ldquo;Since Google&rsquo;s Search Liaison, Danny Sullivan, confirmed in 2019 that RankBrain was now being used for every search query, several companies have started to experiment with AI and machine learning to try and get ahead of the curve. This gave rise to a whole new plethora of AI-based SEO tools. Some of the prominent ways in which AI tools have proven their effectiveness are SEO keyword research, content creation, traffic and site growth analysis, voice search, and SEO workflows.&rdquo;</p>
+        <a class="post-link" href="https://searchengineland.com/how-ai-will-change-the-future-of-search-engine-optimization-385543" target="_blank" rel="noopener">Click here for the full article</a>
+      </div>
+    </div>
+    <div class="post-image-col">
+      <img src="/images/blog/sq_abdde656_10.PNG" alt="AI and SEO future" />
+    </div>
+  </article>
+
+  <article class="post">
+    <div class="post-content">
+      <p class="post-date">6/7/22</p>
+      <h2 class="post-title">AI-Driven Robot Boat Mayflower Crosses Atlantic Ocean</h2>
+      <div class="post-body">
+        <p>&ldquo;A crewless ship designed to recreate the Mayflower&rsquo;s historic journey across the Atlantic 400 years ago has crossed the ocean, project bosses have said.&rdquo;</p>
+        <p>&ldquo;The Mayflower Autonomous Ship (MAS) completed a 2,700-mile (4,400km) trip from Plymouth in the UK to Halifax in Nova Scotia, Canada, on Sunday.&rdquo;</p>
+        <p>&ldquo;It had been due to go to Massachusetts in the USA, but was diverted to Canada to investigate issues it had at sea.&rdquo;</p>
+        <p>&ldquo;The craft was likely to stay in Halifax for a week or two, managers said.&rdquo;</p>
+        <p>&ldquo;The 50ft (15m) long solar-powered trimaran is capable of speeds of up to 10 knots (20km/h) and was navigated by on-board artificial intelligence (AI) created by IBM with information from six cameras and 50 sensors.&rdquo;</p>
+        <p>&ldquo;It was created to show the development of technology in the centuries since the Pilgrim Fathers set sail for the New World, bosses said.&rdquo;</p>
+        <a class="post-link" href="https://www.bbc.com/news/uk-england-devon-61710706" target="_blank" rel="noopener">Click here for the full article</a>
+      </div>
+    </div>
+    <div class="post-image-col">
+      <img src="/images/blog/sq_6eb3fd95_888.PNG" alt="Mayflower autonomous AI ship Atlantic" />
+    </div>
+  </article>
+
+  <article class="post">
+    <div class="post-content">
+      <p class="post-date">6/6/22</p>
+      <h2 class="post-title">Artificial General Intelligence Is Not as Imminent as You Might Think</h2>
+      <div class="post-body">
+        <p>&ldquo;To the average person, it must seem as if the field of artificial intelligence is making immense progress.&rdquo;</p>
+        <p>&ldquo;Don&rsquo;t be fooled. Machines may someday be as smart as people, and perhaps even smarter, but the game is far from over. There is still an immense amount of work to be done in making machines that truly can comprehend and reason about the world around them. What we really need right now is less posturing and more basic research.&rdquo;</p>
+        <p>&ldquo;To be sure, there are indeed some ways in which AI truly is making progress&mdash;synthetic images look more and more realistic, and speech recognition can often work in noisy environments&mdash;but we are still light-years away from general purpose, human-level AI that can understand the true meanings of articles and videos, or deal with unexpected obstacles and interruptions. We are still stuck on precisely the same challenges that academic scientists (including myself) having been pointing out for years: getting AI to be reliable and getting it to cope with unusual circumstances.&rdquo;</p>
+        <a class="post-link" href="https://www.scientificamerican.com/article/artificial-general-intelligence-is-not-as-imminent-as-you-might-think/" target="_blank" rel="noopener">Click here for the full article</a>
+      </div>
+    </div>
+    <div class="post-image-col">
+      <img src="/images/blog/sq_32a708ba_999.PNG" alt="AGI artificial general intelligence" />
+    </div>
+  </article>
+
+  <article class="post">
+    <div class="post-content">
+      <p class="post-date">6/1/22</p>
+      <h2 class="post-title">China Floats First-Ever AI-Powered Drone Mothership</h2>
+      <div class="post-body">
+        <p>&ldquo;China has launched the world&rsquo;s first artificial intelligence-operated drone carrier, an unmanned maritime mothership that can be used for maritime research, intelligence-gathering and even potentially repelling enemy drone swarms.&rdquo;</p>
+        <p>&ldquo;The autonomous ship, known as Zhu Hai Yun, was launched on May 18 in Guangzhou and travels at a top speed of 18 knots.&rdquo;</p>
+        <p>&ldquo;Most of the 88.5-meter-long ship is an open deck for storing, launching and recovering flying drones.&rdquo;</p>
+        <p>&ldquo;It is also equipped with launch and recovery equipment for aquatic drones. Moreover, the ship&rsquo;s drones are reportedly capable of forming a network with which to observe targets.&rdquo;</p>
+        <p>&ldquo;Its AI operating system allows it to carry 50 flying, surface and submersible drones that can launch and recover autonomously.&rdquo;</p>
+        <p>&ldquo;According to the Chinese state-run Science and Technology Daily, the ship will be deployed to carry out marine scientific research and observation and serve various roles in marine disaster prevention and mitigation, environmental monitoring and offshore wind farm maintenance.&rdquo;</p>
+        <a class="post-link" href="https://asiatimes.com/2022/06/china-floats-first-ever-ai-powered-drone-mothership/" target="_blank" rel="noopener">Click here for the full article</a>
+      </div>
+    </div>
+    <div class="post-image-col">
+      <img src="/images/blog/sq_50e2b077_p.PNG" alt="China AI drone mothership" />
+    </div>
+  </article>
+
+  <article class="post">
+    <div class="post-content">
+      <p class="post-date">5/25/22</p>
+      <h2 class="post-title">Police VR Training: Empathy Machine or Expensive Distraction?</h2>
+      <div class="post-body">
+        <p>&ldquo;&lsquo;I just wish I could save them all,&rsquo; my virtual reality police officer avatar says as he gazes upon a young woman&rsquo;s abandoned corpse lying beside a back-alley dumpster.&rdquo;</p>
+        <p>&ldquo;The company, which created the Taser and now claims the lion&rsquo;s share of the cop body camera market, believes the techniques practiced in these VR worlds can lead to improved critical thinking, de-escalation skills, and, eventually, decreased violence.&rdquo;</p>
+        <p>&ldquo;Experts on policing and privacy who spoke with Gizmodo did not share Chin&rsquo;s rosy outlook. They expressed concerns that Axon&rsquo;s bite-sized approach to VR training would limit any empathy police officers could build.&rdquo;</p>
+        <a class="post-link" href="https://gizmodo.com/axon-police-vr-virtual-reality-training-empathy-taser-b-1848970313" target="_blank" rel="noopener">Click here for the full article</a>
+      </div>
+    </div>
+    <div class="post-image-col">
+      <img src="/images/blog/sq_ca429423_88.PNG" alt="Police VR training" />
+    </div>
+  </article>
+
+  <article class="post">
+    <div class="post-content">
+      <p class="post-date">5/24/22</p>
+      <h2 class="post-title">How AI Makes Developers&rsquo; Lives Easier, and Helps Everybody Learn to Develop Software</h2>
+      <div class="post-body">
+        <p>&ldquo;Ever since Ada Lovelace, a polymath often considered the first computer programmer, proposed in 1843 using holes punched into cards to solve mathematical equations on a never-built mechanical computer, software developers have been translating their solutions to problems into step-by-step instructions that computers can understand.&rdquo;</p>
+        <p>&ldquo;That&rsquo;s now changing, according to Kevin Scott, Microsoft&rsquo;s chief technology officer.&rdquo;</p>
+        <p>&ldquo;Today, AI-powered software development tools are allowing people to build software solutions using the same language that they use when they talk to other people. These AI-powered tools translate natural language into the programming languages that computers understand.&rdquo;</p>
+        <p>&ldquo;&lsquo;That allows you, as a developer, to have an intent to accomplish something in your head that you can express in natural language and this technology translates it into code that achieves the intent you have,&rsquo; Scott said. &lsquo;That&rsquo;s a fundamentally different way of thinking about development than we&rsquo;ve had since the beginning of software.&rsquo;&rdquo;</p>
+        <p>&ldquo;This paradigm shift is driven by Codex, a machine learning model from AI research and development company OpenAI that can translate natural language commands into code in more than a dozen programming languages.&rdquo;</p>
+        <a class="post-link" href="https://blogs.microsoft.com/ai/how-ai-makes-developers-lives-easier-and-helps-everybody-learn-to-develop-software/" target="_blank" rel="noopener">Click here for the full article</a>
+      </div>
+    </div>
+    <div class="post-image-col">
+      <img src="/images/blog/sq_0f274b7a_96.PNG" alt="AI makes software development easier" />
+    </div>
+  </article>
+
+  <article class="post">
+    <div class="post-content">
+      <p class="post-date">5/19/22</p>
+      <h2 class="post-title">You Can Practice for a Job Interview With Google AI</h2>
+      <div class="post-body">
+        <p>&ldquo;Google is betting that algorithms can get you ready for a job interview. The company launched an Interview Warmup tool that uses AI to help you prepare for interviews across various roles.&rdquo;</p>
+        <p>&ldquo;The tool presents typical questions and analyzes responses for improvement areas. You&rsquo;ll know when you overuse certain words, or if you need to spend more time on a given subject. The feature is currently available only in the US.&rdquo;</p>
+        <a class="post-link" href="https://www.engadget.com/google-ai-job-interview-warmup-141504831.html" target="_blank" rel="noopener">Click here for the full article</a>
+      </div>
+    </div>
+    <div class="post-image-col">
+      <img src="/images/blog/sq_b39a8274_97.PNG" alt="Google AI job interview practice" />
+    </div>
+  </article>
+
+  <article class="post">
+    <div class="post-content">
+      <p class="post-date">5/14/22</p>
+      <h2 class="post-title">Pixel by Pixel: How Google Is Trying to Focus and Ship the Future</h2>
+      <div class="post-body">
+        <p>&ldquo;At I/O 2019, onstage at the Shoreline Auditorium in Mountain View, California, Rick Osterloh, Google&rsquo;s SVP of devices and services, laid out a new vision for the future of computing.&rdquo;</p>
+        <p>&ldquo;&lsquo;In the mobile era, smartphones changed the world. It&rsquo;s super useful to have a powerful computer wherever you are.&rsquo;&rdquo;</p>
+        <p>&ldquo;&lsquo;Your devices work together with services and AI, so help is anywhere you want it, and it&rsquo;s fluid. The technology just fades into the background when you don&rsquo;t need it. So the devices aren&rsquo;t the center of the system&mdash;you are.&rsquo;&rdquo;</p>
+        <p>&ldquo;He called the idea &lsquo;ambient computing,&rsquo; nodding to a concept that has floated around Amazon, Apple, and other companies over the last few years. The ambient computer Google imagines is more like a guardian angel or a super-sentient Star Wars robot. It&rsquo;s an engine that understands you completely and follows you around, churning through and solving for all the stuff in your life.&rdquo;</p>
+        <a class="post-link" href="https://www.theverge.com/23065820/google-io-ambient-computing-pixel-android-phones-watches-software" target="_blank" rel="noopener">Click here for the full article</a>
+      </div>
+    </div>
+    <div class="post-image-col">
+      <img src="/images/blog/sq_a6805a62_98.PNG" alt="Google Pixel ambient computing future" />
+    </div>
+  </article>
+
+  <article class="post">
+    <div class="post-content">
+      <p class="post-date">5/12/22</p>
+      <h2 class="post-title">Google Will Let You Talk to Assistant on the Nest Hub Max Just by Looking at the Screen</h2>
+      <div class="post-body">
+        <p>&ldquo;The Nest Hub Max&rsquo;s latest updates let you use Google Assistant without having to say &lsquo;Hey Google&rsquo; ahead of every request.&rdquo;</p>
+        <p>&ldquo;One of the ways that&rsquo;ll work is with a new feature Google calls &lsquo;Look and Talk.&rsquo; Once it&rsquo;s turned on, you&rsquo;ll be able to look at the Nest Hub Max&rsquo;s display and ask a question, no &lsquo;Hey Google&rsquo; prompt required. The feature could be a handy way to save some time when you&rsquo;re already looking at a Nest Hub Max&rsquo;s screen&mdash;I could see it being a useful way to ask for recipes.&rdquo;</p>
+        <p>&ldquo;Look and Talk is an opt-in feature, and you&rsquo;ll need to have both Google&rsquo;s Face Match and Voice Match technologies turned on to use it, according to a blog post from Sissie Hsiao, Google&rsquo;s vice president of Assistant. Audio and video from the Look and Talk interactions will be processed on the device. Look and Talk will be available first on the Nest Hub Max in the US.&rdquo;</p>
+        <a class="post-link" href="https://www.theverge.com/2022/5/11/23064610/google-assistant-nest-hub-max-features-io" target="_blank" rel="noopener">Click here for the full article</a>
+      </div>
+    </div>
+    <div class="post-image-col">
+      <img src="/images/blog/sq_c7f16f17_99.PNG" alt="Google Nest Hub Max look and talk" />
+    </div>
+  </article>
+
+</div>
+
+<div class="blog-container pagination">
+  <a href="/blog-2/">&lsaquo; Newer Posts</a>
+</div>
+
+<footer><p>&copy;SGP International</p></footer>
+
+<div class="lightbox-overlay" id="lightbox">
+  <button class="lightbox-close" id="lightbox-close">&#x2715;</button>
+  <img class="lightbox-img" id="lightbox-img" src="" alt="" />
+</div>
+
+<script>
+  document.querySelectorAll('.dropdown-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const li = this.closest('.has-dropdown');
+      const isOpen = li.classList.contains('open');
+      document.querySelectorAll('.has-dropdown.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) li.classList.add('open');
+    });
+  });
+  document.addEventListener('click', () => document.querySelectorAll('.has-dropdown.open').forEach(el => el.classList.remove('open')));
+
+  const overlay = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  document.querySelectorAll('.post-image-col img').forEach(img => {
+    img.addEventListener('click', () => { lbImg.src = img.src; lbImg.alt = img.alt; overlay.classList.add('active'); });
+  });
+  document.getElementById('lightbox-close').addEventListener('click', () => overlay.classList.remove('active'));
+  overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('active'); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') overlay.classList.remove('active'); });
+</script>
+</body>
+</html>

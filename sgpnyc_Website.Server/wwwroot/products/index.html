@@ -4,51 +4,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Products — SGP International</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Manrope:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --navy: #1a3557; --blue-heading: #1d4e7a; --green: #3d8a4e; --green-hover: #2e6e3c; --bg: #e8e5df; --bg-white: #f4f3f1; --text: #444; --text-dark: #1a1a1a; --border: #d5d2cc; }
     body { font-family: 'DM Sans', sans-serif; background: #fff; color: var(--text-dark); }
 
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 70px; background: rgba(20,20,20,0.88); backdrop-filter: blur(8px); }
-    .nav-logo img { height: 52px; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 70px; background: rgba(0,0,0,0.22); backdrop-filter: blur(4px); }
+    .nav-logo img { height: 64px; }
     .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
-    .nav-links a { color: #fff; text-decoration: none; font-size: 14px; transition: opacity 0.2s; }
+    .nav-links a { color: #fff; text-decoration: none; font-size: 17px; transition: opacity 0.2s; }
     .nav-links a:hover { opacity: 0.7; }
     .nav-cta { background: var(--green) !important; color: #fff !important; padding: 10px 22px; border-radius: 30px; font-weight: 500 !important; }
     .nav-cta:hover { background: var(--green-hover) !important; opacity: 1 !important; }
     .has-dropdown { position: relative; }
-    .dropdown-btn { background: none; border: none; color: #fff; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; }
+    .dropdown-btn { background: none; border: none; color: #fff; font-size: 17px; font-family: 'DM Sans', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; }
     .arrow { font-size: 12px; transition: transform 0.2s; display: inline-block; }
     .dropdown-menu { display: none; position: absolute; top: 100%; padding-top: 8px; left: 0; background: rgba(20,20,20,0.96); border-radius: 4px; list-style: none; min-width: 180px; padding: 8px 0; box-shadow: 0 8px 32px rgba(0,0,0,0.3); z-index: 200; }
     .has-dropdown:hover .dropdown-menu, .has-dropdown:focus-within .dropdown-menu, .has-dropdown.open .dropdown-menu { display: block; }
     .has-dropdown:hover .arrow { transform: rotate(180deg); }
-    .dropdown-menu li a { display: block; padding: 10px 20px; color: #fff; text-decoration: none; font-size: 13px; }
+    .dropdown-menu li a { display: block; padding: 10px 20px; color: #fff; text-decoration: none; font-size: 17px; }
     .dropdown-menu li a:hover { background: rgba(255,255,255,0.1); }
 
-    .page-hero { margin-top: 70px; height: 280px; background-image: url('/images/site/hero-products.jpg'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; position: relative; }
-    .page-hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.5); }
-    .page-hero h1 { position: relative; z-index: 2; font-family: 'DM Sans', sans-serif; font-size: clamp(32px, 5vw, 52px); font-weight: 300; letter-spacing: 0.2em; color: #fff; }
+    .page-hero { margin-top: 0; height: 570px; background-image: url('/images/site/hero-products.jpg'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; position: relative; }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.1); }
+    .page-hero h1 { position: relative; z-index: 2; font-family: 'Manrope', sans-serif; font-size: clamp(36px, 5vw, 60px); font-weight: 700; letter-spacing: 0.15em; color: #fff; }
 
-    .product-section { padding: 80px 60px; }
+    .product-section { padding: 80px 60px; text-align: center; }
     .product-section:nth-child(even) { background: var(--bg); }
     .container { max-width: 1100px; margin: 0 auto; }
-    .product-row { display: grid; grid-template-columns: 1fr 1.4fr; gap: 60px; align-items: center; }
-    .product-row.flip { direction: rtl; }
-    .product-row.flip > * { direction: ltr; }
-
-    .product-logo { width: 80px; height: 80px; object-fit: contain; margin-bottom: 20px; }
-    .product-logo.circle { border-radius: 50%; }
-    .product-name { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 400; color: var(--blue-heading); margin-bottom: 4px; }
-    .product-desc { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); margin-bottom: 24px; }
-    .product-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
-    .product-features li { padding-left: 20px; position: relative; font-size: 15px; color: var(--text); line-height: 1.5; }
-    .product-features li::before { content: '→'; position: absolute; left: 0; color: var(--green); font-size: 13px; }
-    .product-factsheet img { width: 100%; border-radius: 6px; box-shadow: 0 8px 40px rgba(0,0,0,0.14); }
+    .product-factsheet img { max-width: 100%; border-radius: 6px; box-shadow: 0 8px 40px rgba(0,0,0,0.14); }
 
     .legacy-section { padding: 80px 60px; background: var(--bg-white); border-top: 1px solid var(--border); }
     .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; color: var(--green); text-transform: uppercase; margin-bottom: 8px; }
-    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3vw, 40px); font-weight: 400; color: var(--blue-heading); margin-bottom: 48px; }
+    .section-title { font-family: 'Manrope', sans-serif; font-size: clamp(28px, 3vw, 40px); font-weight: 400; color: var(--blue-heading); margin-bottom: 48px; }
     .legacy-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
     .legacy-card { background: #fff; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
     .legacy-card img { width: 100%; max-height: 240px; object-fit: contain; background: var(--bg); padding: 24px; }
@@ -93,21 +82,8 @@
 <!-- DOX -->
 <section class="product-section" id="dox">
   <div class="container">
-    <div class="product-row">
-      <div class="product-info">
-        <img src="/images/site/DOX256_transparent.png" alt="DOX" class="product-logo" />
-        <h2 class="product-name">DOX</h2>
-        <p class="product-desc">Document Compliance System</p>
-        <ul class="product-features">
-          <li>Automated Tracking — Real-time alerts for covenant breaches and compliance requirements</li>
-          <li>Waivers — Manage and approve waiver requests with full oversight</li>
-          <li>Intuitive Reporting — Dynamic dashboards via Microsoft Power BI</li>
-          <li>Auditing — Comprehensive field-by-field audit log by user or date</li>
-        </ul>
-      </div>
-      <div class="product-factsheet">
-        <img src="/images/site/dox.png" alt="DOX fact sheet" />
-      </div>
+    <div class="product-factsheet">
+      <img src="/images/site/dox.png" alt="DOX fact sheet" />
     </div>
   </div>
 </section>
@@ -115,21 +91,8 @@
 <!-- CentralDB -->
 <section class="product-section" id="centraldb">
   <div class="container">
-    <div class="product-row flip">
-      <div class="product-info">
-        <img src="/images/site/CentralDB_logo.png" alt="CentralDB" class="product-logo circle" />
-        <h2 class="product-name">CentralDB</h2>
-        <p class="product-desc">Data Warehouse Manager</p>
-        <ul class="product-features">
-          <li>Centralized Report Management — Single source of truth across all workspaces</li>
-          <li>Role-Based Access Control — Granular permissions per user and department</li>
-          <li>Automated Report Scheduling — Save time with automatic distribution</li>
-          <li>User-Friendly Interface — No technical expertise required</li>
-        </ul>
-      </div>
-      <div class="product-factsheet">
-        <img src="/images/site/CentralDB_FactSheet.png" alt="CentralDB fact sheet" />
-      </div>
+    <div class="product-factsheet">
+      <img src="/images/site/CentralDB_FactSheet.png" alt="CentralDB fact sheet" />
     </div>
   </div>
 </section>
@@ -137,21 +100,8 @@
 <!-- REDS -->
 <section class="product-section" id="reds">
   <div class="container">
-    <div class="product-row">
-      <div class="product-info">
-        <img src="/images/site/REDSfinal.png" alt="REDS" class="product-logo circle" />
-        <h2 class="product-name">REDS</h2>
-        <p class="product-desc">Real Estate Portfolio Management</p>
-        <ul class="product-features">
-          <li>Portfolio Overview — Key metrics and status at a glance</li>
-          <li>Point-In-Time Reporting — Historical snapshots at any past date</li>
-          <li>Customizable Reporting — Flexible templates by asset class or geography</li>
-          <li>Collateral Monitoring — Track LTV ratios and covenant compliance in real time</li>
-        </ul>
-      </div>
-      <div class="product-factsheet">
-        <img src="/images/site/REDS_FactSheet.png" alt="REDS fact sheet" />
-      </div>
+    <div class="product-factsheet">
+      <img src="/images/site/REDS_FactSheet.png" alt="REDS fact sheet" />
     </div>
   </div>
 </section>
@@ -159,21 +109,8 @@
 <!-- Workflow365 -->
 <section class="product-section" id="workflow">
   <div class="container">
-    <div class="product-row flip">
-      <div class="product-info">
-        <img src="/images/site/workflow.png" alt="Workflow365" class="product-logo circle" />
-        <h2 class="product-name">Workflow365</h2>
-        <p class="product-desc">Process Management</p>
-        <ul class="product-features">
-          <li>Customizable Processes — Workflows tailored to your approval process</li>
-          <li>4-Eye Approvals — Dual-control policy on every critical decision</li>
-          <li>Real-Time Tracking — Full visibility across teams and stages</li>
-          <li>Intuitive Reporting — Comprehensive audit trails with a few clicks</li>
-        </ul>
-      </div>
-      <div class="product-factsheet">
-        <img src="/images/site/Workflow365_FactSheet.png" alt="Workflow365 fact sheet" />
-      </div>
+    <div class="product-factsheet">
+      <img src="/images/site/Workflow365_FactSheet.png" alt="Workflow365 fact sheet" />
     </div>
   </div>
 </section>
@@ -187,7 +124,7 @@
       <div class="legacy-card">
         <img src="/images/site/e2do.png" alt="E2DO" />
         <div class="legacy-body">
-          <h3>E2DO</h3>
+          <h3>e2do</h3>
           <p class="legacy-label">Task &amp; Workflow Tracker</p>
           <p>Complex Projects Made Easy. From planning through successful delivery, e2do takes you there.</p>
           <ul class="legacy-features">

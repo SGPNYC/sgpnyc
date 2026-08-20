@@ -7,7 +7,7 @@
   <meta name="description" content="SGP International — Exceptional software engineering since 1987. Systems for Information Management." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -43,8 +43,8 @@
       justify-content: space-between;
       padding: 0 40px;
       height: 70px;
-      background: rgba(20,20,20,0.88);
-      backdrop-filter: blur(8px);
+      background: rgba(0,0,0,0.22);
+      backdrop-filter: blur(4px);
     }
 
     .nav-logo {
@@ -55,7 +55,7 @@
     }
 
     .nav-logo img {
-      height: 38px;
+      height: 64px;
       width: auto;
       filter: grayscale(20%);
     }
@@ -70,7 +70,7 @@
     .nav-links a {
       color: #fff;
       text-decoration: none;
-      font-size: 14px;
+      font-size: 17px;
       font-weight: 400;
       letter-spacing: 0.02em;
       transition: opacity 0.2s;
@@ -86,7 +86,7 @@
       background: none;
       border: none;
       color: #fff;
-      font-size: 14px;
+      font-size: 17px;
       font-family: 'DM Sans', sans-serif;
       font-weight: 400;
       letter-spacing: 0.02em;
@@ -130,7 +130,7 @@
       padding: 10px 20px;
       color: #fff;
       text-decoration: none;
-      font-size: 13px;
+      font-size: 17px;
       transition: background 0.15s;
     }
 
@@ -162,10 +162,10 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background-image: url('/images/site/centralPark.png');
+      background-image: url('/images/site/hero-home.jpg');
       background-size: cover;
       background-position: center;
-      filter: brightness(0.55);
+      filter: brightness(0.72);
     }
 
     .hero-content {
@@ -175,9 +175,9 @@
     }
 
     .hero-content h1 {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Manrope', sans-serif;
       font-size: clamp(42px, 7vw, 88px);
-      font-weight: 300;
+      font-weight: 700;
       letter-spacing: 0.08em;
       line-height: 1.05;
       margin-bottom: 24px;
@@ -198,7 +198,7 @@
       text-decoration: none;
       padding: 14px 36px;
       border-radius: 30px;
-      font-size: 15px;
+      font-size: 17px;
       font-weight: 500;
       transition: background 0.2s, transform 0.2s;
     }
@@ -239,7 +239,7 @@
     }
 
     /* ── SECTIONS COMMON ── */
-    section { padding: 100px 60px; }
+    section { padding: 60px 60px; }
 
     .section-inner {
       max-width: 1200px;
@@ -247,9 +247,9 @@
     }
 
     h2.section-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Manrope', sans-serif;
       font-size: clamp(36px, 4vw, 54px);
-      font-weight: 400;
+      font-weight: 700;
       color: var(--blue-heading);
       margin-bottom: 60px;
     }
@@ -272,7 +272,7 @@
     }
 
     .about-text p {
-      font-size: 16px;
+      font-size: 18px;
       line-height: 1.75;
       color: var(--text-mid);
       margin-bottom: 20px;
@@ -285,7 +285,7 @@
     }
 
     .ms-badge {
-      font-size: 15px;
+      font-size: 22px;
       font-weight: 700;
       color: var(--navy);
       text-decoration: underline;
@@ -301,7 +301,7 @@
 
     /* ── SERVICES ── */
     #services {
-      background: var(--bg-light);
+      background: #fff;
       border-top: 1px solid #d5d2cc;
     }
 
@@ -312,14 +312,14 @@
     }
 
     .service-item h3 {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 700;
       color: var(--text-dark);
       margin-bottom: 14px;
     }
 
     .service-item p {
-      font-size: 15px;
+      font-size: 17px;
       line-height: 1.7;
       color: var(--text-mid);
       margin-bottom: 10px;
@@ -328,7 +328,7 @@
     .service-item ul {
       padding-left: 20px;
       color: var(--text-mid);
-      font-size: 15px;
+      font-size: 17px;
       line-height: 1.8;
     }
 
@@ -438,7 +438,7 @@
       padding: 18px 0;
       border-top: 1px solid #c0bcb5;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 18px;
       color: var(--text-dark);
     }
 
@@ -447,7 +447,7 @@
     .feature-body {
       display: none;
       padding: 12px 0 16px;
-      font-size: 14px;
+      font-size: 18px;
       line-height: 1.7;
       color: #555;
       border-bottom: 1px solid #c0bcb5;
@@ -472,7 +472,7 @@
       text-decoration: none;
       padding: 12px 28px;
       border-radius: 30px;
-      font-size: 14px;
+      font-size: 18px;
       font-weight: 500;
       margin-top: 32px;
       transition: background 0.2s;
@@ -501,7 +501,7 @@
 
     /* ── MISSION ── */
     #mission {
-      background: var(--bg-light);
+      background: #fff;
       border-top: 1px solid #d5d2cc;
       text-align: center;
       position: relative;
@@ -532,8 +532,8 @@
 
     /* ── CONTACT ── */
     #contact {
-      background: var(--bg-white);
-      padding: 100px 60px;
+      background: var(--bg-light);
+      padding: 60px 60px;
     }
 
     .contact-grid {
@@ -546,9 +546,9 @@
     }
 
     .contact-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Manrope', sans-serif;
       font-size: clamp(36px, 4vw, 56px);
-      font-weight: 400;
+      font-weight: 700;
       color: var(--blue-heading);
       margin-bottom: 48px;
     }
@@ -558,7 +558,7 @@
     }
 
     .contact-person h3 {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 400;
       color: var(--text-dark);
       margin-bottom: 6px;
@@ -568,14 +568,14 @@
       color: var(--text-dark);
       text-decoration: none;
       display: block;
-      font-size: 15px;
+      font-size: 17px;
       line-height: 1.6;
     }
 
     .contact-person a:hover { text-decoration: underline; }
 
     .contact-address {
-      font-size: 15px;
+      font-size: 17px;
       color: var(--text-mid);
       line-height: 1.6;
       margin-top: 36px;
@@ -584,7 +584,7 @@
     /* form */
     .contact-form label {
       display: block;
-      font-size: 13px;
+      font-size: 17px;
       font-weight: 500;
       color: var(--text-mid);
       margin-bottom: 6px;
@@ -605,7 +605,7 @@
       border: 1px solid #ccc;
       border-radius: 3px;
       padding: 10px 12px;
-      font-size: 15px;
+      font-size: 17px;
       font-family: 'DM Sans', sans-serif;
       color: var(--text-dark);
       background: #fff;
@@ -636,7 +636,7 @@
       border: none;
       padding: 13px 32px;
       border-radius: 30px;
-      font-size: 15px;
+      font-size: 17px;
       font-family: 'DM Sans', sans-serif;
       font-weight: 500;
       cursor: pointer;
@@ -771,7 +771,7 @@
     <h2 class="section-title">About Us</h2>
     <div class="about-grid">
       <div>
-        <img class="about-logo-img" src="/images/site/sgpGlobe.webp" alt="SGP International seal" />
+        <img class="about-logo-img" src="/images/site/SGP_Logo_FullCircle.png" alt="SGP International seal" />
       </div>
       <div class="about-text">
         <p>We are a team of experienced IT specialists that work closely with businesses of all sizes to address their specific technical needs.</p>
@@ -953,7 +953,6 @@
     </div>
     <div>
       <div class="contact-form">
-        <p style="font-size:14px;font-weight:500;color:var(--text-mid);margin-bottom:16px;">Name</p>
         <div class="name-row">
           <div>
             <div class="form-label-row">

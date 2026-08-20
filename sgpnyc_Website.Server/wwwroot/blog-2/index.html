@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog &ndash; SGP International</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Manrope:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --blue-heading: #1d4e7a; --green: #3d8a4e; --green-hover: #2e6e3c; }
+    body { font-family: 'DM Sans', sans-serif; background: #fff; color: #1a1a1a; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 70px; background: rgba(0,0,0,0.22); backdrop-filter: blur(4px); }
+    .nav-logo img { height: 64px; }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a { color: #fff; text-decoration: none; font-size: 17px; transition: opacity 0.2s; }
+    .nav-links a:hover { opacity: 0.7; }
+    .nav-cta { background: var(--green); color: #fff !important; padding: 10px 22px; border-radius: 30px; font-weight: 500 !important; }
+    .nav-cta:hover { background: var(--green-hover) !important; opacity: 1 !important; }
+    .has-dropdown { position: relative; }
+    .dropdown-btn { background: none; border: none; color: #fff; font-size: 17px; font-family: 'DM Sans', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; }
+    .arrow { font-size: 12px; transition: transform 0.2s; display: inline-block; }
+    .dropdown-menu { display: none; position: absolute; top: 100%; padding-top: 8px; left: 0; background: rgba(20,20,20,0.96); border-radius: 4px; list-style: none; min-width: 180px; padding: 8px 0; box-shadow: 0 8px 32px rgba(0,0,0,0.3); z-index: 200; }
+    .has-dropdown:hover .dropdown-menu, .has-dropdown:focus-within .dropdown-menu, .has-dropdown.open .dropdown-menu { display: block; }
+    .has-dropdown:hover .arrow { transform: rotate(180deg); }
+    .dropdown-menu li a { display: block; padding: 10px 20px; color: #fff; text-decoration: none; font-size: 17px; }
+    .dropdown-menu li a:hover { background: rgba(255,255,255,0.1); }
+
+    .blog-hero { margin-top: 0; height: 220px; display: flex; align-items: center; justify-content: center; background: #8aaabb; position: relative; overflow: hidden; }
+    .blog-hero-title { font-family: 'Manrope', sans-serif; font-size: clamp(36px, 5vw, 60px); font-weight: 700; letter-spacing: 0.15em; color: #fff; position: relative; z-index: 2; }
+    .blog-hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 55px; background: #fff; clip-path: ellipse(55% 100% at 30% 100%); }
+
+    .blog-container { max-width: 1200px; margin: 0 auto; padding: 60px 30px 100px; }
+
+    .post { display: grid; grid-template-columns: 1fr 340px; gap: 40px; align-items: start; margin-bottom: 52px; padding-bottom: 52px; border-bottom: 1px solid #e8e8e8; }
+    .post:last-child { border-bottom: none; }
+
+    .post-date { font-size: 14px; color: #999; margin-bottom: 10px; letter-spacing: 0.03em; }
+    .post-title { font-family: 'Manrope', sans-serif; font-size: clamp(20px, 2vw, 28px); font-weight: 700; color: var(--blue-heading); margin-bottom: 14px; line-height: 1.3; }
+    .post-body p { font-size: 17px; line-height: 1.75; color: #666; margin-bottom: 10px; }
+    .post-link { display: inline-block; margin-top: 10px; font-size: 17px; color: var(--blue-heading); text-decoration: underline; }
+
+    .post-image-col img { width: 100%; border-radius: 4px; aspect-ratio: 4/3; object-fit: cover; display: block; cursor: pointer; }
+
+    .pagination { display: flex; justify-content: space-between; padding: 40px 0 20px; }
+    .pagination a { font-family: 'DM Sans', sans-serif; font-size: 17px; color: var(--blue-heading); text-decoration: none; }
+    .pagination a:hover { text-decoration: underline; }
+
+    footer { background: #1a1a1a; color: #888; text-align: center; padding: 24px 40px; font-size: 13px; }
+
+    /* Lightbox */
+    .lightbox-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center; }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 4px; }
+    .lightbox-close { position: absolute; top: 20px; right: 28px; font-size: 36px; color: #fff; cursor: pointer; background: rgba(0,0,0,0.5); border: none; line-height: 1; padding: 4px 12px; border-radius: 4px; }
+
+    @media (max-width: 700px) {
+      .post { grid-template-columns: 1fr; }
+      .post-image-col { order: -1; }
+      .blog-container { padding: 40px 24px 60px; }
+      nav { padding: 0 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/"><img src="/images/site/sgpGlobe.webp" alt="SGP International" /></a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li class="has-dropdown">
+      <button class="dropdown-btn">SGP International <span class="arrow">&#8964;</span></button>
+      <ul class="dropdown-menu">
+        <li><a href="/abt/">About SGP</a></li>
+        <li><a href="/services/">Services</a></li>
+        <li><a href="/products/">Products</a></li>
+        <li><a href="/success/">Success Stories</a></li>
+        <li><a href="/partners/">Customers</a></li>
+        <li><a href="/new-page/">Personal Paper</a></li>
+      </ul>
+    </li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="blog-hero">
+  <h1 class="blog-hero-title">BLOG</h1>
+</div>
+
+<div class="blog-container">
+
+  <article class="post">
+    <div class="post-content">
+      <p class="post-date">8/8/22</p>
+      <h2 class="post-title">VR Is as Good as Psychedelics at Helping People Reach Transcendence</h2>
+      <div class="post-body">
+        <p>&ldquo;Fifteen years ago, David Glowacki was walking in the mountains when he took a sharp fall. When he hit the ground, blood began leaking into his lungs. As he lay there suffocating, Glowacki&rsquo;s field of perception swelled. He peered down at his own body&mdash;and, instead of his typical form, saw that he was made up of balled-up light.&rdquo;</p>
+        <p>&ldquo;&lsquo;I knew that the intensity of the light was related to the extent to which I inhabited my body,&rsquo; he recalls. Yet watching it dim didn&rsquo;t frighten him. From his new vantage point, Glowacki could see that the light wasn&rsquo;t disappearing. It was transforming&mdash;leaking out of his body into the environment around him.&rdquo;</p>
+        <p>&ldquo;Since his accident, Glowacki&mdash;an artist and computational molecular physicist&mdash;has worked to recapture that transcendence.&rdquo;</p>
+        <p>&ldquo;A VR experience called Isness-D is his latest effort. And on four key indicators used in studies of psychedelics, the program showed the same effect as a medium dose of LSD or psilocybin (the main psychoactive component of &lsquo;magic&rsquo; mushrooms), according to a recent study in Nature Scientific Reports.&rdquo;</p>
+        <p>&ldquo;Isness-D is designed for groups of four to five people based anywhere in the world. Each participant is represented as a diffuse cloud of smoke with a ball of light right about where a person&rsquo;s heart would be.&rdquo;</p>
+        <p>&ldquo;Participants can partake in an experience called energetic coalescence: they gather in the same spot in the virtual-reality landscape to overlap their diffuse bodies, making it impossible to tell where each person begins and ends. The resulting sense of deep connectedness and ego attenuation mirrors feelings commonly brought about by a psychedelic experience.&rdquo;</p>
+        <a class="post-link" href="https://www.technologyreview.com/2022/08/06/1056727/vr-virtual-reality-psychedelics-transcendence/" target="_blank" rel="noopener">Click here for the full article</a>
+      </div>
+    </div>
+    <div class="post-image-col">
+      <img src="/images/blog/sq_cb7e2b4b_22.PNG" alt="VR psychedelics transcendence" />
+    </div>
+  </article>
+
+  <article class="post">
+    <div class="post-content">
+      <p class="post-date">8/5/22</p>
+      <h2 class="post-title">Meta Is Putting Its Latest AI Chatbot on the Web for the Public to Talk To</h2>
+      <div class="post-body">
+        <p>&ldquo;Meta&rsquo;s AI research labs have created a new state-of-the-art chatbot and are letting members of the public talk to the system in order to collect feedback on its capabilities.&rdquo;</p>
+        <p>&ldquo;The bot is called BlenderBot 3 and can be accessed on the web. (Though, right now, it seems only residents in the US can do so.) BlenderBot 3 is able to engage in general chitchat, says Meta, but also answer the sort of queries you might ask a digital assistant, &lsquo;from talking about healthy food recipes to finding child-friendly amenities in the city.&rsquo;&rdquo;</p>
+        <p>&ldquo;The bot is a prototype and built on Meta&rsquo;s previous work with what are known as large language models or LLMS&mdash;powerful but flawed text-generation software of which OpenAI&rsquo;s GPT-3 is the most widely known example. Like all LLMs, BlenderBot is initially trained on vast datasets of text, which it mines for statistical patterns in order to generate language. Such systems have proved to be extremely flexible and have been put to a range of uses, from generating code for programmers to helping authors write their next bestseller. However, these models also have serious flaws: they regurgitate biases in their training data and often invent answers to users&rsquo; questions (a big problem if they&rsquo;re going to be useful as digital assistants).&rdquo;</p>
+        <p>&ldquo;This latter issue is something Meta specifically wants to test with BlenderBot. A big feature of the chatbot is that it&rsquo;s capable of searching the internet in order to talk about specific topics. Even more importantly, users can then click on its responses to see where it got its information from. BlenderBot 3, in other words, can cite its sources.&rdquo;</p>
+        <a class="post-link" href="https://www.theverge.com/2022/8/5/23293281/meta-ai-chatbot-blenderbot-3-web-access-research-safety" target="_blank" rel="noopener">Click here for the full article</a>
+      </div>
+    </div>
+    <div class="post-image-col">
+      <img src="/images/blog/sq_65272cc3_21.PNG" alt="Meta AI chatbot BlenderBot 3" />
+    </div>
+  </article>
+
+  <article class="post">
+    <div class="post-content">
+      <p class="post-date">8/4/22</p>
+      <h2 class="post-title">Surgeons Use Virtual Reality Techniques to Separate Conjoined Twins</h2>
+      <div class="post-body">
+        <p>&ldquo;LONDON &mdash; After emerging from a final risky surgery, Brazilian twin brothers Arthur and Bernardo Lima were met with an emotional outpouring of applause, cheers and tears from medical staff and family members&rdquo;</p>
+        <p>&ldquo;For the first time, the boys lay separated, face-to-face and holding hands in a shared hospital bed in Rio de Janeiro, after doctors there and almost 6,000 miles away in London worked together using virtual reality techniques to operate on the conjoined 3-year-olds.&rdquo;</p>
+        <p>&ldquo;The highly complex medical procedure separated the twins, who come from Roraima in rural northern Brazil and were born craniopagus, meaning they were connected to each other with fused skulls and intertwined brains that shared vital veins. Only 1 in 60,000 births result in conjoined twins, and even fewer are joined cranially.&rdquo;</p>
+        <p>&ldquo;Medical experts had called the surgery to separate the brothers impossible.&rdquo;</p>
+        <p>&ldquo;But medical staff from Rio&rsquo;s Instituto Estadual do C&eacute;rebro Paulo Niemeyer worked with London-based surgeon Noor ul Owase Jeelani of Great Ormond Street Hospital to use advanced virtual reality technology to rehearse the painstaking procedure.&rdquo;</p>
+        <p>&ldquo;It involved detailed imaging of the boys&rsquo; brains including CT and MRI scans, as well as checks on the rest of their bodies. Health workers, engineers and others collated data to create 3D and virtual reality models of the twins&rsquo; brains to allow the teams to study their anatomy in greater detail.&rdquo;</p>
+        <a class="post-link" href="https://www.washingtonpost.com/world/2022/08/03/brazil-conjoined-twins-separated-surgery/" target="_blank" rel="noopener">Click here for the full article</a>
+      </div>
+    </div>
+    <div class="post-image-col">
+      <img src="/images/blog/sq_d8dab1ed_20.PNG" alt="VR surgery conjoined twins" />
+    </div>
+  </article>
+
+  <article class="post">
+    <div class="post-content">
+      <p class="post-date">7/27/22</p>
+      <h2 class="post-title">Artificial Intelligence Discovers Alternative Physics</h2>
+      <div class="post-body">
+        <p>&ldquo;A new Columbia University AI program observed physical phenomena and uncovered relevant variables&mdash;a necessary precursor to any physics theory. But the variables it discovered were unexpected.&rdquo;</p>
+        <p>&ldquo;Energy, Mass, Velocity. These three variables make up Einstein&rsquo;s iconic equation E=MC2. But how did Albert Einstein know about these concepts in the first place? Before understanding physics you need to identify relevant variables. Not even Einstein could discover relativity without the concepts of energy, mass, and velocity. But can variables like these be discovered automatically? Doing so would greatly accelerate scientific discovery.&rdquo;</p>
+        <p>&ldquo;This is the question that Columbia Engineering researchers posed to a new artificial intelligence program. The AI program was designed to observe physical phenomena through a video camera and then try to search for the minimal set of fundamental variables that fully describe the observed dynamics.&rdquo;</p>
+        <a class="post-link" href="https://scitechdaily.com/artificial-intelligence-discovers-alternative-physics/" target="_blank" rel="noopener">Click here for the full article</a>
+      </div>
+    </div>
+    <div class="post-image-col">
+      <img src="/images/blog/sq_ad4b450b_19.PNG" alt="AI alternative physics discovery" />
+    </div>
+  </article>
+
+  <article class="post">
+    <div class="post-content">
+      <p class="post-date">7/26/22</p>
+      <h2 class="post-title">Colorful Urban Environments Promote Wellbeing, Even if They Are Just in Virtual Reality</h2>
+      <div class="post-body">
+        <p>&ldquo;Urban environments can be drab and stressful, but introducing vegetation or colorful designs could improve the wellbeing of city dwellers. A new study investigated the potential of these simple interventions using a virtual reality simulation. It found that green vegetation was pleasurable for volunteers, whereas colorful designs increased curiosity and fascination. The virtual methods could be useful for urban planners in testing new methods to improve wellbeing.&rdquo;</p>
+        <p>&ldquo;Drab urban environments tend to increase our stress, whereas nature can soothe the soul, but how do you get the best of both? One option is to increase color and vegetation in cities, but finding the best approach can be tricky. A new study in Frontiers in Virtual Reality tested the effects of vegetation and colorful patterns in an urban environment. Employing virtual reality, the study found that green vegetation caused volunteers to walk more slowly, while also increasing their heartrate, indicating a pleasurable experience. Meanwhile, colorful patterns increased alertness, fascination and curiosity. The study illustrates the potential of simple interventions to improve the lives of urbanites, and also the power of virtual reality to test such interventions.&rdquo;</p>
+        <a class="post-link" href="https://www.psypost.org/2022/07/colorful-urban-environments-promote-wellbeing-even-if-they-are-just-in-virtual-reality-63581" target="_blank" rel="noopener">Click here for the full article</a>
+      </div>
+    </div>
+    <div class="post-image-col">
+      <img src="/images/blog/sq_872af0f6_18.PNG" alt="Colorful urban VR wellbeing study" />
+    </div>
+  </article>
+
+  <article class="post">
+    <div class="post-content">
+      <p class="post-date">7/25/22</p>
+      <h2 class="post-title">Experts Clash on Where Virtual Reality Sits in the Metaverse</h2>
+      <div class="post-body">
+        <p>&ldquo;Virtual reality (VR) will eventually have a place within the Metaverse, but not for the foreseeable future given its slow adoption rates, according to experts.&rdquo;</p>
+        <p>&ldquo;There isn&rsquo;t much that can rival the experience of having one&rsquo;s senses almost immersed in a virtual world&mdash;which is why many believe that the technology will have a natural fit for the Metaverse.&rdquo;</p>
+        <p>&ldquo;It&rsquo;s a technology that Mark Zuckerberg&rsquo;s Meta is betting big on by introducing Meta accounts that it says will allow users to access its Meta Horizons platform more easily through Oculus VR headsets.&rdquo;</p>
+        <p>&ldquo;Founder and CEO of metaverse platform CEEK Mary Spio is also one waving the VR metaverse flag. In an interview with Cointelegraph, Spio argues that the true power of a Metaverse cannot be realized unless users are totally immersed through the use of VR devices.&rdquo;</p>
+        <p>&ldquo;Spio said that her platform opted for a focus on VR immersion because &lsquo;the benefits of the Metaverse cannot be fully realized in the non-VR mode.&rsquo;&rdquo;</p>
+        <p>&ldquo;However, Spio admits that their metaverse needs to allow for both VR and non-VR accessibility, as content, ease of use, and accessibility are all still required for the mass adoption of VR technology.&rdquo;</p>
+        <p>&ldquo;She believes that a &lsquo;quantum leap will be in the next two to three years&rsquo; for Metaverse and VR adoption.&rdquo;</p>
+        <a class="post-link" href="https://cointelegraph.com/news/experts-clash-on-where-virtual-reality-sits-in-the-metaverse" target="_blank" rel="noopener">Click here for the full article</a>
+      </div>
+    </div>
+    <div class="post-image-col">
+      <img src="/images/blog/sq_f6357d6f_17.PNG" alt="VR metaverse debate" />
+    </div>
+  </article>
+
+  <article class="post">
+    <div class="post-content">
+      <p class="post-date">7/10/22</p>
+      <h2 class="post-title">A Lake City Woman&rsquo;s Dying Wish Was to See the Grand Canyon. Virtual Reality Made It Possible.</h2>
+      <div class="post-body">
+        <p>&ldquo;Brenda Polson battled Chronic Obstructive Pulmonary Disease (COPD) for several years. She received a Stage 4 diagnosis, which ended up being terminal.&rdquo;</p>
+        <p>&ldquo;Through it all, there was just one thing Brenda desperately wanted to do.&rdquo;</p>
+        <p>&ldquo;&lsquo;She has always wanted to go to the Grand Canyon,&rsquo; said Brenda&rsquo;s daughter, Elizabeth.&rdquo;</p>
+        <p>&ldquo;Physically going was out of the question since Brenda was bedridden and in hospice care.&rdquo;</p>
+        <p>&ldquo;David Stoller with a company called Rendever stepped in to help. Rendever, which was established in 2016, is known for creating social experiences using virtual reality.&rdquo;</p>
+        <p>&ldquo;The company provided Brenda with a virtual reality trip to the Grand Canyon. It was an experience she shared with her daughter and son-in-law.&rdquo;</p>
+        <p>&ldquo;&lsquo;Even though I know I was just standing there in a room, I was still on an adventure with her that was not possible at that time,&rsquo; Elizabeth said.&rdquo;</p>
+        <p>&ldquo;Elizabeth said her mother had the time of her life.&rdquo;</p>
+        <a class="post-link" href="https://www.news4jax.com/news/local/2022/07/10/a-lake-city-womans-dying-wish-was-to-see-the-grand-canyon-virtual-reality-made-it-possible/" target="_blank" rel="noopener">Click here for the full article</a>
+      </div>
+    </div>
+    <div class="post-image-col">
+      <img src="/images/blog/sq_1e709f8f_16.PNG" alt="VR Grand Canyon dying wish" />
+    </div>
+  </article>
+
+  <article class="post">
+    <div class="post-content">
+      <p class="post-date">7/5/22</p>
+      <h2 class="post-title">IDC: &ldquo;All Eyes Will Be On Apple&rdquo; as Meta&rsquo;s VR Strategy &ldquo;Isn&rsquo;t Sustainable&rdquo;</h2>
+      <div class="post-body">
+        <p>&ldquo;A recent media release from market research firm IDC predicts that Meta (the parent company of Facebook) may not be able to compete in the mixed-reality business in the long run if its strategy remains unchanged.&rdquo;</p>
+        <p>&ldquo;The media release offers a bird&rsquo;s-eye view of the virtual reality hardware marketplace. In the release, IDC research manager Jitesh Ubrani said that, while &lsquo;Meta continues to pour dollars into developing the metaverse, [the company&rsquo;s] strategy of promoting low-cost hardware at the expense of profitability isn&rsquo;t sustainable in the long run.&rsquo;&rdquo;</p>
+        <p>&ldquo;A similar concern was raised by tech industry analyst Ming-Chi Kuo late last month. Kuo predicted that Meta would make moves to scale down investment in virtual reality, creating an opening for Apple and other competitors. He also wrote that Meta&rsquo;s practice of selling VR headsets at a loss is unsustainable.&rdquo;</p>
+        <p>&ldquo;Currently, Meta owns 90 percent of the VR headset market, according to the IDC release. In distant second is ByteDance&rsquo;s Pico, at just 4.5 percent. Overall, VR headset shipments jumped 241.6 percent year over year in the first quarter of 2022. But the industry faced significant supply issues in Q1 2021, contributing to &lsquo;a favorable comparison&rsquo; for this year&rsquo;s Q1.&rdquo;</p>
+        <a class="post-link" href="https://arstechnica.com/gadgets/2022/07/metas-mixed-reality-strategy-isnt-sustainable-research-firm-says/" target="_blank" rel="noopener">Click here for the full article</a>
+      </div>
+    </div>
+    <div class="post-image-col">
+      <img src="/images/blog/sq_31cf01ac_15.PNG" alt="IDC Meta VR strategy Apple" />
+    </div>
+  </article>
+
+  <article class="post">
+    <div class="post-content">
+      <p class="post-date">6/29/22</p>
+      <h2 class="post-title">AI Could Improve Welfare of Farmed Chickens by Listening to Their Squawks</h2>
+      <div class="post-body">
+        <p>&ldquo;Artificial intelligence that could improve the welfare of farmed chickens by eavesdropping on their squawks could become available within five years, researchers say.&rdquo;</p>
+        <p>&ldquo;The technology, which detects and quantifies distress calls made by chickens housed in huge indoor sheds, correctly distinguished distress calls from other barn noises with 97% accuracy, new research suggests. A similar approach could eventually be used to drive up welfare standards in other farmed animals.&rdquo;</p>
+        <p>&ldquo;Each year, about 25 billion chickens are farmed around the world&mdash;many of them in huge sheds, each housing thousands of birds. One way to assess the welfare of such creatures is to listen to the sounds that they make.&rdquo;</p>
+        <p>&ldquo;&lsquo;Chickens are very vocal, but the distress call tends to be louder than the others, and is what we would describe as a pure tonal call,&rsquo; said Alan McElligott, an associate professor of animal behaviour and welfare at the City University of Hong Kong. &lsquo;Even to the untrained ear, it&rsquo;s not too difficult to pick them out.&rsquo;&rdquo;</p>
+        <p>&ldquo;In theory, farmers could use chickens&rsquo; calls to gauge their level of distress, and enrich their housing where necessary. However, in commercial flocks containing thousands, or tens of thousands of chickens, deploying human observers is impractical. For one thing, their presence could further stress the flock, but with so many birds, objectively quantifying the number of distress calls is impossible, McElligott said.&rdquo;</p>
+        <p>&ldquo;Instead, his team has developed a deep learning tool to automatically identify chicken distress calls from recordings of intensively farmed chickens. The tool was trained using recordings that had already been manually classified by human experts, to determine which type of sound they represented.&rdquo;</p>
+        <a class="post-link" href="https://www.theguardian.com/science/2022/jun/29/ai-could-improve-welfare-of-farmed-chickens-by-listening-to-their-squawks" target="_blank" rel="noopener">Click here for the full article</a>
+      </div>
+    </div>
+    <div class="post-image-col">
+      <img src="/images/blog/sq_f2dbbd23_14.PNG" alt="AI chicken welfare monitoring" />
+    </div>
+  </article>
+
+  <article class="post">
+    <div class="post-content">
+      <p class="post-date">6/25/22</p>
+      <h2 class="post-title">Amazon&rsquo;s Alexa May Mimic Voices of Dead People: &lsquo;Make Memories Last&rsquo;</h2>
+      <div class="post-body">
+        <p>&ldquo;Amazon announced on Wednesday, June 22, that it may soon feature the mimicking voices of customers&rsquo; dead relatives within its Alexa products.&rdquo;</p>
+        <p>&ldquo;Rohit Prasad, Amazon&rsquo;s senior vice president and head scientist for Alexa, said during the Wednesday announcement event in Las Vegas that the feature is a part of a greater initiative to build human empathy.&rdquo;</p>
+        <p>&ldquo;With so many lives lost during the pandemic, Amazon believes this feature will help bring and keep connections to those no longer on this Earth.&rdquo;</p>
+        <a class="post-link" href="https://www.foxbusiness.com/lifestyle/amazons-alexa-mimic-voices-dead-people-memories" target="_blank" rel="noopener">Click here for the full article</a>
+      </div>
+    </div>
+    <div class="post-image-col">
+      <img src="/images/blog/sq_58805a66_13.PNG" alt="Amazon Alexa voice cloning" />
+    </div>
+  </article>
+
+</div>
+
+<div class="blog-container pagination">
+  <a href="/blog/">&lsaquo; Newer Posts</a>
+  <a href="/blog-3/">Older Posts &rsaquo;</a>
+</div>
+
+<footer><p>&copy;SGP International</p></footer>
+
+<div class="lightbox-overlay" id="lightbox">
+  <button class="lightbox-close" id="lightbox-close">&#x2715;</button>
+  <img class="lightbox-img" id="lightbox-img" src="" alt="" />
+</div>
+
+<script>
+  document.querySelectorAll('.dropdown-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const li = this.closest('.has-dropdown');
+      const isOpen = li.classList.contains('open');
+      document.querySelectorAll('.has-dropdown.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) li.classList.add('open');
+    });
+  });
+  document.addEventListener('click', () => document.querySelectorAll('.has-dropdown.open').forEach(el => el.classList.remove('open')));
+
+  const overlay = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  document.querySelectorAll('.post-image-col img').forEach(img => {
+    img.addEventListener('click', () => { lbImg.src = img.src; lbImg.alt = img.alt; overlay.classList.add('active'); });
+  });
+  document.getElementById('lightbox-close').addEventListener('click', () => overlay.classList.remove('active'));
+  overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('active'); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') overlay.classList.remove('active'); });
+</script>
+</body>
+</html>
