@@ -11,14 +11,14 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// Serve sub-page index.html files for /page and /page/ requests
+// Serve index.html for any /segment or /segment/ that has one in wwwroot
 app.Use(async (ctx, next) =>
 {
-    var pages = new[] { "abt", "services", "products", "success", "partners", "new-page", "blog", "games" };
     var segment = ctx.Request.Path.Value?.Trim('/');
-    if (pages.Contains(segment))
+    if (!string.IsNullOrEmpty(segment) && !segment.Contains('/'))
     {
-        var file = Path.Combine(app.Environment.WebRootPath, segment, "index.html");
+        var wwwroot = app.Environment.WebRootPath ?? Path.Combine(app.Environment.ContentRootPath, "wwwroot");
+        var file = Path.Combine(wwwroot, segment, "index.html");
         if (File.Exists(file))
         {
             ctx.Response.ContentType = "text/html; charset=utf-8";

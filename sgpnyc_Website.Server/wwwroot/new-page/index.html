@@ -4,25 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Personal Paper — SGP International</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Manrope:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --blue-heading: #1d4e7a; --green: #3d8a4e; --green-hover: #2e6e3c; --bg: #e8e5df; --bg-white: #f4f3f1; --text: #444; --text-dark: #1a1a1a; --border: #d5d2cc; }
     body { font-family: 'DM Sans', sans-serif; background: #fff; color: var(--text-dark); }
 
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 70px; background: rgba(20,20,20,0.88); backdrop-filter: blur(8px); }
-    .nav-logo img { height: 52px; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 70px; background: rgba(0,0,0,0.22); backdrop-filter: blur(4px); }
+    .nav-logo img { height: 64px; }
     .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
-    .nav-links a { color: #fff; text-decoration: none; font-size: 14px; transition: opacity 0.2s; }
+    .nav-links a { color: #fff; text-decoration: none; font-size: 17px; transition: opacity 0.2s; }
     .nav-links a:hover { opacity: 0.7; }
     .nav-cta { background: var(--green) !important; color: #fff !important; padding: 10px 22px; border-radius: 30px; font-weight: 500 !important; }
     .has-dropdown { position: relative; }
-    .dropdown-btn { background: none; border: none; color: #fff; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; }
+    .dropdown-btn { background: none; border: none; color: #fff; font-size: 17px; font-family: 'DM Sans', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; }
     .arrow { font-size: 12px; transition: transform 0.2s; display: inline-block; }
     .dropdown-menu { display: none; position: absolute; top: 100%; padding-top: 8px; left: 0; background: rgba(20,20,20,0.96); border-radius: 4px; list-style: none; min-width: 180px; padding: 8px 0; box-shadow: 0 8px 32px rgba(0,0,0,0.3); z-index: 200; }
     .has-dropdown:hover .dropdown-menu, .has-dropdown:focus-within .dropdown-menu, .has-dropdown.open .dropdown-menu { display: block; }
     .has-dropdown:hover .arrow { transform: rotate(180deg); }
-    .dropdown-menu li a { display: block; padding: 10px 20px; color: #fff; text-decoration: none; font-size: 13px; }
+    .dropdown-menu li a { display: block; padding: 10px 20px; color: #fff; text-decoration: none; font-size: 17px; }
     .dropdown-menu li a:hover { background: rgba(255,255,255,0.1); }
 
     .page-top { margin-top: 70px; }
@@ -32,11 +32,11 @@
     .container { max-width: 900px; margin: 0 auto; }
 
     .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; color: var(--green); text-transform: uppercase; margin-bottom: 8px; }
-    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 400; color: var(--blue-heading); margin-bottom: 32px; }
+    .section-title { font-family: 'Manrope', sans-serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 700; color: var(--blue-heading); margin-bottom: 32px; }
 
     .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
     .intro-img img { width: 100%; border-radius: 6px; border: 1px solid var(--border); box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
-    .intro-text p { font-size: 15px; line-height: 1.8; color: var(--text); margin-bottom: 14px; }
+    .intro-text p { font-size: 17px; line-height: 1.8; color: var(--text); margin-bottom: 14px; }
     .intro-text p:last-child { margin-bottom: 0; }
 
     .press-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
@@ -45,7 +45,7 @@
     .press-card img { max-width: 100%; height: 280px; object-fit: contain; pointer-events: none; }
 
     /* Lightbox */
-    .lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; }
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.75); align-items: center; justify-content: center; }
     .lightbox.active { display: flex; }
     .lightbox-inner { position: relative; width: 98vw; height: 96vh; display: flex; align-items: center; justify-content: center; }
     .lightbox-inner img { width: 100%; height: 100%; object-fit: contain; border-radius: 4px; display: block; }

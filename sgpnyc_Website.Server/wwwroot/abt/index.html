@@ -4,37 +4,37 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About SGP — SGP International</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --blue-heading: #1d4e7a; --green: #3d8a4e; --green-hover: #2e6e3c; --bg: #f4f3f1; }
     body { font-family: 'DM Sans', sans-serif; background: #fff; color: #1a1a1a; }
 
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 70px; background: rgba(20,20,20,0.88); backdrop-filter: blur(8px); }
-    .nav-logo img { height: 52px; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 70px; background: rgba(0,0,0,0.22); backdrop-filter: blur(4px); }
+    .nav-logo img { height: 64px; }
     .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
-    .nav-links a { color: #fff; text-decoration: none; font-size: 14px; transition: opacity 0.2s; }
+    .nav-links a { color: #fff; text-decoration: none; font-size: 17px; transition: opacity 0.2s; }
     .nav-links a:hover { opacity: 0.7; }
     .nav-cta { background: var(--green); color: #fff !important; padding: 10px 22px; border-radius: 30px; font-weight: 500 !important; }
     .nav-cta:hover { background: var(--green-hover) !important; opacity: 1 !important; }
     .has-dropdown { position: relative; }
-    .dropdown-btn { background: none; border: none; color: #fff; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; }
+    .dropdown-btn { background: none; border: none; color: #fff; font-size: 17px; font-family: 'DM Sans', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; }
     .arrow { font-size: 12px; transition: transform 0.2s; display: inline-block; }
     .dropdown-menu { display: none; position: absolute; top: 100%; padding-top: 16px; left: 0; background: rgba(20,20,20,0.96); border-radius: 4px; list-style: none; min-width: 180px; padding: 8px 0; box-shadow: 0 8px 32px rgba(0,0,0,0.3); z-index: 200; }
     .has-dropdown:hover .dropdown-menu, .has-dropdown:focus-within .dropdown-menu, .has-dropdown.open .dropdown-menu { display: block; }
     .has-dropdown:hover .arrow { transform: rotate(180deg); }
-    .dropdown-menu li a { display: block; padding: 10px 20px; color: #fff; text-decoration: none; font-size: 13px; }
+    .dropdown-menu li a { display: block; padding: 10px 20px; color: #fff; text-decoration: none; font-size: 17px; }
     .dropdown-menu li a:hover { background: rgba(255,255,255,0.1); }
 
     /* HERO */
     .page-hero {
-      margin-top: 70px; height: 220px;
-      background-image: url('/images/site/statue-of-liberty.jpg');
+      margin-top: 0; height: 570px;
+      background-image: url('/images/site/hero-abt.jpg');
       background-size: cover; background-position: center top;
       display: flex; align-items: center; justify-content: center; position: relative;
     }
-    .page-hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.35); }
-    .page-hero h1 { position: relative; z-index: 2; font-family: 'DM Sans', sans-serif; font-size: 42px; font-weight: 300; letter-spacing: 0.2em; color: #fff; }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.1); }
+    .page-hero h1 { position: relative; z-index: 2; font-family: 'Manrope', sans-serif; font-size: 52px; font-weight: 700; letter-spacing: 0.15em; color: #fff; }
 
     /* CONTENT */
     .content { max-width: 860px; margin: 0 auto; padding: 70px 40px 100px; text-align: center; }
@@ -43,7 +43,7 @@
       display: flex; flex-direction: column; align-items: center;
       margin-bottom: 36px;
     }
-    .sgp-logo-lockup img { height: 80px; margin-bottom: 8px; }
+    .sgp-logo-lockup img { height: 180px; margin-bottom: 8px; }
     .sgp-tagline {
       font-family: 'DM Sans', sans-serif;
       font-size: 11px; letter-spacing: 0.3em; color: var(--green);
@@ -51,7 +51,7 @@
     }
 
     .since {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Manrope', sans-serif;
       font-size: clamp(24px, 3vw, 36px);
       font-weight: 400; color: var(--blue-heading);
       margin-bottom: 20px; line-height: 1.3;
@@ -100,12 +100,16 @@
     .product-card h4 { font-size: 13px; font-weight: 700; color: var(--blue-heading); margin-bottom: 8px; }
     .product-card p { font-size: 12px; line-height: 1.7; color: #666; }
 
+    .about-image-section { padding: 0 60px 80px; text-align: center; }
+    .about-image-section img { max-width: 100%; }
+
     footer { background: #1a1a1a; color: #888; text-align: center; padding: 24px 40px; font-size: 13px; }
 
     @media (max-width: 700px) {
       .pillars { grid-template-columns: 1fr; }
       .products-grid { grid-template-columns: repeat(2, 1fr); }
       .content { padding: 40px 24px 60px; }
+      .about-image-section { padding: 0 24px 60px; }
     }
   </style>
 </head>
@@ -136,59 +140,13 @@
 </div>
 
 <div class="content">
-
-  <div class="sgp-logo-lockup">
-    <img src="/images/site/sgpGlobe.webp" alt="SGP International" />
-    <div class="sgp-tagline">0010–0011</div>
-  </div>
-
+  <img src="/images/site/sgp35.png" alt="SGP 35 years" style="height:130px;margin-bottom:24px;" />
   <h2 class="since">SGP has been operating in NYC<br>since <strong>1987</strong></h2>
-
-  <div class="sectors">Finance | Healthcare | Insurance | Non-Profit | Real Estate | Retail</div>
-
-  <p class="mission-text">Our mission is to integrate and streamline business practices using information systems as a tool to transform and enhance all facets of daily operations.</p>
-
-  <div class="pillars">
-    <div class="pillar">
-      <h3>Collaborative</h3>
-      <p>From drafting business requirements to delivering hands-on, responsive support, SGP provides unparalleled and personalized customer service. We work as trusted advisors to assess strategic initiatives and opportunities.</p>
-    </div>
-    <div class="pillar">
-      <h3>Technical Insights</h3>
-      <p>SGP's business acumen allows us to adapt to changing technologies and market trends. We deliver innovative, leading edge technical solutions. Clients depend on SGP for reliable and secure system architecture.</p>
-    </div>
-    <div class="pillar">
-      <h3>Proven Results</h3>
-      <p>Our trusted approach to operational synergies demonstrates a track record of dependable and cost effective results. We nurture relationships and experience repeated success through consulting and customized solutions.</p>
-    </div>
-  </div>
-
-  <div class="flagship-title">Flagship Applications</div>
-
-  <div class="products-grid">
-    <div class="product-card">
-      <img src="/images/site/DOX_clean.png" alt="DOX" />
-      <h4>Document Compliance System</h4>
-      <p>DOX is designed to efficiently generate, track and maintain all document, covenant and tickler requirements. The system mitigates risk and provides confidence to auditors and rating agencies through automation.</p>
-    </div>
-    <div class="product-card">
-      <img src="/images/site/REDSfinal.png" alt="REDS" />
-      <h4>Real Estate Portfolio System</h4>
-      <p>REDS oversees the running of real estate loan portfolios. Deals are tracked from approval through expiration. The window-based operating memorandums, escrow administration and on-demand reporting allow for oversight and control.</p>
-    </div>
-    <div class="product-card">
-      <img src="/images/site/CentralDB_Logo_final.png" alt="CentralDB" />
-      <h4>Data Warehouse Manager</h4>
-      <p>Centralized report management with role-based access control, automated scheduling, and Power BI integration for dynamic dashboards and reporting.</p>
-    </div>
-    <div class="product-card">
-      <img src="/images/site/workflow_logo.png" alt="Workflow365" />
-      <h4>Process Management</h4>
-      <p>Customizable workflows with 4-eye approvals, real-time tracking, and intuitive reporting to streamline and automate your business processes.</p>
-    </div>
-  </div>
-
 </div>
+
+<section class="about-image-section">
+  <img src="/images/site/sgpAbout.png" alt="SGP International" />
+</section>
 
 <footer><p>©SGP International</p></footer>
 <script>

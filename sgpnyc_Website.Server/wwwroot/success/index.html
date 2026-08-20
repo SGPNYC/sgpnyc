@@ -4,32 +4,32 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Success Stories — SGP International</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Manrope:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --blue-heading: #1d4e7a; --green: #3d8a4e; --green-hover: #2e6e3c; --bg: #e8e5df; --bg-white: #f4f3f1; --text: #444; --text-dark: #1a1a1a; --border: #d5d2cc; }
     body { font-family: 'DM Sans', sans-serif; background: #fff; color: var(--text-dark); }
 
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 70px; background: rgba(20,20,20,0.88); backdrop-filter: blur(8px); }
-    .nav-logo img { height: 52px; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 70px; background: rgba(0,0,0,0.22); backdrop-filter: blur(4px); }
+    .nav-logo img { height: 64px; }
     .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
-    .nav-links a { color: #fff; text-decoration: none; font-size: 14px; transition: opacity 0.2s; }
+    .nav-links a { color: #fff; text-decoration: none; font-size: 17px; transition: opacity 0.2s; }
     .nav-links a:hover { opacity: 0.7; }
     .nav-cta { background: var(--green) !important; color: #fff !important; padding: 10px 22px; border-radius: 30px; font-weight: 500 !important; }
     .has-dropdown { position: relative; }
-    .dropdown-btn { background: none; border: none; color: #fff; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; }
+    .dropdown-btn { background: none; border: none; color: #fff; font-size: 17px; font-family: 'DM Sans', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; }
     .arrow { font-size: 12px; transition: transform 0.2s; display: inline-block; }
     .dropdown-menu { display: none; position: absolute; top: 100%; padding-top: 8px; left: 0; background: rgba(20,20,20,0.96); border-radius: 4px; list-style: none; min-width: 180px; padding: 8px 0; box-shadow: 0 8px 32px rgba(0,0,0,0.3); z-index: 200; }
     .has-dropdown:hover .dropdown-menu, .has-dropdown:focus-within .dropdown-menu, .has-dropdown.open .dropdown-menu { display: block; }
     .has-dropdown:hover .arrow { transform: rotate(180deg); }
-    .dropdown-menu li a { display: block; padding: 10px 20px; color: #fff; text-decoration: none; font-size: 13px; }
+    .dropdown-menu li a { display: block; padding: 10px 20px; color: #fff; text-decoration: none; font-size: 17px; }
     .dropdown-menu li a:hover { background: rgba(255,255,255,0.1); }
 
-    .page-hero { margin-top: 70px; height: 280px; background-image: url('/images/site/hero-success.jpg'); background-size: cover; background-position: center 40%; display: flex; align-items: center; justify-content: center; position: relative; }
-    .page-hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.5); }
+    .page-hero { margin-top: 0; height: 570px; background-image: url('/images/site/hero-success.jpg'); background-size: cover; background-position: center 40%; display: flex; align-items: center; justify-content: center; position: relative; }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.1); }
     .page-hero-content { position: relative; z-index: 2; text-align: center; }
-    .page-hero-content h1 { font-family: 'DM Sans', sans-serif; font-size: clamp(32px, 5vw, 52px); font-weight: 300; letter-spacing: 0.2em; color: #fff; margin-bottom: 8px; }
-    .page-hero-content p { color: rgba(255,255,255,0.8); font-size: 16px; }
+    .page-hero-content h1 { font-family: 'Manrope', sans-serif; font-size: clamp(36px, 5vw, 60px); font-weight: 700; letter-spacing: 0.15em; color: #fff; margin-bottom: 8px; }
+    .page-hero-content p { color: rgba(255,255,255,0.95); font-family: 'DM Sans', sans-serif; font-size: clamp(18px, 2.5vw, 26px); font-weight: 300; line-height: 1.4; }
 
     .section { padding: 80px 60px; }
     .container { max-width: 900px; margin: 0 auto; }
@@ -37,14 +37,15 @@
     .stories-list { display: flex; flex-direction: column; gap: 32px; }
     .story-card { background: #fff; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
     .story-header { background: var(--bg); border-bottom: 1px solid var(--border); padding: 20px 28px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-    .story-client { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 400; color: var(--blue-heading); margin: 0; }
-    .story-subtitle { font-size: 13px; color: var(--text); width: 100%; margin-top: -4px; }
-    .story-product { margin-left: auto; background: var(--green); color: #fff; font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 100px; white-space: nowrap; letter-spacing: 0.04em; }
+    .story-client { font-family: 'Manrope', sans-serif; font-size: 28px; font-weight: 700; color: var(--blue-heading); margin: 0; }
+    .story-subtitle { font-size: 17px; color: var(--text); width: 100%; margin-top: -4px; }
+    .story-product { margin-left: auto; background: var(--green); color: #fff; font-size: 13px; font-weight: 600; padding: 4px 12px; border-radius: 100px; white-space: nowrap; letter-spacing: 0.04em; }
     .story-body { display: grid; grid-template-columns: 1fr 1fr; }
     .story-col { padding: 24px 28px; }
     .story-col:first-child { border-right: 1px solid var(--border); }
-    .story-col h3 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--green); margin-bottom: 12px; }
-    .story-col p { font-size: 14px; line-height: 1.75; color: var(--text); }
+    .story-col h3 { font-family: 'Manrope', sans-serif; font-size: 18px; font-weight: 700; color: var(--green); margin-bottom: 12px; }
+    .story-col p { font-size: 17px; line-height: 1.75; color: var(--text); margin-bottom: 12px; }
+    .story-col p:last-child { margin-bottom: 0; }
 
     footer { background: #1a1a1a; color: #888; text-align: center; padding: 24px 40px; font-size: 13px; }
 
@@ -92,11 +93,17 @@
         <div class="story-body">
           <div class="story-col">
             <h3>The Challenge</h3>
-            <p>ICBC needed a system they could rely on for document and covenant compliance. All banking businesses are audited and expected to keep a firm record of their data and transactions. Many financial companies solely rely on Excel, when they also need a system that provides substantial security and is adequate for daily team navigation. Document and covenant compliance is crucial for ICBC because it tracks and compiles their data and requirements for each client.</p>
+            <p>ICBC needed a system they could rely on for document and covenant compliance. All banking businesses are audited and are expected to keep a firm record of their data and transactions.</p>
+            <p>Many financial companies solely rely on Excel, when they also need a system that will not only provide substantial security, but will be adequate for their company's teams to navigate daily.</p>
+            <p>Document and covenant compliance is crucial for ICBC because it tracks and compiles their data and requirements for each client. They also needed a system that would specialize their objectives based on the rights and restrictions of each user.</p>
           </div>
           <div class="story-col">
             <h3>The Solution</h3>
-            <p>For ICBC, SGP's DOX is customized specifically to the international bank's needs. DOX is tailored to the partnering organization's requirements. Working with ICBC, DOX creates reports, arranges data, highlights trends, and publishes results. DOX tracks all deadlines and pass/fail covenant tests online with a dashboard that supplies each user a snapshot of past-due and upcoming requirements. Different information is available for each user depending on their clearance within ICBC.</p>
+            <p><strong>For ICBC, SGP's DOX is customized specifically to the international bank's needs. DOX is tailored specifically to the partnering organization's requirements.</strong></p>
+            <p>Working with ICBC, DOX creates reports, arranges data, highlights trends, and publishes results.</p>
+            <p>DOX tracks all deadlines and pass or fail covenant tests online with a dashboard that supplies each user with a snapshot of past-due and upcoming requirements.</p>
+            <p>Due to specific security parameters, different information is available for each user depending on their clearance within ICBC.</p>
+            <p>SGP's document compliance system delivers dynamic reporting across a portfolio, evaluating compliance statuses and identifying their exceptions.</p>
           </div>
         </div>
       </article>
@@ -109,11 +116,13 @@
         <div class="story-body">
           <div class="story-col">
             <h3>The Challenge</h3>
-            <p>Aareal Bank spent so much time weekly creating and generating reports for their loans and transactions. There was also significant time spent each day collecting and analyzing data, and they needed a secure system to share information and audit their requirements.</p>
+            <p>Aareal Bank would spend so much time weekly in creating and generating reports for their loans and transactions. There was also so much time spent each day collecting and analyzing data, and they also needed a secure system to share their information as well as audit their requirements.</p>
           </div>
           <div class="story-col">
             <h3>The Solution</h3>
-            <p>SGP's DASH system allows Aareal to implement information acquired from their data more quickly into daily operations. It saves Aareal the time spent creating reports by providing a record system that generates analytics through adjustable reporting tools. DASH's interface allows Aareal to rely on an in-house system, keeping their requirements and company input secure.</p>
+            <p>SGP's system DASH allows Aareal to implement information acquired from their data more quickly into their daily operations.</p>
+            <p>It saves Aareal the time spent creating reports, by providing a record system that generates the analytics through adjustable reporting tools.</p>
+            <p>DASH's interface allows Aareal to rely on an in-house system, keeping their requirements and company input secure.</p>
           </div>
         </div>
       </article>
@@ -121,17 +130,20 @@
       <article class="story-card">
         <div class="story-header">
           <h2 class="story-client">Lincoln Center Theatre</h2>
-          <p class="story-subtitle">The Vivian Beaumont Theater &amp; The Mitzi E. Newhouse Theater</p>
           <span class="story-product">Custom</span>
         </div>
         <div class="story-body">
           <div class="story-col">
             <h3>The Challenge</h3>
-            <p>The challenge Lincoln Center Theater faced began with tracking house seat arrangements and their sales for each show. The theater company spent an excessive amount on house seating scheduling and organization. They also lacked the ability to consistently collect data from ticket sales, especially to hone in on specific customer purchases and production timelines.</p>
+            <p>The challenge Lincoln Center Theater was facing began with tracking the house seat arrangements and their sales for each offered show.</p>
+            <p>The theater company spent an excessive amount on their house seating's scheduling and organization. They also lacked the ability to consistently collect data from their ticket sales, especially to hone in on specific customer purchases and production timelines.</p>
           </div>
           <div class="story-col">
             <h3>The Solution</h3>
-            <p>For Lincoln Center Theater, the SGP system organizes and analyzes house seat schedules and sales. A customer's ability to purchase a house seat ticket is directly activated through SGP's software. The system tracks how often customers purchase tickets, the time of occurrence, and the sales amount. SGP software is regularly used for monthly productions as well as The Tony's — tracking the TONY Voter list since their hit musical Contact in the late 90's.</p>
+            <p>For Lincoln Center Theater, the SGP system organizes and analyzes their house seat schedules and sales.</p>
+            <p>A customer's ability to purchase a house seat ticket is directly activated through SGP's software. The system tracks how often customers purchase tickets, the time of occurrence, and the sales amount.</p>
+            <p>SGP software is regularly used for their monthly productions, as well as their special event The Tony's.</p>
+            <p>The software application tracks the TONY Voter list, so that there is evidence of the customers voting for the plays they have attended. This part of the system began during the theater's hit musical Contact in the late 90's.</p>
           </div>
         </div>
       </article>
@@ -144,11 +156,17 @@
         <div class="story-body">
           <div class="story-col">
             <h3>The Challenge</h3>
-            <p>"Let's Get the Show on the Road" — Clark Transfer's company had expanded over 70 years and needed a system that would support their vast workflow. There was a tremendous need for in-house support and accessible technology in daily operations. The company had hundreds of trailers, routes, drivers, productions, clients, and a timeline to organize and manage daily.</p>
+            <p>"Let's Get the Show on the Road" – Clark Transfer's company had expanded in the last 70 years, and needed a system that would support their vast workflow.</p>
+            <p>There was a tremendous need for in house support and accessible technology in their daily operations. The company had hundreds of trailers, routes, drivers, productions, clients, and a timeline to organize and manage daily. They needed a network that would provide automated data, schedule coordination, and stability to their company.</p>
           </div>
           <div class="story-col">
             <h3>The Solution</h3>
-            <p>SGP designed a custom system to accomplish three objectives: (1) Track trailer locations via a customized GPS system with updates every few minutes and a visual MOVE Board showing active and inactive trailers. (2) Track sales and financial aspects of production transportation. (3) Regulate detailed driver invoice records — on the back end the company controls payment vouchers, and on the front end drivers sign into a portal to fill in schedule information.</p>
+            <p>SGP designed a custom software system to accomplish 3 objectives.</p>
+            <p>1st – The system tracks the locations of the trailers using a customized GPS system. They generate updates every few minutes on the trailers whereabouts, and calculate the expected time of each delivery and pickup.</p>
+            <p>1A – SGP also provides a visual MOVE Board for the Clark Transfer team. The MOVE board shares which trailers are active, and inactive, and identifies them with a trailer number, name of the production, and their expected timeline of transport.</p>
+            <p>This information allows for Clark Transfer to know the locations of all the trailers and the availability of each trailer at any given time.</p>
+            <p>2nd – The system tracks the sales and financial aspects of the productions transportation. This allows Clark Transfer to keep a record of all their shows, and the progress of every trip for each client.</p>
+            <p>3rd – The system regulates detailed records of the company's driver's invoices. There are 2 parts to this project, on the back end the company can control their payment vouchers in house, on the front end the drivers can sign into a portal and fill out information regarding their schedules.</p>
           </div>
         </div>
       </article>
