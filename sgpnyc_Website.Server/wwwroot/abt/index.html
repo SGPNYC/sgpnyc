@@ -100,12 +100,16 @@
     .product-card h4 { font-size: 13px; font-weight: 700; color: var(--blue-heading); margin-bottom: 8px; }
     .product-card p { font-size: 12px; line-height: 1.7; color: #666; }
 
+    .about-image-section { padding: 0 60px 80px; text-align: center; }
+    .about-image-section img { max-width: 100%; }
+
     footer { background: #1a1a1a; color: #888; text-align: center; padding: 24px 40px; font-size: 13px; }
 
     @media (max-width: 700px) {
       .pillars { grid-template-columns: 1fr; }
       .products-grid { grid-template-columns: repeat(2, 1fr); }
       .content { padding: 40px 24px 60px; }
+      .about-image-section { padding: 0 24px 60px; }
     }
   </style>
 </head>
@@ -138,8 +142,11 @@
 <div class="content">
   <img src="/images/site/sgp35.png" alt="SGP 35 years" style="height:130px;margin-bottom:24px;" />
   <h2 class="since">SGP has been operating in NYC<br>since <strong>1987</strong></h2>
-  <img src="/images/site/sgpAbout.png" alt="SGP International" style="max-width:100%;width:1100px;margin-top:32px;" />
 </div>
+
+<section class="about-image-section">
+  <img src="/images/site/sgpAbout.png" alt="SGP International" />
+</section>
 
 <footer><p>©SGP International</p></footer>
 <script>
