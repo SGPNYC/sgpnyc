@@ -26,7 +26,7 @@
       background: rgba(0,0,0,0.22); backdrop-filter: blur(4px);
     }
     .nav-logo { display: flex; align-items: center; text-decoration: none; }
-    .nav-logo img { height: 64px; filter: brightness(0) invert(1); }
+    .nav-logo img { height: 64px; }
     .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
     .nav-links a { color: #fff; text-decoration: none; font-size: 17px; transition: opacity 0.2s; }
     .nav-links a:hover { opacity: 0.7; }
@@ -52,8 +52,8 @@
 
     .game-embed {
       width: 100%;
-      max-width: 440px;
-      aspect-ratio: 440 / 210;
+      max-width: 1000px;
+      aspect-ratio: 1000 / 500;
       border-radius: 6px;
       overflow: hidden;
       box-shadow: 0 8px 40px rgba(0,0,0,0.2);
@@ -132,16 +132,7 @@
 <div class="games-container">
   <h2 class="game-title">SGP Pants Run</h2>
   <div class="game-embed">
-    <!--
-      If the game is an iframe, replace the img below with:
-      <iframe src="GAME_URL_HERE" allowfullscreen></iframe>
-
-      If it's a static screenshot linking to a game, keep the img and wrap in an <a>.
-    -->
-    <img
-      src="../images/site/NYC.jpg"
-      alt="SGP Pants Run game"
-      onerror="this.src='https://placehold.co/440x210/0a0a2e/ffffff?text=SGP+Pants+Run'" />
+    <iframe src="https://sgppantsrun.azurewebsites.net" title="SGP Pants Run" scrolling="no" allowfullscreen></iframe>
   </div>
 </div>
 
